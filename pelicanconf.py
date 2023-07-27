@@ -83,8 +83,8 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'sitemap']
 SITEMAP_SAVE_AS = 'sitemap.xml'
 # BOOTSTRAP_CSS: URL of Bootstrap CSS file. Use this to enable Boostwatch themes.
 # FONTAWESOME_CSS: URL of Font Awesome CSS file. Use this if you wish to use CDN provided version instead of the bundled one.
-PYGMENTS_STYLE = 'manni'
+PYGMENTS_STYLE = 'rainbow_dash'
 HIDE_AUTHORS = True
-RFG_FAVICONS = True 
+RFG_FAVICONS = True
 # THEME_CSS_OVERRIDES: Sequence of stylesheet URLs to override CSS provided by theme. Both relative and absolute URLs are supported.
 # THEME_JS_OVERRIDES: Sequence of JavaScript URLs to enable with this theme. Alchemy uses no JS by default. Both relative and absolute URLs are supported.
