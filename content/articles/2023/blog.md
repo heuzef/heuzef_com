@@ -9,7 +9,7 @@ J'ai bon espoir que les plus audacieux d'entre vous seront ravis de découvrir t
 
 ## Pourquoi et pour quoi ?
 
-Transformer mon site, qui, jusqu'à présent, assurait la simple fonction de "point d'accueil de mon nom de domaine parce qu'il en faut bien un" en quelque de plus pertinent.
+Transformer mon site, qui, jusqu'à présent, assurait la simple fonction de "point d'accueil de mon nom de domaine parce qu'il en faut bien un" en quelque chose de plus pertinent.
 
 Écrire mes expériences de vie, apportera, je l'espère, plusieurs avantages. Les passionnés comme moi ont tous secrètement cette envie de partage, mais c'est autre chose de se lancer.
 
@@ -25,7 +25,7 @@ Cet outil est absolument parfait pour les dingos exigeants comme moi, ce moteur 
 
 Aucune base de données ni moteur web requis, il suffit de lancer la moulinette et Pelican va vous recracher fissa un site web statique complet (HTML, CSS, JS).
 
-Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonction (Gestion de thème, extenssions, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plât et versionné sur mon [git](https://git.heuzef.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
+Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonction (Gestion de thème, extenssion, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plât et versionné sur mon [git](https://git.heuzef.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
 
 C'est auto-hébergeable, libre et documenté, bref rien à redire, c'est le pied, fait tourner c'est de la bonne.
 
@@ -58,7 +58,7 @@ Puis il suffit de se laisser guider pour la configuration :
 pelican-quickstart
 ```
 
-Vient alors le choix du thème (j'ai personnellement opté pour [Pelican-Alchemy ✨](https://github.com/nairobilug/pelican-alchemy) pour le moment) et des extensions.
+Vient alors le choix du thème (j'ai personnellement opté pour [Pelican-Alchemy ✨](https://github.com/nairobilug/pelican-alchemy) pour le moment) et des extenssions.
 Puis finalement, il faut passer du temps à personnaliser les fichiers de configuration **.py**, ajouter votre contenu dans le dossier **content** et faire pointer votre serveur web sur le dossier **output** qui contient votre site statique généré.
 
 ```bash
