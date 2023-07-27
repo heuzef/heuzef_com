@@ -1,5 +1,4 @@
 Title: Lancement de mon blog
-Cover: assets/bg_pelican.jpg
 Category: Informatique
 Tags: pelican, python, auto-hébergement, web, blog
 Date: 2023-08-01 0:00
@@ -12,9 +11,9 @@ J'ai bon espoir que les plus audacieux d'entre vous seront ravis de découvrir t
 
 Transformer mon site, qui, jusqu'à présent, assurait la simple fonction de "point d'accueil de mon nom de domaine parce qu'il en faut bien un" en quelque de plus pertinent.
 
-Écrire et partager mes expériences de vie, apportera, je l'espère, plusieurs avantages. Les passionnés comme moi ont tous secrètement cette envie de partage, mais c'est autre chose de se lancer.
+Écrire mes expériences de vie, apportera, je l'espère, plusieurs avantages. Les passionnés comme moi ont tous secrètement cette envie de partage, mais c'est autre chose de se lancer.
 
-Sur ce blog, pas de thème précis, j'aborderais tout sujet et thématique selon mon humeur délirante du moment, sous la seule condition que le contenu sera en mesure de créer une frénésie de passion sans précédent auprès d'une foule en délire qui ne manquera pas de s'abonner au [Flux RSS <i class="fa fa-home"></i>](https://heuzef.com/feeds/all.atom.xml).
+Sur ce blog, pas de thème précis, j'aborderais tout sujet et thématique selon mon humeur délirante du moment, sous la seule condition que le contenu sera en mesure de créer une frénésie de passion sans précédent auprès d'une foule en délire qui ne manquera pas de s'abonner au [Flux RSS <i class="fa fa-rss"></i>](https://heuzef.com/feeds/all.atom.xml).
 
 ## Salut Pelican
 
