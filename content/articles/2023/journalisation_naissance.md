@@ -33,7 +33,7 @@ Je ne vais pas vous recommander de livre en particulier, ni vous inciter à en a
 
 Je ne m'attarderai pas non plus, sur les conseils et détails concernant la période de la grossesse jusqu'au début de l'enfance, car un livre vous apportera tout cela en plus de vous détendre et de vous permettre de passer des moments de lecture agréables avec votre douce, épuisée par son gros ventre.
 
-En complément, vous avez le service public https://www.1000-premiers-jours.fr, qui est adapté pour être un bon parent Français à la mode. Utile ou non, cela a le mérite d'exister.
+En complément, vous avez le service public [https://www.1000-premiers-jours.fr](https://www.1000-premiers-jours.fr), qui est adapté pour être un bon parent Français à la mode. Utile ou non, cela a le mérite d'exister.
 
 Pour la suite donc, je souhaite aborder des sujets hors contexte que ni les livres, ni la famille et les amis ne vont justement vous apporter ! 😈 Alors qu'ils sont ô combien nécessaires !
 
@@ -61,7 +61,7 @@ Le problème aussi, c'est que cela évolue, donc je ne trouve pas très pertinen
 
 J'ai mieux, j'ai trouvé sur le site du gouvernement un parcours de naissance complet, clair et exhaustif !
 
-https://www.mesdroitssociaux.gouv.fr/vos-evenements-de-vie/parcours-naissance
+[https://www.mesdroitssociaux.gouv.fr/vos-evenements-de-vie/parcours-naissance](https://www.mesdroitssociaux.gouv.fr/vos-evenements-de-vie/parcours-naissance)
 
 Ce site reprend le parcours complet avant et après la naissance, mois par mois. C'est top pour ne rien oublier, avec cela vous êtes au point !
 
@@ -133,7 +133,7 @@ Attention cependant, la réalité n'est pas rose, car aujourd'hui, il vous faut 
 
 **Anticipez à fond sur ce point !**
 
-## Conclusion
+## Conclusion 📝
 
 Dans cette note, je vous ai partagé mon expérience personnelle de jeune papa en exposant uniquement les points intéressants à mon sens, qui ont la particularité de ne jamais être abordés habituellement.
 
