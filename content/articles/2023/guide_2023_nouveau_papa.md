@@ -1,4 +1,4 @@
-Title: Prévoir la naissance de votre bébé - Guide 2023 du nouveau papa
+Title: Guide 2023 du nouveau papa
 Category: Parentalité
 Tags: bébé, astuce, maternité, ressources, astuce
 Date: 2023-08-01 0:00
