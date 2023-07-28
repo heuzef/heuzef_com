@@ -1,6 +1,6 @@
 Title: Clavier Hànyǔ Pīnyīn en ligne
-Category: Langue
-Tags: pinyin, chinois, outil
+Category: Apprentissage
+Tags: pinyin, chinois, outil, langue
 Date: 2023-07-29
 Status: published
 
