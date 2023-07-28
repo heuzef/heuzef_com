@@ -8,7 +8,7 @@ Status: published
 
 Dans le cadre de mon apprentisage du Chinois Mandarin, j'ai développé un petit outil qui offre un clavier Pinyin en ligne.
 
-Les étudiants qui débutent en chinois sont rapidement initiés à ce système merveilleux et indispensable pour nous, Occidentaux.
+Les étudiants qui débutent cette langue sont rapidement initiés à ce système merveilleux et indispensable pour nous, Occidentaux.
 
 Inutile d'en dire plus, ceux qui en ont besoin vont rapidement apprécier !
 
