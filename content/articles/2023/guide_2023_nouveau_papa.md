@@ -1,7 +1,7 @@
 Title: Guide 2023 du nouveau papa
 Category: Parentalité
 Tags: bébé, astuce, maternité, ressources, astuce
-Date: 2023-08-01 0:00
+Date: 2023-07-28
 Status: published
 
 Je suis un heureux papa depuis le début de l'année 2023, comblé par l'arrivée de ma merveilleuse petite fille 👶. Comme tout nouveau papa un peu anxieux, je me suis lancé dans une quête de connaissance. J'avais d'abord prévu de partir quelques semaines voir un vieux sur une montagne pour avoir des réponses sur le sens de la vie ... mais je me suis retrouvé submergé par une multitude de blogs féministes qui débordent de conseils banals et de codes promo pour acheter toutes sortes de gadgets inutiles.

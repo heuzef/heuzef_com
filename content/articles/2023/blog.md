@@ -1,7 +1,7 @@
 Title: Lancement de mon blog
 Category: Informatique
 Tags: pelican, python, auto-hébergement, web, blog
-Date: 2023-08-01 0:00
+Date: 2023-07-27
 Status: published
 
 Suite à une bouillante réflexion, j'ai finalement pris la décision brillante d'exploiter mon site pour y partager toutes mes expériences excentriques.
