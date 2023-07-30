@@ -2,7 +2,7 @@ Title: Externalisations de sauvegardes sécurisé et économique
 Category: Informatique
 Tags: auto-hébergement, sauvegardes, chiffrement, astuce, open-source
 Date: 2023-07-31
-Status: draft
+Status: published
 
 Un point crucial en informatique est l'externalisation des sauvegardes. En effet, si vous ne comptez que sur vos sauvegardes locales (stockées chez vous sur votre PC ou autre), vous allez forcément être punis un de ces jours par une panne de matériel, un cambriolage, etc ... et votre vie numérique sera réduite à néant.
 
@@ -21,6 +21,8 @@ Il n'est pas encore aussi évolué qu'un [Bacula](https://bacula.org) par son ma
 Je considère bien évidemment que les outils non open-source, tels qu'Acronis, sont à bannir.
 
 Bien que très fiable, bye-bye également le contre-intuitif BackupPC avec son interface à vomir. Il est de toute façon déjà mort, comme en témoigne mon [Pull Request](https://github.com/backuppc/backuppc/pull/419) resté sans réponse depuis la nuit des temps.
+
+Sebsauvage à écrit un [bon article sur Borg](https://sebsauvage.net/wiki/doku.php?id=borgbackup) si vous voulez vous faire un avis technique avant de l'adopter.
 
 ## Externaliser où ?
 
