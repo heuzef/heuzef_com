@@ -1,4 +1,4 @@
-Title: Externalisations de sauvegardes sécurisé et économique
+Title: Externaliser ses sauvegardes comme un radin
 Category: Informatique
 Tags: auto-hébergement, sauvegardes, chiffrement, astuce, open-source
 Date: 2023-07-31
