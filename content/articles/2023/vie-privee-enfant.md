@@ -1,6 +1,6 @@
 Title: Pourquoi les photos/vidéos de ma fille sont catégoriquement interdites ?
 Category: Parentalité
-Tags: bébé, enfant, photo, avenir, web, smartphone, vie privée, nextcloud, dangers
+Tags: bébé, enfant, photo, avenir, web, smartphone, vie-privée, nextcloud, dangers
 Date: 2023-07-30
 Status: published
 
