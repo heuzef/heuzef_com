@@ -1,4 +1,4 @@
-Title: Streamer de façon cool avec sa Webcam
+Title: Streamer distinguement avec sa Webcam
 Category: Informatique
 Tags: web, social, twitch, youtube, facebook, live, visio, webcam
 Date: 2023-08-01
