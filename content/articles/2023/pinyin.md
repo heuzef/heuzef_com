@@ -4,7 +4,7 @@ Tags: pinyin, chinois, outil, langue
 Date: 2023-07-29
 Status: published
 
-![Pelican](../../assets/pinyin.svg)
+![Pinyin](../../assets/pinyin.svg)
 
 Dans le cadre de mon apprentisage du Chinois Mandarin, j'ai développé un petit outil qui offre un clavier Pinyin en ligne.
 
