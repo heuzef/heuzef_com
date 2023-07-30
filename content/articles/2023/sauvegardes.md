@@ -32,7 +32,7 @@ J'ai déjà tenté de le faire à l'ancienne en déplaçant régulièrement des 
 
 Finalement, je me suis décidé à y mettre des sous, mais chercher une solution pour stocker 5 To de sauvegarde dans mon cas, compatible avec Borg et économique, est vraiment difficile.
 
-C'est du côté des casques à pointe que j'ai trouvé le bonheur ! **[<i class="fa fa-link"></i> Hetzner](https://www.hetzner.com)** propose un service appelé **[<i class="fa fa-link"></i> Storage Box](https://www.hetzner.com/storage/storage-box)**, compatible avec Borg et à bas prix (12,97€ les 5 To en 2023 dans mon cas !).
+C'est du côté des casques à pointe que j'ai trouvé le bonheur ! **[HETZNER](https://www.hetzner.com)** propose un service appelé **[Storage Box](https://www.hetzner.com/storage/storage-box)**, compatible avec Borg et à bas prix (12,97€ les 5 To en 2023 dans mon cas !).
 
 J'exporte depuis quelques mois mes sauvegardes chiffrées chez eux, ça tourne super ! Leur documentation technique est disponible **[<i class="fa fa-link"></i> ICI](https://community.hetzner.com/tutorials/install-and-configure-borgbackup)** pour relier leur stockage à votre serveur Borg.
 
