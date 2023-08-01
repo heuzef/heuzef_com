@@ -1,6 +1,6 @@
 Title: Lancement de mon blog
 Category: Informatique
-Tags: pelican, python, auto-hébergement, web, blog
+Tags: pelican, python, autohébergement, web, blog
 Date: 2023-07-27
 Status: published
 
@@ -80,7 +80,7 @@ Pour exemple, voici à quoi ressemble le fichier Markdown de cet article :
 Title: Lancement de mon blog
 Cover: assets/bg_pelican.jpg
 Category: Informatique
-Tags: pelican, python, auto-hébergement, web, blog
+Tags: pelican, python, autohébergement, web, blog
 Date: 2023-08-01 0:00
 Status: published
 

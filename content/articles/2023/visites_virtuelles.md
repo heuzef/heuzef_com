@@ -1,6 +1,6 @@
 Title: Mettre brillamment son logement en location
 Category: Immobilier
-Tags: auto-hébergement, bail, panoramique, location
+Tags: autohébergement, bail, panoramique, location
 Date: 2023-08-01
 Status: draft
 

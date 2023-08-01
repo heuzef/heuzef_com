@@ -1,6 +1,6 @@
 Title: Externaliser ses sauvegardes comme un radin
 Category: Informatique
-Tags: auto-hébergement, sauvegardes, chiffrement, astuce, open-source
+Tags: autohébergement, sauvegardes, chiffrement, astuce, opensource
 Date: 2023-07-31
 Status: published
 
