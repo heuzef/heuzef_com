@@ -43,6 +43,8 @@ Heureusement, le sujet deviendra de plus en plus sérieux avec les mesures qui v
 
 Voici la liste des potentiels problèmes que ma fille n'aura, je l'espère, pas à subir plus tard grâce à ma lucidité.
 
+<iframe class="player" width="620" height="349" src="http://play.culturepub.fr/play/player?player=7&pod=212746&widgetId=cbnews_social" frameborder=0 seamless allowfullscreen ></iframe>
+
 ## Comment pouvons-nous faire ?
 
 En plus de sensibiliser et d'interdire, il existe des solutions techniques pour ne pas perdre en avantage, cela demande juste de la discipline.
