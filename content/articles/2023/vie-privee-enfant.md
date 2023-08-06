@@ -43,7 +43,9 @@ Heureusement, le sujet deviendra de plus en plus sérieux avec les mesures qui v
 
 Voici la liste des potentiels problèmes que ma fille n'aura, je l'espère, pas à subir plus tard grâce à ma lucidité.
 
-<iframe class="player" width="620" height="349" src="http://play.culturepub.fr/play/player?player=7&pod=212746&widgetId=cbnews_social" frameborder=0 seamless allowfullscreen ></iframe>
+Si vous êtes encore septique, voici une vidéo Allemande de 2023 plutôt persuasive :
+
+[![A Message from Ella VOSTFR](https://img.youtube.com/vi/F4WZ_k0vUDM/0.jpg)](http://www.culturepub.fr/videos/a-message-from-ella/)
 
 ## Comment pouvons-nous faire ?
 
