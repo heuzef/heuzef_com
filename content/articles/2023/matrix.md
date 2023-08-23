@@ -1,6 +1,6 @@
 Title: Mettre en service sa propre instance de Matrix avec Bridges
 Category: Informatique
-Tags: autohébergement, web, social, docker, tchat
+Tags: autohébergement, web, social, docker, tchat, communication
 Date: 2023-08-01
 Status: draft
 
@@ -24,7 +24,7 @@ En plus de pouvoir choisir n'importe quel interface de tchat pour votre Matrix (
 
 L'idée est extaorinaire car elle promet récupérer le trafic (donnés et messages) des autres plateformes dans votre instance Matrix, carément !
 
-<i class="fa fa-link"></i> https://matrix.org/ecosystem/bridges
+[<i class="fa fa-link"></i> matrix.org/ecosystem/bridges](https://matrix.org/ecosystem/bridges)
 
 Il faut comprendre que les Bridges sont additionnels et heuresement, car il y à baleine sous gravillon, explication dans le chapitre suivant.
 
