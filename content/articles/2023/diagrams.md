@@ -122,7 +122,7 @@ with Diagram("Mon schéma - %s" % today.strftime('%d/%m/%Y %H:%M') , show=False,
   internet >> Edge(color="red", label="FTTH", style="bold") >> DMZ
 ```
 
-Voici pour le concret, je vous invite à voir le schéma complet que je partage de mon propre réseau domestique à l'adresse [<i class="fa fa-map"></i> network.heuzef.com](https:/network.heuzef.com).
+Voici pour le concret, je vous invite à voir le schéma complet que je partage de mon propre réseau domestique à l'adresse [<i class="fa fa-map"></i> network.heuzef.com](https://network.heuzef.com).
 Le code Python de mon schéma y est disponible au téléchargement pour vous aider à apprivoiser l'outil.
 
 *[DaC]: Diagrams as Code
