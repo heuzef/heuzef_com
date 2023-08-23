@@ -123,6 +123,6 @@ with Diagram("Mon schéma - %s" % today.strftime('%d/%m/%Y %H:%M') , show=False,
 ```
 
 Voici pour le concret, je vous invite à voir le schéma complet que je partage de mon propre réseau domestique à l'adresse [<i class="fa fa-map"></i> network.heuzef.com](https:/network.heuzef.com).
-Le script Python de ce schéma est disponible au téléchargement sur cette page pour vous aider à apprivoiser l'outil.
+Le code Python de mon schéma y est disponible au téléchargement pour vous aider à apprivoiser l'outil.
 
 *[DaC]: Diagrams as Code
