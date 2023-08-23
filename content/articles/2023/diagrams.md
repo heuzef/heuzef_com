@@ -70,7 +70,7 @@ Pour son utilisation avancée, l'outil est très bien documenté et vous fournit
 
 Ce qui est pratique avec les Nodes, c'est qu'ils sont basé sur des technologies existantes populaires (AWS, Azure, etc ...) pour un joli rendu immédiat.
 
-➡️ [consulter la documentation](https://diagrams.mingrammer.com/docs/getting-started/installation).
+<i class="fa fa-book"></i> [consulter la documentation](https://diagrams.mingrammer.com/docs/getting-started/installation).
 
 # Utilisation de ses propres icones 😍
 
@@ -122,7 +122,7 @@ with Diagram("Mon schéma - %s" % today.strftime('%d/%m/%Y %H:%M') , show=False,
   internet >> Edge(color="red", label="FTTH", style="bold") >> DMZ
 ```
 
-Voici pour le concret, je vous invite à voir le schéma complet que je partage de mon propre réseau domestique à l'adresse https://network.heuzef.com
+Voici pour le concret, je vous invite à voir le schéma complet que je partage de mon propre réseau domestique à l'adresse <i class="fa fa-map"></i> https://network.heuzef.com
 
 Le script Python de ce schéma est disponible au téléchargement sur cette page pour vous aider à apprivoiser l'outil.
 
