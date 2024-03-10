@@ -58,7 +58,7 @@ Puis il suffit de se laisser guider pour la configuration :
 pelican-quickstart
 ```
 
-Vient alors le choix du thème (j'ai personnellement opté pour [Pelican-Alchemy ✨](https://github.com/nairobilug/pelican-alchemy) pour le moment) et des extenssions.
+Vient alors le choix du thème (j'ai personnellement opté pour [Pelican-Alchemy ✨](https://github.com/nairobilug/pelican-alchemy) pour le moment) et des extensions.
 Puis finalement, il faut passer du temps à personnaliser les fichiers de configuration **.py**, ajouter votre contenu dans le dossier **content** et faire pointer votre serveur web sur le dossier **output** qui contient votre site statique généré.
 
 ```bash
@@ -86,6 +86,7 @@ Status: published
 
 Blah blah ... et ils trépignèrent à la lecture de cette note ... blah blah !
 ```
+
 Un pti coup de moulinette :
 
 ```bash
