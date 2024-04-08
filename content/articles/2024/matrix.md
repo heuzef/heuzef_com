@@ -1,8 +1,8 @@
 Title: Mettre en service sa propre instance de Matrix avec Bridges
 Category: Informatique
 Tags: autohébergement, web, social, docker, tchat, communication
-Date: 2024-03-10
-Status: draft
+Date: 2024-04-08
+Status: published
 
 Pour ceux qui ne connaissent pas Matrix, je le présente succinctement ainsi : c'est un outil messagerie moderne, qui est supérieure techniquement à toutes les autres solutions équivalentes (Instagram, WhatsApp, Messenger, Signal, WeChat, Telegram, Discord, etc ...). 
 
@@ -16,19 +16,19 @@ J'ajoute que tout bon dirigeant d'entreprise qui utilise une solution de tchat e
 
 Maintenant que les présentations sont faites, je vais expliquer dans cette note comment déployer simplement une instance avec Docker et surtout avec des Bridges.
 
-Je précise que cette note est co-rédiger avec [Lucas Assier](https://www.linkedin.com/in/lucasassier), qui à également une expérience fraîche avec Matrix de son côté !
+Je précise que cette note est co-rédigée avec [Lucas Assier](https://www.linkedin.com/in/lucasassier), qui à également une expérience intéréssente avec Matrix de son côté !
 
-Avant de débuter l'aventure, [commencez par créer un compte Matrix](https://app.element.io/#/register). Réserver votre identifiant et profitez-en pour tester Matrix sur les serveurs d'Element.
+Avant de débuter l'aventure, [commencez par créer un compte Matrix](https://app.element.io/#/register). Réserver votre identifiant et profitez-en pour tester Matrix sur les serveurs d'Élement.
 
 # Qui utilise Matrix en 2024 ? 🗣
 
-Quasiment personne, comme beaucoup d'outils libre, pas de gros marketing derrière. Même [Signal](https://www.signal.org), qui met pourtant les moyens, peine à concurrencer ses concurents qui sont pourtant nazes au possible, alors autant dire que Matrix n'est pas prêt de percer, mais patience, car contrairement aux autres, Matrix est pérenne dans le temps et sera là encore bien après eux (l'e-mail, xmpp et irc en témoignent).
+Quasiment personne, comme beaucoup d'outils libre, pas de gros marketing derrière. Même [Signal](https://www.signal.org), qui met pourtant les moyens, peine à concurrencer ses concurrents qui sont pourtant pas terribles, alors autant dire que Matrix n'est pas prêt de percer, mais patience, car contrairement aux autres, Matrix est pérenne dans le temps et sera là encore bien après eux (l'e-mail, xmpp et irc en témoignent).
 
 Finalement, les seuls qui ont un intérêt à déployer Matrix, sont les entreprises, associations et organisations qui souhaitent disposer d'un outil de communication en interne. Pour les autres, on y retrouvera majoritairement des Geek qui ont la chance d'avoir les ressources et le temps pour maintenir cet outil.
 
 # Les Bridges ! 🏗
 
-En plus de pouvoir [choisir n'importe quel client](https://matrix.org/ecosystem/clients/) (ce qui est déjà génial), Matrix a une fonction révolutionnaire : **Les bridges** !
+En plus de pouvoir [choisir n'importe quel client](https://matrix.org/ecosystem/clients/) (ce qui est déjà génial), Matrix a une fonction vraiment top : **Les bridges** !
 
 Elle vous promet de récupérer vos messages des autres plateformes dans votre instance Matrix !
 
@@ -38,7 +38,7 @@ Il faut comprendre que les Bridges sont additionnels et heureusement, car il y a
 
 # Le piège des Bridges 🚧
 
-Après plusieurs mois d'utilisation des Bridges, je vais être honnête, c'est un calvaire et la maintenance est chronophage au possible. Les Bridges sont essentiellement des prototypes et plus nous en ajoutons plus c'est le chaos, la maintenance n'en devient que plus lourde.
+Après plusieurs mois d'utilisation des Bridges, je vais être honnête, c'est un calvaire et la maintenance est chronophage au possible. Les Bridges sont essentiellement des prototypes et plus nous en ajoutons plus c'est le chaos : la maintenance n'en devient que plus lourde.
 
 Chaque Bridge à son lot de galère, c'est sans fin, **il faut donc être déterminé à y consacrer beaucoup de temps !**
 
@@ -46,11 +46,11 @@ Autrement, la meilleure alternative que je connaisse est [Element-ONE](https://e
 
 # Déploiement basique avec Docker 🐳
 
-Si vous êtes à l'aise avec Docker, alors la configuration suivante vous permettra de mettre en place votre instance Martrix. Pour les plus barbus, vous pouvez aussi [jouer avec Ansible](https://github.com/spantaleev/matrix-docker-ansible-deploy) 🤓
+Si vous êtes à l'aise avec Docker, alors la configuration suivante vous permettra de mettre en place votre instance Matrix. Pour les plus barbus, vous pouvez aussi [jouer avec Ansible](https://github.com/spantaleev/matrix-docker-ansible-deploy) 🤓
 
-La configuration générale ici est donc d'installer le moteur Synapse avec sa DB Postgres. Avec seulement ceci, vous pourrez bénéficier d'une instance Matrix qui tourne super bien.
+La configuration générale ici est donc d'installer le moteur Synapse avec sa DB Postgres. Avec seulement ceci, vous pourrez bénéficier d'une instance Matrix qui tourne très bien.
 
-Pour tout le reste, ce sont les Bridges, que vous pouvez simplement commenter pour ne pas les déployer dans un premier temps, voir jamais 😤
+Pour tout le reste, ce sont les Bridges, que vous pouvez simplement commenter pour ne pas les déployer dans un premier temps, (ou jamais ? 😤)
 
 ## Docker compose file
 
@@ -282,7 +282,7 @@ Maintenant, vous pouvez démarrer toute la tambouille : ``docker compose -f /hom
 
 Le premier lancement prend du temps, les fichiers de configuration et de **registration.yaml** doivent être générés par Synapse (n'anticipez pas leur création), confirmant que tout fonctionne correctement, ensuite, vous pouvez éditer les paramètres.
 
-Vous aurez probablement une erreur de permission sur ces fichiers au lancement, corrigez simplement cela ainsi :
+Vous aurez probablement une erreur de permission sur ces fichiers au lancement, ajustez simplement cela ainsi :
 
 ```bash
 sudo chmod 644 /home/matrix/bridges/*/data/registration.yaml
@@ -292,7 +292,7 @@ sudo chmod 644 /home/matrix/bridges/*/data/registration.yaml
 
 Si vous souhaitez utiliser la visioconférence, notez bien que cette dernière ne fonctionnera qu'en local sur votre réseau interne. Pour aller plus loin et profiter pleinement des fonctionnalités de la visioconférence, il vous faudra mettre en service un serveur TURN : [Configuring a Turn Server - Synapse](https://matrix-org.github.io/synapse/latest/turn-howto.html)
 
-# Mon retour d'expérience sur les différents Bridges
+# Mon retour d'expérience sur les différents Bridges 📢
 
 Vous remarquerez que la plupart des Bridges sont déployées via [MAUTRIX](https://docs.mau.fi/bridges/general/docker-setup.html?bridge=telegram&ref=infos.zogg.fr). Ce n'est pas pour rien, car la plus grande panoplie est éditée par eux et ce sont aussi bien souvent les bridges les plus stables.
 
@@ -314,15 +314,15 @@ Le Bridge de Signal est un peu lourd à mettre en place, car il réclame une DB 
 2. Enregistrez votre téléphone ``register +33000000000``
 3. Récupérer un jeton captcha sur le site dédié de signal
    - https://signalcaptchas.org/registration/generate.html
-   - Récupérer le token situé après le **signalcaptcha://signal-recaptcha-v2.**
+   - Récupérer le token situé juste après le **signalcaptcha://signal-recaptcha-v2.**
 4. Valider le code SMS
-5. Définir son nom : ``set-profile-name USER``
+5. Définir son nom : ``set-profile-name VOTRE-NOM``
 
 ## Discord
 
-Pour Discord, la première initialisation ne permet que de jongler avec les messageries privées, vous aurez ensuite besoin de jouer avec les commandes du bridges pour rejoindre les différentes guildes (plus communément appelées "Serveurs Discord" par les Moldus) via leur identifiant unique.
+Pour Discord, la première initialisation ne permet que de jongler avec les messageries privées, vous aurez ensuite besoin de jouer avec les commandes du bridges pour rejoindre les différents canaux (plus communément appelées "Serveurs Discord" par les Moldus) via leur identifiant unique.
 
-Ensuite, c'est le gros dawa, si vous invitez une guilde assez grosse, vous allez vous retrouver avec autant de notification d'invitation à accepter que de catégories ! Bon une fois que c'est validé, vous êtes tranquille, mais faite très attention aux journaux qui vont être générés sur votre serveur, ça va très rapidement remplir l'espace disque s'il y a de l'activité sur vos salons Discord !
+Ensuite, c'est le gros dawa, si vous invitez une guilde assez grosse, vous allez vous retrouver avec autant de notification d'invitation à accepter que de catégories ! Bon une fois que c'est validé, vous êtes tranquille, mais faite très attention aux journaux qui vont être générés sur votre serveur, ça va très rapidement remplir l'espace disque s'il y a de l'activité sur vos canaux Discord !
 
 1. Inviter @discordbot
 
@@ -334,9 +334,9 @@ Ensuite, c'est le gros dawa, si vous invitez une guilde assez grosse, vous allez
 
 ## WhatsApp
 
-Alors WhatsApp, pour faire simple, dispose d'une sécurité très agréable qui consiste à déconnecter tous vos périphériques tiers après une semaine, super ...
+Alors WhatsApp, pour faire simple, dispose d'une sécurité très désagréable qui consiste à déconnecter tous vos accès tiers après une semaine, super ...
 
-Cela concerne donc également votre Bridge qu'il vous faudra reconnecter avec un QRCode toute les semaines. Voila voila ... 👌
+Cela concerne donc également votre Bridge qu'il vous faudra reconnecter avec un QRCode toute les semaines. Donc nous sommes bien forcé de conserver l'application officiel sur notre tel uniquement pour ça ... voila voila ... 👌
 
 1. Inviter @whatsappbot
 2. Sur l'application mobile : *paramètres de l'app > "Scanner le QR QR"*
@@ -349,7 +349,7 @@ Un conseil, tester bien vos volumes docker, le redémarrage du Bridge à tendanc
 
 ## Telegram
 
-Un peu plus difficile à mettre en place, le bot étant encore en prototype au moment de mon test, mais ensuite, fonctionne correctement.
+Un peu plus long à mettre en place, le bot étant encore en prototype au moment de mon test, mais ensuite, cela fonctionne correctement.
 
 Sur la configuration, il est nécessaire d'ajouter une clef d'API récupérable sur : https://my.telegram.org/apps
 
@@ -364,14 +364,14 @@ App api_hash: 00000000000000000000000000000000
 
 ## WeChat
 
-La palme d'or de la torture revient à nos amis Chinois avec leur messagerie abominable.
+La palme d'or de la torture revient à nos amis Chinois avec leur outil abominable.
 
-Créé par un nerd Chinois répondant au doux nom de [lxduo](https://github.com/duo/matrix-wechat-docker), ce dernier probablement considéré par un terroriste par le gouvernement chinois, a eu la patience de mettre au monde un Bridge capable de s'accoupler avec cette horreur de WeChat.
+Créé par un nerd Chinois répondant au nom de [lxduo](https://github.com/duo/matrix-wechat-docker), ce dernier (probablement considéré par un terroriste par le gouvernement chinois), a eu la patience de mettre au monde un Bridge capable de s'accoupler avec cette horreur de WeChat.
 
-Ce qui donne naissance à une terrible usine à Gaz qui vous servira d'hôte, qui vous faudra accompagner d'autant d'usine à gaz supplémentaire que vous souhaitez ajouter de compte WeChat ... Le gros délire en termes de consommation de ressource 😭.
+Ce qui donne naissance à une terrible usine à Gaz qui vous servira d'hôte, qui vous faudra accompagner d'autant d'usines à gaz supplémentaire que vous souhaitez ajouter de compte WeChat ... Le gros délire en termes de consommation de ressource 😭.
 
-Bon dans mon cas [je n'ai même pas réussi à le faire tomber en marche](https://github.com/duo/matrix-wechat-docker/issues/2) et à vrai dire, j'ai sûrement été banni par le gouvernement Chinois de leur application car impossible de me créer un compte, j'ai donc renoncé.
-Je prévois un voyage en Chine en 2024, je vais en profiter pour me créer un compte en lousdé avec un numéro sur place, je ferais peut-être un article à ce sujet un jour si c'est croustillant.
+Bon dans mon cas [je n'ai même pas réussi à le faire tomber en marche](https://github.com/duo/matrix-wechat-docker/issues/2) et à vrai dire, j'ai sûrement été banni de l'outil par le gouvernement car impossible de me créer un compte, j'ai donc renoncé.
+Je prévois un voyage en Chine en 2024, je vais en profiter pour me créer un compte en catimini avec un numéro sur place, je ferais peut-être un article à ce sujet un jour si c'est croustillant.
 
 1. Inviter @wechatbot
 2. Sur l'application mobile : *paramètres de l'app > "Scanner le code QR"*
@@ -379,7 +379,7 @@ Je prévois un voyage en Chine en 2024, je vais en profiter pour me créer un co
 
 ## SMS
 
-En bonus, j'ai tenté l'utilisation de [SmsMatrix](https://f-droid.org/en/packages/eu.droogers.smsmatrix/), une application Android qui peut fonctionner avec un Bridge, j'ai fait tomber en marche le machin ainsi :
+En bonus, j'ai tenté l'utilisation de [SmsMatrix](https://f-droid.org/en/packages/eu.droogers.smsmatrix/), une application Android qui peut fonctionner avec un Bridge, j'ai fait fonctionner le machin ainsi :
 
 S'authentifier sur le compte **@smsbot:matrix.domain.tld** et inviter son compte utilisateur pour créer un canal de discussion.
 Après autorisation, installer SmsMatrix sur votre téléphone :
@@ -394,15 +394,11 @@ Devicename : <NOM-DU-TEL>
 
 Il suffit ensuite de recevoir un SMS pour initialiser une conversation.
 
-Attention, cette solution est crade, car si vous commencez à vouloir partager ce bridge avec d'autres utilisateurs, en plus de devoir vous partager le mot de passe du compte @smsbot, cela va mettre un sacré bazar pour qui envoi/reçoi les sms ...
-
-Préférez plutôt une solution plus complexe comme [mautrix-gmessages](https://github.com/mautrix/gmessages) qui fonctionnera avec le client SMS natif d'Android.
-
-# Conclusion
+# Conclusion 🗒
 
 - Matrix, c'est le top du top de la messagerie. Tant sur l'aspect technique qu'éthique.
 
-- Quasiment personne ne connais et n'utilise ça dans le monde pro et encore moins ailleurs.
+- Peu de personne connaissent et n'utilisent ça dans le monde pro et encore moins ailleurs.
 
 - La configuration d'un serveur TURN supplémentaire est nécessaire si vous souhaitez profiter de la Visioconférence.
 
@@ -451,7 +447,7 @@ Pour reprendre l'exemple ci-dessus, cela donnerait :
 ## AppService
 
 C'est ce que l'on peut comparer à un bot standard.
-Les AppServices doivent être enregistrés dans la configuration du serveur, il n'est pas possible de les enregistrers à la volée.
+Les AppServices doivent être enregistrés dans la configuration du serveur, il n'est pas possible de les enregistrer à la volée.
 
 ## Bridges
 
@@ -467,7 +463,7 @@ Exemple :
 
 ![Matrix Exemple 3](../../assets/matrix_exemple_3.png)
 
-Les spécifications matrix sont complexe mais entièrement documentées [ici](https://spec.matrix.org/latest/).
+Les spécifications Matrix sont complexe mais entièrement documentées [ici](https://spec.matrix.org/latest/).
 
 # Choisir son serveur
 
@@ -478,7 +474,7 @@ Il y en a trois qui en ont retenu mon attention :
 
 2. **Conduit** - une implémentation en *RUST* du protocole serveur de Matrix mais avec une empreinte mémoire plus faible.
 
-3. **Dendrite** - la même volontée que Conduit, mais en *GO*. Certaines fonctions sont manquantes, la priorité étant l'implémentation des fonctions pour les instances single user.
+3. **Dendrite** - la même volonté que Conduit, mais en *GO*. Certaines fonctions sont manquantes, la priorité étant l'implémentation des fonctions pour les instances single user.
 
 # Monter son homeserver
 
@@ -512,7 +508,7 @@ Cela, peut-être contraignant, mais il est quand même nécessaire d'en avoir un
 
 Pour héberger le serveur ainsi que les bridges, le serveur et les bridges seront en deux stacks Docker-compose séparés.
 
-## Déployer le serveyr Synapse
+## Déployer le serveur Synapse
 
 ```yaml
 version: '3'
@@ -564,7 +560,7 @@ SYNAPSE_REPORT_STATS=no synapse generate`
 
 En suivant, il faudra éditer la configuration `homeserver.yaml` dans le volume synapse-data. 
 
-Il sera important de regarder les options de configuration, notamment la configuration de la connection à la base Postgres, le nom du serveur (*server name*), que les serveurs de clés de confiance ainsi que l'option pour autoriser la création de comptes ou non. 
+Il sera important de regarder les options de configuration, notamment la configuration de la connexion à la base Postgres, le nom du serveur (*server name*), que les serveurs de clés de confiance ainsi que l'option pour autoriser la création de comptes ou non. 
 
 Une fois cela fait, nous pouvons démarrer la stack via `docker compose up`. 
 
@@ -596,7 +592,7 @@ Pour tester si la configuration est correcte, on peut utiliser [le testeur de f�
 
 ## Créer des comptes
 
-Pour créer des comptes, il est possible de passer via une interface client Matrix standard tel que [Element](https://app.element.io/#/register).
+Pour créer des comptes, il est possible de passer via une interface cliente Matrix tel que [Element](https://app.element.io/#/register).
 
 Pour les serveurs qui n'acceptent pas la création de comptes, il est possible de le faire via le conteneur Synapse via la commande suivante :
 
@@ -609,9 +605,13 @@ Personnellement, j'ai opté pour un compte admin dont je ne me sers uniquement p
 
 À ce stade, nous avons une instance Matrix fonctionnelle, avec un compte. Nous pouvons donc nous pencher sur l'ajout de Bridges !
 
+
+
 # Ajouter un Bridge
 
 > Le déploiement d'un Bridge peut être long et fastidieux, par conséquent, nous ne verrons que pour le Bridge Mautrix-signald
+
+
 
 ## Docker Compose 2: Electric Boogaloo
 
@@ -671,6 +671,8 @@ Il faudra remplir le fichier avec les informations comme :
 * Régler les permissions
 * Connecter la base postgres
 
+
+
 ## Enregistrer une AppService dans Synapse
 
 Une fois cela fait, on relance le conteneur. Si tout est correct, celui-ci va générer un fichier `appservice.yaml`
@@ -704,6 +706,8 @@ Ceux-ci sont gérés via le bot et font le lien avec toutes les conversations pr
 Par exemple, ici, un canal avec des amis :
 
 ![Matrix Exemple 4](../../assets/matrix_exemple_4.png)
+
+
 
 > À noter, le bot est présent dans chaque room afin de faire le lien. Il est possible de lui parler directement via `!signal` ou via MP.
 > En gris, tous les utilisateurs ayant le tag `(signal)` sont des "**ghosts**" contrôlés par le bot.
@@ -774,6 +778,8 @@ double_puppet_server_map:
 ```
 
 Ceci fait, relancer le conteneur Signal.
-Si cela fonctionne correctement, le compte en trop doit disparaître et les mentions envers ce compte sont maintenant redirigés vers l'utilisateur Matrix correct.
+Si cela fonctionne correctement, le compte en trop doit disparaître et les mentions envers ce compte sont maintenant redirigées vers l'utilisateur Matrix correct.
+
+
 
 ![Matrix Exemple 6](../../assets/matrix_exemple_6.png)
