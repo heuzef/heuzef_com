@@ -6,7 +6,7 @@ Status: published
 
 La visio est pour beaucoup de monde aujourd'hui un acte quotidien, que vous soyez un professionnel de la tech ou non.
 
-Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autre terms à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio]([Open Broadcaster Software | OBS](https://obsproject.com/fr/)).
+Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autre terms à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio](https://obsproject.com/fr/).
 
 ![obs_studio](../../assets/obs-overlay.webp)
 
@@ -48,7 +48,7 @@ La zone de contrôle vous permet de lancer un enregistrement, démarrer votre ca
 
 C'est une fonction très pratique de OBS Studio qui vous permet de créer plusieurs "environnements" de diffusion selon la situation.
 
-Votre scène par défaut pour simplement afficher votre tête, mais vous pourriez créer une scène dédie à votre partage d'écran par exemple. La bascule entre les scènes se fait un clic.
+Votre scène par défaut peut simplement afficher votre tête, mais vous pourriez créer une scène dédiée à votre partage d'écran par exemple. La bascule entre les scènes se fait un clic.
 
 Dans mon cas pratique, j'ai créé une scène "attente" qui affiche une vidéo Youtube lorsque je dois m'absenter durant la visio, une autre qui affiche ma tête en plus de mon partage d'écran. Une autre encore qui me permet de partager 4 fenêtres en même temps ou même 4 webcams à la fois ... Pas de limite de scène, c'est selon votre imagination.
 
@@ -72,14 +72,16 @@ Les sources sont simplement les entités que vous souhaitez ajouter dans votre d
 
 Vous importez tous les éléments que vous souhaitez dans votre scène pour les placer dans l'interface.
 
-C'est super intuitif et vous n'aurez aucun mal à créer une diffusion super cool qui vous ressemble.
+C'est très intuitif et vous n'aurez aucun mal à créer une diffusion super cool qui vous ressemble.
 
-Voilà, si vous avez compris ça, vous avez compris le plus important. Il est possible d'aller plus loin, en modifiant les sources dynamiquement avec des effets de filtres (correction de couleurs, redimensionnement, etc ...).
+Voilà, si vous avez compris ça, vous avez compris le plus important. Il est possible d'aller plus loin, en modifiant les sources dynamiquement avec des effets (correction de couleurs, redimensionnement, etc ...).
+
+Et pour les plus nerds, il est même possible d'aller jusqu'à contrôler OBS via de la Computer Vision 🤖.
 
 # Essayez ! 👌
 
-J'espère que cette courte présentation vous donnera envie de personnaliser votre diffusion pour vous rendre un peu plus coquet dans vos réunions 🌸
+J'espère que cette présentation vous donnera envie de personnaliser votre diffusion pour vous rendre un peu plus coquet dans vos réunions 🌸
 
 Sans aller jusqu'à mettre en place des Overlays impressionnants comme les vidéastes pro, il y a une dimension vraiment utile pour maîtriser ce que vous diffusez lors d'une visio.
 
-Amusez-vous bien !
+[Amusez-vous bien !](https://www.youtube.com/results?search_query=OBS+Studio+fr)
