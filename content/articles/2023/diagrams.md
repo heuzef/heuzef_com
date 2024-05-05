@@ -26,7 +26,6 @@ Voici donc comment prendre en main [DIAGRAMS](https://diagrams.mingrammer.com/) 
 
 # Fonctionnement de Diagrams ⚙️
 
-
 Le principe d'utilisation est au plus efficace, le schéma est sous forme d'un fichier Python (.py) :
 
 ```python
@@ -36,6 +35,7 @@ from diagrams.aws.compute import EC2
 with Diagram("Simple Diagram"):
     EC2("web")
 ```
+
 Il permet de générer le rendu d'une simple commande :
 
 ```bash
@@ -47,7 +47,6 @@ Et paf, nous voici avec une image !
 Voici un exemple un peu plus complexe :
 
 ![Diagrams](../../assets/dac.jpg)
-
 
 # Installation 🔧
 
@@ -113,7 +112,7 @@ with Diagram("Mon schéma - %s" % today.strftime('%d/%m/%Y %H:%M') , show=False,
 
   # Groupes
   with Cluster("Zone LAN \n VLAN 1 \n DHCP : 192.168.1.1-99"):
-  	HOME = Custom("192.168.1.0/24", "icons/server.png")
+      HOME = Custom("192.168.1.0/24", "icons/server.png")
 
   with Cluster("Zone DMZ \n VLAN 100 \n DHCP : 192.168.100.1-99"):
     DMZ = Custom("192.168.100.0/24", "icons/server.png")

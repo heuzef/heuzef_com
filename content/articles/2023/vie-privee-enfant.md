@@ -32,7 +32,6 @@ Les appareils photos jetables (non-connectés) n'existent plus vraiment et peu d
 
 Le cheminement technique est le suivant :
 
-
 **Capture de média avec un Smartphone** ➡️ **Fuite des médias sur le web pour l'éternité** ➡️ **Sur-exploitation des médias à très long terme**
 
 Je ne vais pas rentrer dans les détails, sachez juste que c'est une réalité et que tout est **automatisé**. Faites un tour dans les permissions de votre Android/Iphone, analysez vos spams, faites la liste ahurissante d'infos dont disposent les géants du Web à votre sujet et celle de votre entourage. Surtout si vous êtes un naïf "kinarienakaché" 😜, les exemples sont légions.
@@ -75,15 +74,15 @@ Après il faut vivre avec son temps, le but étant finalement d'ouvrir les yeux 
 ## Lettre ouverte pour mes proches
 
 > Je comprends que tu puisses être surpris que je ne souhaite pas que ma petite fille soit prise en photo/vidéo. Cependant, il y a plusieurs raisons à cela.
->
+> 
 > * Premièrement, en tant que parent, je souhaite protéger la vie privée de ma fille. En ces temps où la technologie est omniprésente, il est facile de diffuser des photos sans y réfléchir, mais il peut être difficile de contrôler qui a accès à ces images. Je veux m'assurer que les photos de ma fille ne sont pas utilisées à des fins malveillantes ou partagées sans mon autorisation.
 > * Deuxièmement, j'aimerais que ma fille développe une image de soi saine. Les réseaux sociaux et les médias en général peuvent créer des pressions sociales négatives, et je souhaite éviter que ma fille ne se compare à d'autres enfants en ligne. Je veux qu'elle apprenne à s'aimer pour qui elle est, sans être influencée par les images qu'elle voit en ligne.
 > * Troisièmement, je souhaite que ma fille puisse se concentrer sur l'instant présent et profiter de chaque moment sans se soucier d'être photographiée/filmée. Je veux que les moments passés avec elle soient précieux et que nous puissions nous concentrer sur notre temps ensemble, sans interruption ni distraction.
->
+> 
 > De plus, je suis préoccupé par la façon dont les photos que nous prenons peuvent être utilisées à l'avenir. Les photos que nous partageons aujourd'hui peuvent être utilisées pour créer des profils en ligne ou pour d'autres usages auxquels nous n'avons pas consenti. En limitant la quantité de photos que nous prenons et en gardant le contrôle de ces images, je souhaite éviter que des informations sensibles sur ma fille ne soient utilisées à des fins inappropriées.
->
+> 
 > Finalement, en tant que parent, je souhaite protéger la vie privée de ma fille. Nous vivons dans un monde où les données personnelles sont devenues une ressource précieuse, je veux m'assurer que ma fille a le contrôle de ses informations personnelles. Les photos que nous prenons peuvent contenir des informations sur les lieux qu'elle fréquente, les personnes avec qui elle interagit et d'autres détails sensibles. En limitant la quantité de photos que nous prenons et en gardant le contrôle de ces images, je souhaite protéger la vie privée de ma fille.
->
+> 
 > Je souhaite que ma fille puisse développer sa propre identité sans être influencée par les images que nous partageons en ligne. Les photos que nous prenons peuvent donner une image déformée de qui elle est, et je souhaite qu'elle puisse se développer librement sans être limitée par l'image que nous avons créée pour elle.
->
+> 
 > J'espère que tu comprends mes préoccupations et que tu respecteras ma décision de ne pas prendre de photos de ma fille, en particulier avec un smartphone. Merci de ton soutien.
