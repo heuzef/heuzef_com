@@ -6,7 +6,7 @@ Status: published
 
 La visio est pour beaucoup de monde aujourd'hui un acte quotidien, que vous soyez un professionnel de la tech ou non.
 
-Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autre terms à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio](https://obsproject.com/fr/).
+Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autre termes à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio](https://obsproject.com/fr/).
 
 ![obs_studio](../../assets/obs-overlay.webp)
 
