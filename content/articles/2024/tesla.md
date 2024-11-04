@@ -190,7 +190,7 @@ Chaque polygone est alors retravaillé ici pour définir sa distance sur l'axe Z
 
 Hélas, nous sommes dépendant de la méthode d'import du SVG de Fusion 360, ce qui  rend l'étape de conversion 2D vers la 3D très fastidieuse, mais avec de la persevérence, nous pouvons parvenir à nos fins.
 
-<video id="tesla_010" controls preload="auto" width="600" height="350">
+<video id="tesla_010" controls preload="auto" width="900" height="500">
 <source src="../../assets/tesla_010.mp4" type='video/mp4'>
 </video>
 
@@ -204,7 +204,7 @@ L'export du fichier 3D depuis Fusion 360 s'effectue au format **3MF**, qui perme
 
 Nous pouvons donc effectuer toute la colorisation, de nouveau, via l'outil peinture multi-matériaux du logiciel. Puis finalement, effectuer la configuration des paramètres d'impression, tel que la hauteur de couche, la vitesse, les supports, etc ...
 
-<video id="tesla_011" controls preload="auto" width="600" height="350">
+<video id="tesla_011" controls preload="auto" width="900" height="500">
 <source src="../../assets/tesla_011.mp4" type='video/mp4'>
 </video>
 
@@ -232,6 +232,6 @@ Voici les détails techniques calculés :
 
 Je rajouterais probablement une plaque de verre utlérieument si j'ai l'occasion de m'en procurer une, pour proteger le tout. En attendant, voici une vidéo du résultat final !
 
-<video id="tesla_art" controls preload="auto" width="600" height="350">
+<video id="tesla_art" controls preload="auto" width="900" height="500">
 <source src="../../assets/tesla_art.mp4" type='video/mp4'>
 </video>
