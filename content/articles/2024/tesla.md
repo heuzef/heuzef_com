@@ -30,7 +30,7 @@ Pour réussir à sélectionner les mots justes, j'ai donc commencé par collecte
 
 J'ai donc codé la stratégie de webscraping en Python suivante :
 
-```
+```python
 # Import des librairies nécessaires au projet
 import pandas as pd
 import requests
@@ -56,7 +56,7 @@ for i in range(0, 50):
 
 Même logique, avec les 2 pages suivantes, pour alimenter notre array  :
 
-```
+```python
 soup = BeautifulSoup(page2.content, "lxml")
 quotes_p = soup.find_all("p", class_="quote-p")
 
@@ -86,7 +86,7 @@ la communauté scientifique.*
 
 J'ai ensuite exploité, toujours en Python, la librairie NLTK pour faire du text mining et afficher un nuage de mot avec Wordcloud.
 
-```
+```python
 # Import des librairies nécessaires au projet
 import numpy as np
 import pandas as pd
@@ -100,12 +100,11 @@ import matplotlib.image as mpimg
 from PIL import Image
 ```
 
-```
+```python
 # Chargement des citations dans un dataframe
 df = pd.read_csv("tesla_quotes.csv", index_col = 0)
 
 # Créer une chaîne de caractères contenant la concaténation de toutes les citations
-
 paroles = ' '.join(df['Quotes'].astype(str).tolist()) # Attention à insérer une espace entre chaque ligne.
 
 # Creation des tokens
@@ -115,7 +114,7 @@ tokens = tokenizer.tokenize(paroles)
 
 Je dispose mainenant de 2818 mots, il faut les nettoyers, en supprimant les stop words.
 
-```
+```python
 # Création des stop words, afin de nettoyer nos citations
 nltk.download('stopwords')
 stop_words = set(stopwords.words('english'))
@@ -130,7 +129,7 @@ J'ai au final 1374 mots non-unique, quantifiés dans un dictionnaire. Ceci est d
 
 Je réalise un masque de la silhouette de Nikola Tesla.  Cela me permet d'obtenir alors une sortie de nuage de mot déjà positionné sur la silhouette.
 
-```
+```python
 mask = np.array(Image.open("tesla_max.jpg"))
 img = mpimg.imread("tesla_max.jpg")
 ```
@@ -138,7 +137,7 @@ img = mpimg.imread("tesla_max.jpg")
 
 J'instancie le nuage de mot.
 
-```
+```python
 words = " ".join(tokens_without_sw)
 wc = WordCloud(background_color="white", max_words=50, stopwords=stop_words, min_font_size=30, max_font_size=100, collocations=False, mask=mask)
 
@@ -151,9 +150,9 @@ plt.show();
 
 ![tesla_005](../../assets/tesla_005.png)
 
-À ce stade, il ne me reste plus qu'à affiner les réglages de taille et quantité de mots, je peux alors générer autant de nuages de mots aléatoirement que je souhaite. Cela me permet d'en sélectionner un qui me plaît, avec des mots très forts de sens. Plus ils sont gros, plus ils sont statistiquement nombreux dans l'ensemble des citations et donc, plus "important".
+À ce stade, il ne me reste plus qu'à affiner les réglages de taille et quantité de mots, je peux alors générer autant de nuages de mots aléatoirement que je souhaite. Cela me permet d'en sélectionner un qui me plaît, avec des mots très forts de sens. Plus ils sont gros, plus ils sont statistiquement nombreux dans l'ensemble des citations et donc, plus **"importants"**.
 
-```
+```python
 plt.figure(figsize= (30,30))
 wc.generate(words)
 plt.imshow(wc.recolor(color_func=ImageColorGenerator(mask)), interpolation="bilinear")
@@ -191,7 +190,9 @@ Chaque polygone est alors retravaillé ici pour définir sa distance sur l'axe Z
 
 Hélas, nous sommes dépendant de la méthode d'import du SVG de Fusion 360, ce qui  rend l'étape de conversion 2D vers la 3D très fastidieuse, mais avec de la persevérence, nous pouvons parvenir à nos fins.
 
-![tesla_010](../../assets/tesla_010.mp4)
+<video id="tesla_010" controls preload="auto" width="600" height="350">
+<source src="../../assets/tesla_010.mp4" type='video/mp4'>
+</video>
 
 # Étape 3 : De l'écran à la réalité
 
@@ -203,7 +204,9 @@ L'export du fichier 3D depuis Fusion 360 s'effectue au format **3MF**, qui perme
 
 Nous pouvons donc effectuer toute la colorisation, de nouveau, via l'outil peinture multi-matériaux du logiciel. Puis finalement, effectuer la configuration des paramètres d'impression, tel que la hauteur de couche, la vitesse, les supports, etc ...
 
-![tesla_011](../../assets/tesla_011.mp4)
+<video id="tesla_011" controls preload="auto" width="600" height="350">
+<source src="../../assets/tesla_011.mp4" type='video/mp4'>
+</video>
 
 Un point délicat à gérer, dû à l'utilisateur du multi-couleur, c'est la tour de purge, nécessaire pour nettoyer la couleur dans la buse entre chaque changement de couleur pour éviter un mélange des pigments. Hélas, cette dernière prend de la place, je parviens cependant à m'en sortir en modifiant les paramètres de cette dernière pour que celle-ci soit la plus longue et fine possible sur le côté du plateau. Je suis contraint néanmoins de réduire l'échelle de la pièce à 96 % de sa taille d'origine.
 
@@ -213,7 +216,7 @@ J'estime avoir fait au maximum des capacités de mon matériel. Même s'il est t
 
 ![tesla_013](../../assets/tesla_013.png)
 
-Ces étapes de découpe sont souvent effectuée au ressenti et celon l'expérience que nous avons en matière d'impression 3D, l'echec est toujours envisageable. Ce qui coûte malhereusement de la ressource. Il faut alors doser le risque, le coût de l'echec et le temps. Dans mon cas, je mise donc sur une impression la plus fine et la plus lente possible et un risque de décrochage minimum en sécurisant autant que possible. Cette stratégie est couteuse en temps et en ressources, mais diminue énormément le taux d'echec.
+Ces étapes de découpe sont souvent effectuée au ressenti et selon l'expérience que nous avons en matière d'impression 3D, l'echec est toujours envisageable. Ce qui coûte malhereusement de la ressource. Il faut alors doser le risque, le coût de l'echec et le temps. Dans mon cas, je mise donc sur une impression la plus fine et la plus lente possible et un risque de décrochage minimum en sécurisant autant que possible. Cette stratégie est couteuse en temps et en ressources, mais diminue énormément le taux d'echec.
 
 ![tesla_014](../../assets/tesla_014.jpg)
 
@@ -229,4 +232,6 @@ Voici les détails techniques calculés :
 
 Je rajouterais probablement une plaque de verre utlérieument si j'ai l'occasion de m'en procurer une, pour proteger le tout. En attendant, voici une vidéo du résultat final !
 
-![tesla_art](../../assets/tesla_art.mp4)
+<video id="tesla_art" controls preload="auto" width="600" height="350">
+<source src="../../assets/tesla_art.mp4" type='video/mp4'>
+</video>
