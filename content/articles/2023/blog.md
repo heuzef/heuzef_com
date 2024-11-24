@@ -35,7 +35,7 @@ Merci à mon tout-puissant Sensei [Ephase](https://xieme-art.org) pour m'avoir i
 
 Une fois votre serveur web prêt, il vous faudra installer quelques nécessités : Python avec virtualenv, pip et make.
 
-Pour les modules pip, voici une liste de quelques dépendances que j'utilise : [<i class="fa fa-file"></i> requirements.txt](https://github.com/heuzef/heuzef_com/blob/master/requirements.txt
+Pour les modules pip, voici une liste de quelques dépendances que j'utilise : [<i class="fa fa-file"></i> requirements.txt](https://github.com/heuzef/heuzef_com/blob/master/requirements.txt)
 
 ### Installation et configuration
 
