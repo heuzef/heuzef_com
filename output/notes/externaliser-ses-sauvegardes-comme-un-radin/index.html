@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Heuzef</title>
+  <link rel="canonical" href="https://heuzef.com/notes/externaliser-ses-sauvegardes-comme-un-radin/index.html">
+
+    <link rel="apple-touch-icon" href="https://heuzef.com/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="https://heuzef.com/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://heuzef.com/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://heuzef.com/manifest.json">
+    <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/pygments/manni.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/theme.css">
+
+  <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
+        href="https://heuzef.com/feeds/all.atom.xml">
+  <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
+        href="https://heuzef.com/feeds/informatique.atom.xml">  
+  <meta name="description" content="Un point crucial en informatique est l’externalisation des sauvegardes. En effet, si vous ne comptez que sur vos sauvegardes locales (stockées chez vous sur votre PC ou autre), vous allez forcément être punis un de ces jours par une panne de matériel, un cambriolage, etc … et votre vie numérique …">
+
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+    <div class="col-sm-4">
+      <a href="https://heuzef.com/">
+        <img class="img-fluid rounded" src=https://heuzef.com/assets/logo_heuzef_hd.png alt="Heuze Florent">
+      </a>
+    </div>
+  <div class="col-sm-8">
+    <h1 class="title"><a href="https://heuzef.com/">Heuze Florent</a></h1>
+      <p class="text-muted">
+Les notes excentriques d'un bidouilleur.
+</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://cv.heuzef.com" target="_blank"><i class="fa fa-file"></i> mon cv</a></li>
+              <li class="list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a href="https://heuzef.com/contact.html">Contact</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+          <li class="list-inline-item"><a class="fab fa-linkedin" href="https://www.linkedin.com/in/heuzef/" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fab fa-git" href="https://github.com/heuzef" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-heartbeat" href="https://status.heuzef.com" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-map" href="https://network.heuzef.com" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-rss" href="https://heuzef.com/feeds/all.atom.xml" target="_blank"></a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  Externaliser ses sauvegardes comme un&nbsp;radin
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2023-07-31T00:00:00+02:00">
+          <i class="fas fa-clock"></i>
+          Mon 31 July 2023
+        </li>
+        <li class="list-inline-item">
+          <i class="fas fa-folder-open"></i>
+          <a href="https://heuzef.com/category/informatique/">Informatique</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fas fa-tag"></i>
+              <a href="https://heuzef.com/tag/autohebergement/">#autohébergement</a>,               <a href="https://heuzef.com/tag/sauvegardes/">#sauvegardes</a>,               <a href="https://heuzef.com/tag/chiffrement/">#chiffrement</a>,               <a href="https://heuzef.com/tag/astuce/">#astuce</a>,               <a href="https://heuzef.com/tag/opensource/">#opensource</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <p>Un point crucial en informatique est l’externalisation des sauvegardes. En effet, si vous ne comptez que sur vos sauvegardes locales (stockées chez vous sur votre <span class="caps">PC</span> ou autre), vous allez forcément être punis un de ces jours par une panne de matériel, un cambriolage, etc … et votre vie numérique sera réduite à néant.</p>
+<p>L’externalisation des sauvegardes règle donc ce problème, mais dans mon cas, je suis habitué à des solutions vraiment professionnelles, avec des outils et des moyens importants car les enjeux sont de taille pour la clientèle. Mais comment faire lorsque l’on veut cela à l’échelle d’une <span class="caps">TPE</span> ou dans le cadre d’un auto-hébergement sans se ruiner ? J’ai longtemps peiné pour trouver une solution à la hauteur de ma radinerie.</p>
+<p><img alt="Sauvegardes" class="img-fluid" src="../../assets/backup.png"/></p>
+<h2>L’outil utilisé : Borg</h2>
+<p>Pour ceux qui ne connaissent pas encore, <a href="https://borgbackup.org">Borg</a> coche pour moi toutes les cases pour remplir ce rôle. C’est un outil de sauvegarde sérieux qui répondra parfaitement à des besoins quotidiens de sauvegardes automatiques et sécurisées. Il est open-source, et après l’avoir utilisé pendant un moment, je ne peux que le recommander.</p>
+<p><a href="https://www.borgbackup.org/demo.html"><img alt="asciicast" class="img-fluid" src="https://asciinema.org/a/133292.svg"/></a></p>
+<p>Il n’est pas encore aussi évolué qu’un <a href="https://bacula.org">Bacula</a> par son manque de <span class="caps">GUI</span> et d’outils à usage professionnel, mais c’est l’un des meilleurs outils de sauvegarde du moment, plusieurs projets peuvent compléter Borg si besoin de combler des manques (ex : <a href="https://torsion.org/borgmatic">Borgmatic</a>).</p>
+<p>Je considère bien évidemment que les outils non open-source, tels qu’Acronis, sont à bannir.</p>
+<p>Bien que très fiable, bye-bye également le contre-intuitif BackupPC avec son interface à vomir. Il est de toute façon déjà mort, comme en témoigne mon <a href="https://github.com/backuppc/backuppc/pull/419">Pull Request</a> resté sans réponse depuis la nuit des temps.</p>
+<p>Sebsauvage à écrit un <a href="https://sebsauvage.net/wiki/doku.php?id=borgbackup">bon article sur Borg</a> si vous voulez vous faire un avis technique avant de l’adopter.</p>
+<h2>Externaliser où ?</h2>
+<p>Entrons donc dans le cœur du problème : <a href="https://youtu.be/Eo9JmYYbACA?t=161">la thune</a> 💸</p>
+<p>Pour avoir une externalisation digne de ce nom sans se ruiner, il faut bien s’embêter, ou trouver des bons plans.</p>
+<p>J’ai déjà tenté de le faire à l’ancienne en déplaçant régulièrement des disques durs, mais perdre l’automatisation nocturne est vraiment trop pénible. J’ai également tenté de passer par des amis, ça fonctionne, mais n’espérez pas avoir une solution pérenne. Je me suis retrouvé à déménager ma solution chez un autre chaque année, pour X ou Y raisons ! 😫</p>
+<p>Finalement, je me suis décidé à y mettre des sous, mais chercher une solution pour stocker 5 To de sauvegarde dans mon cas, compatible avec Borg et économique, est vraiment difficile.</p>
+<p>C’est du côté des casques à pointe que j’ai trouvé le bonheur ! <strong><a href="https://www.hetzner.com"><span class="caps">HETZNER</span></a></strong> propose un service appelé <strong><a href="https://www.hetzner.com/storage/storage-box">Storage Box</a></strong>, compatible avec Borg et à bas prix (12,97€ les 5 To en 2023 dans mon cas !).</p>
+<p>J’exporte depuis quelques mois mes sauvegardes chiffrées chez eux, ça tourne super ! Leur documentation technique est disponible <strong><a href="https://community.hetzner.com/tutorials/install-and-configure-borgbackup"><i class="fa fa-link"></i> <span class="caps">ICI</span></a></strong> pour relier leur stockage à votre serveur Borg.</p>
+<p>Je n’ai pas mesuré les débits, mais pour ce prix-là, je peux vous assurer que c’est vraiment top. Dans mon cas, je remplis sans problème les 5 To dans la nuit ✌️</p>
+<p>Bonne installation !</p>
+    </div>
+  </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+    <li class="list-inline-item"><a href="https://heuzef.com/index.html"><i class="fa fa-home"></i> Accueil</a></li>
+    <li class="list-inline-item"><a href="https://heuzef.com/categories.html"><i class="fa fa-cubes"></i> Catégories</a></li>
+    <li class="list-inline-item"><a href="https://heuzef.com/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Généré avec <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+    / <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+  </p>
+</div>    </div>
+  </footer>
+
+</body>
+
+</html>

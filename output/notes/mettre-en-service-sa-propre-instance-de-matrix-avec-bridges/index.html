@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Heuzef</title>
+  <link rel="canonical" href="https://heuzef.com/notes/mettre-en-service-sa-propre-instance-de-matrix-avec-bridges/index.html">
+
+    <link rel="apple-touch-icon" href="https://heuzef.com/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="https://heuzef.com/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://heuzef.com/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://heuzef.com/manifest.json">
+    <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/fontawesome.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/pygments/manni.min.css">
+  <link rel="stylesheet" href="https://heuzef.com/theme/css/theme.css">
+
+  <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
+        href="https://heuzef.com/feeds/all.atom.xml">
+  <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
+        href="https://heuzef.com/feeds/informatique.atom.xml">  
+  <meta name="description" content="Pour ceux qui ne connaissent pas Matrix, je le présente succinctement ainsi : c’est un outil messagerie moderne, qui est supérieure techniquement à toutes les autres solutions équivalentes (Instagram, WhatsApp, Messenger, Signal, WeChat, Telegram, Discord, etc …). Mais ce n’est pas tout, en plus d’être très sécurisé, c’est …">
+
+
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+    <div class="col-sm-4">
+      <a href="https://heuzef.com/">
+        <img class="img-fluid rounded" src=https://heuzef.com/assets/logo_heuzef_hd.png alt="Heuze Florent">
+      </a>
+    </div>
+  <div class="col-sm-8">
+    <h1 class="title"><a href="https://heuzef.com/">Heuze Florent</a></h1>
+      <p class="text-muted">
+Les notes excentriques d'un bidouilleur.
+</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="https://cv.heuzef.com" target="_blank"><i class="fa fa-file"></i> mon cv</a></li>
+              <li class="list-inline-item text-muted">|</li>
+            <li class="list-inline-item"><a href="https://heuzef.com/contact.html">Contact</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+          <li class="list-inline-item"><a class="fab fa-linkedin" href="https://www.linkedin.com/in/heuzef/" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fab fa-git" href="https://github.com/heuzef" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-heartbeat" href="https://status.heuzef.com" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-map" href="https://network.heuzef.com" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fas fa-rss" href="https://heuzef.com/feeds/all.atom.xml" target="_blank"></a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  Mettre en service sa propre instance de Matrix avec&nbsp;Bridges
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2024-04-08T00:00:00+02:00">
+          <i class="fas fa-clock"></i>
+          Mon 08 April 2024
+        </li>
+        <li class="list-inline-item">
+          <i class="fas fa-folder-open"></i>
+          <a href="https://heuzef.com/category/informatique/">Informatique</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fas fa-tag"></i>
+              <a href="https://heuzef.com/tag/autohebergement/">#autohébergement</a>,               <a href="https://heuzef.com/tag/web/">#web</a>,               <a href="https://heuzef.com/tag/social/">#social</a>,               <a href="https://heuzef.com/tag/docker/">#docker</a>,               <a href="https://heuzef.com/tag/tchat/">#tchat</a>,               <a href="https://heuzef.com/tag/communication/">#communication</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <p>Pour ceux qui ne connaissent pas Matrix, je le présente succinctement ainsi : c’est un outil messagerie moderne, qui est supérieure techniquement à toutes les autres solutions équivalentes (Instagram, WhatsApp, Messenger, Signal, WeChat, Telegram, Discord, etc …). </p>
+<p>Mais ce n’est pas tout, en plus d’être très sécurisé, c’est aussi une solution libre, éthique et décentralisée et en constante évolution grâce à une large communauté très impliquée dans cette solution de messagerie ultime en auto-hébergement.</p>
+<p>Il n’y a donc absolument aucun argument en faveur des autres plateformes (même pour Signal et RocketChat oui oui) et dans un monde idéal l’humanité entière utiliserais Matrix comme solution unique de communication.</p>
+<p>J’ajoute que tout bon dirigeant d’entreprise qui utilise une solution de tchat en interne devrait déployer Matrix pour sa société, tout autre choix sera finalement moins pertinent, voir dangereux. Le monopôle de Microsoft avec Teams n’est d’ailleurs pas un frein, car il est tout à fait possible d’intégrer des solutions de Visio comme <a href="https://meet.jit.si">Jitsi</a> dans l’instance Matrix. Et une fois que nous avons goûté à l’outil, nous sommes rapidement convaincus.</p>
+<p><img alt="Messenger FR" class="img-fluid" src="../../assets/messenger_fr.png"/></p>
+<p>Maintenant que les présentations sont faites, je vais expliquer dans cette note comment déployer simplement une instance avec Docker et surtout avec des Bridges.</p>
+<p>Je précise que cette note est co-rédigée avec <a href="https://www.linkedin.com/in/lucasassier">Lucas Assier</a>, qui à également une expérience intéréssente avec Matrix de son côté !</p>
+<p>Avant de débuter l’aventure, <a href="https://app.element.io/#/register">commencez par créer un compte Matrix</a>. Réserver votre identifiant et profitez-en pour tester Matrix sur les serveurs d’Élement.</p>
+<h1>Qui utilise Matrix en 2024 ? 🗣</h1>
+<p>Quasiment personne, comme beaucoup d’outils libre, pas de gros marketing derrière. Même <a href="https://www.signal.org">Signal</a>, qui met pourtant les moyens, peine à concurrencer ses concurrents qui sont pourtant pas terribles, alors autant dire que Matrix n’est pas prêt de percer, mais patience, car contrairement aux autres, Matrix est pérenne dans le temps et sera là encore bien après eux (l’e-mail, xmpp et irc en témoignent).</p>
+<p>Finalement, les seuls qui ont un intérêt à déployer Matrix, sont les entreprises, associations et organisations qui souhaitent disposer d’un outil de communication en interne. Pour les autres, on y retrouvera majoritairement des Geek qui ont la chance d’avoir les ressources et le temps pour maintenir cet outil.</p>
+<h1>Les Bridges ! 🏗</h1>
+<p>En plus de pouvoir <a href="https://matrix.org/ecosystem/clients/">choisir n’importe quel client</a> (ce qui est déjà génial), Matrix a une fonction vraiment top : <strong>Les bridges</strong> !</p>
+<p>Elle vous promet de récupérer vos messages des autres plateformes dans votre instance Matrix !</p>
+<p><a href="https://matrix.org/ecosystem/bridges"><i class="fa fa-link"></i> matrix.org/ecosystem/bridges</a></p>
+<p>Il faut comprendre que les Bridges sont additionnels et heureusement, car il y a baleine sous gravillon, explication dans le chapitre suivant.</p>
+<h1>Le piège des Bridges 🚧</h1>
+<p>Après plusieurs mois d’utilisation des Bridges, je vais être honnête, c’est un calvaire et la maintenance est chronophage au possible. Les Bridges sont essentiellement des prototypes et plus nous en ajoutons plus c’est le chaos : la maintenance n’en devient que plus lourde.</p>
+<p>Chaque Bridge à son lot de galère, c’est sans fin, <strong>il faut donc être déterminé à y consacrer beaucoup de temps !</strong></p>
+<p>Autrement, la meilleure alternative que je connaisse est <a href="https://ems.element.io/element-one">Element-<span class="caps">ONE</span></a>, payant et avec seulement trois Bridges, mais c’est un début 😉</p>
+<h1>Déploiement basique avec Docker 🐳</h1>
+<p>Si vous êtes à l’aise avec Docker, alors la configuration suivante vous permettra de mettre en place votre instance Matrix. Pour les plus barbus, vous pouvez aussi <a href="https://github.com/spantaleev/matrix-docker-ansible-deploy">jouer avec Ansible</a> 🤓</p>
+<p>La configuration générale ici est donc d’installer le moteur Synapse avec sa <span class="caps">DB</span> Postgres. Avec seulement ceci, vous pourrez bénéficier d’une instance Matrix qui tourne très bien.</p>
+<p>Pour tout le reste, ce sont les Bridges, que vous pouvez simplement commenter pour ne pas les déployer dans un premier temps, (ou jamais ? 😤)</p>
+<h2>Docker compose file</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3'</span>
+
+<span class="nt">services</span><span class="p">:</span>
+
+<span class="w">  </span><span class="c1"># Synapse</span>
+<span class="w">  </span><span class="nt">synapse</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrixdotorg/synapse:latest</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-synapse</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-synapse</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SYNAPSE_CONFIG_PATH=/data/homeserver.yaml</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/Synapse:/data</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges:/bridges</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/test:/var/log</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-db</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8448:8448/tcp</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8008:8008/tcp</span>
+
+<span class="w">  </span><span class="nt">matrix-db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-db</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-db</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=synapse</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=**********</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRESQL_PASSWORD=**********</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=matrix</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/Postgres:/var/lib/postgresql/data</span>
+
+<span class="c1"># BRIDGES CONTAINERS ##########</span>
+
+<span class="w">  </span><span class="c1"># Signal bridge</span>
+<span class="w">  </span><span class="nt">mautrix-signal</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/signal</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/signal/signald:/signald</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/signal/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29328:29328/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signald</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signal-db</span>
+
+<span class="w">  </span><span class="nt">signald</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/signald/signald</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signald</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signald</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/signal/signald:/signald</span>
+
+<span class="w">  </span><span class="nt">signal-db</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signal-db</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signal-db</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=mautrixsignal</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DATABASE=mautrixsignal</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=**********</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/signal/Postgres:/var/lib/postgresql/data</span>
+
+<span class="w">  </span><span class="c1"># Discord bridge</span>
+<span class="w">  </span><span class="nt">mautrix-discord</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/discord</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-discord</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-discord</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/discord/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29334:29334/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="w">  </span><span class="c1"># Whatsapp bridge</span>
+<span class="w">  </span><span class="nt">mautrix-whatsapp</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/whatsapp</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-whatsapp</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-whatsapp</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/bridges/whatsapp/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29318:29318/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="w">  </span><span class="c1"># Facebook bridge</span>
+<span class="w">  </span><span class="nt">mautrix-facebook</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/facebook</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-facebook</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-facebook</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/facebook/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29319:29319/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="w">  </span><span class="c1"># Instagram bridge</span>
+<span class="w">  </span><span class="nt">mautrix-instagram</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/instagram</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-instragram</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-instagram</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/instagram/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29330:29330/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="w">  </span><span class="c1"># Telegram bridge</span>
+<span class="w">  </span><span class="nt">mautrix-telegram</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/telegram</span>
+<span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-telegram</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-telegram</span>
+<span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/telegram/data:/data</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29317:29317/tcp</span>
+<span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">       </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="c1"># Slack bridge</span>
+<span class="nt">mautrix-slack</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/slack</span>
+<span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-slack</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-slack</span>
+<span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/matrix/bridges/slack/data:/data</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">29335:29335/tcp</span>
+<span class="w w-Error"> </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="c1"># Wechat bridge </span>
+<span class="nt">matrix-wechat</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lxduo/matrix-wechat</span>
+<span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-wechat</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-wechat</span>
+<span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/heuzef/matrix/bridges/wechat/data:/data</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">17778:17778/tcp</span>
+<span class="w">  </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+
+<span class="c1"># Wechat agent</span>
+<span class="nt">agent-wechat</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">lxduo/matrix-wechat-docker</span>
+<span class="w">  </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent-wechat</span>
+<span class="w">  </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent-wechat</span>
+<span class="w">  </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WECHAT_HOST=wss://matrix-wechat/_wechat/</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">WECHAT_SECRET=00000000000</span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/home/heuzef/matrix/bridges/wechat/hongli/:/home/user/matrix-wechat-agent</span>
+<span class="w">  </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix-wechat</span>
+</code></pre></div>
+<h2>Configuration de Synapse</h2>
+<p>Générer le fichier de config Synapse : </p>
+<div class="highlight"><pre><span></span><code>docker run -it --rm -v /home/matrix/Synapse/:/data -e SYNAPSE_SERVER_NAME=matrix.domain.tld -e SYNAPSE_REPORT_STATS=no matrixdotorg/synapse:latest generate
+</code></pre></div>
+<p>Ce fichier de configuration sera généré dans  <strong>/home/matrix/Synapse/homeserver.yaml</strong>, plutôt simple à comprendre, voici quelques paramètres à modifier selon vos besoins :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">max_upload_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100M</span>
+<span class="nt">enable_registration</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">enable_registration_without_verification</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">app_service_config_files</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/discord/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/facebook/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/instagram/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/signal/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/slack/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/telegram/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/wechat/data/registration.yaml</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/bridges/whatsapp/data/registration.yaml</span>
+</code></pre></div>
+<p>Chaque fichier de configuration des bridges est similaire, les paramètres récurrents à modifier sont les suivants :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">homeserver</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://matrix.domain.tld</span>
+<span class="w">    </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">matrix.domain.tld</span>
+<span class="w">    </span><span class="nt">address</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://&lt;hostname&gt;:&lt;port&gt;</span>
+<span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.0.0.0</span>
+<span class="w">    </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;port&gt;</span>
+<span class="w">    </span><span class="nt">database</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sqlite3</span>
+<span class="w">        </span><span class="nt">uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;bridge&gt;-db.sqlite</span>
+<span class="w">    </span><span class="nt">permissions</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"*"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">relay</span>
+<span class="w">        </span><span class="s">"matrix.domain.tld"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">user</span>
+<span class="w">        </span><span class="s">"@votre-pseudo:matrix.domain.tld"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admin</span>
+</code></pre></div>
+<p>Maintenant, vous pouvez démarrer toute la tambouille : <code>docker compose -f /home/matrix/docker-compose.yml up</code></p>
+<p>Le premier lancement prend du temps, les fichiers de configuration et de <strong>registration.yaml</strong> doivent être générés par Synapse (n’anticipez pas leur création), confirmant que tout fonctionne correctement, ensuite, vous pouvez éditer les paramètres.</p>
+<p>Vous aurez probablement une erreur de permission sur ces fichiers au lancement, ajustez simplement cela ainsi :</p>
+<div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">644</span><span class="w"> </span>/home/matrix/bridges/*/data/registration.yaml
+</code></pre></div>
+<h2>Visioconférence</h2>
+<p>Si vous souhaitez utiliser la visioconférence, notez bien que cette dernière ne fonctionnera qu’en local sur votre réseau interne. Pour aller plus loin et profiter pleinement des fonctionnalités de la visioconférence, il vous faudra mettre en service un serveur <span class="caps">TURN</span> : <a href="https://matrix-org.github.io/synapse/latest/turn-howto.html">Configuring a Turn Server - Synapse</a></p>
+<h1>Mon retour d’expérience sur les différents Bridges 📢</h1>
+<p>Vous remarquerez que la plupart des Bridges sont déployées via <a href="https://docs.mau.fi/bridges/general/docker-setup.html?bridge=telegram&amp;ref=infos.zogg.fr"><span class="caps">MAUTRIX</span></a>. Ce n’est pas pour rien, car la plus grande panoplie est éditée par eux et ce sont aussi bien souvent les bridges les plus stables.</p>
+<p>Pour rappel <a href="https://matrix.org/ecosystem/bridges/">la liste des Bridges est diffusée sur le site officiel de Matrix</a>.</p>
+<p>De façon générale, la logique d’ajout d’un bridge est toujours la même :</p>
+<ol>
+<li>
+<p>Exécution du bridge</p>
+</li>
+<li>
+<p>Depuis votre client Matrix préféré, rechercher le bot du bridge pour commencer une discussion avec lui</p>
+</li>
+<li>
+<p>Dans le canal de discussion avec le bot taper <code>help</code> pour afficher les actions possibles</p>
+</li>
+</ol>
+<h2>Signal</h2>
+<p>Le Bridge de Signal est un peu lourd à mettre en place, car il réclame une <span class="caps">DB</span> à part (ce que je vous conseille vivement de faire pour les performances).</p>
+<ol>
+<li>Inviter @signalbot</li>
+<li>Enregistrez votre téléphone <code>register +33000000000</code></li>
+<li>Récupérer un jeton captcha sur le site dédié de signal</li>
+<li>https://signalcaptchas.org/registration/generate.html</li>
+<li>Récupérer le token situé juste après le <strong>signalcaptcha://signal-recaptcha-v2.</strong></li>
+<li>Valider le code <span class="caps">SMS</span></li>
+<li>Définir son nom : <code>set-profile-name VOTRE-NOM</code></li>
+</ol>
+<h2>Discord</h2>
+<p>Pour Discord, la première initialisation ne permet que de jongler avec les messageries privées, vous aurez ensuite besoin de jouer avec les commandes du bridges pour rejoindre les différents canaux (plus communément appelées “Serveurs Discord” par les Moldus) via leur identifiant unique.</p>
+<p>Ensuite, c’est le gros dawa, si vous invitez une guilde assez grosse, vous allez vous retrouver avec autant de notification d’invitation à accepter que de catégories ! Bon une fois que c’est validé, vous êtes tranquille, mais faite très attention aux journaux qui vont être générés sur votre serveur, ça va très rapidement remplir l’espace disque s’il y a de l’activité sur vos canaux Discord !</p>
+<ol>
+<li>
+<p>Inviter @discordbot</p>
+</li>
+<li>
+<p>Sur l’application mobile : <em>paramètres de l’app &gt; “Scanner le <span class="caps">QR</span> code”</em></p>
+</li>
+<li>
+<p>Envoyer la commande au bot : <code>login-qr</code></p>
+</li>
+<li>
+<p>La commande <code>guilds status</code> permet d’afficher les différents “Serveurs Discord”</p>
+</li>
+</ol>
+<h2>WhatsApp</h2>
+<p>Alors WhatsApp, pour faire simple, dispose d’une sécurité très désagréable qui consiste à déconnecter tous vos accès tiers après une semaine, super …</p>
+<p>Cela concerne donc également votre Bridge qu’il vous faudra reconnecter avec un QRCode toute les semaines. Donc nous sommes bien forcé de conserver l’application officiel sur notre tel uniquement pour ça … voila voila … 👌</p>
+<ol>
+<li>Inviter @whatsappbot</li>
+<li>Sur l’application mobile : <em>paramètres de l’app &gt; “Scanner le <span class="caps">QR</span> <span class="caps">QR</span>”</em></li>
+<li>Envoyer la commande au bot : <code>login</code></li>
+</ol>
+<h2>Facebook et Instagram</h2>
+<p>Dans le même type de flood absurde que Discord, vous allez recevoir une notification d’invitation à accepter pour chaque personne … J’espère pour vous que vous êtes un asocial avec peu d’amis sur ces plateformes, sinon vous aller user votre souris à accepter des centaines d’invitations une par une.
+Un conseil, tester bien vos volumes docker, le redémarrage du Bridge à tendance à tout remettre à zéro, histoire de vous pousser au suicide une bonne fois pour toutes 😖</p>
+<h2>Telegram</h2>
+<p>Un peu plus long à mettre en place, le bot étant encore en prototype au moment de mon test, mais ensuite, cela fonctionne correctement.</p>
+<p>Sur la configuration, il est nécessaire d’ajouter une clef d’<span class="caps">API</span> récupérable sur : https://my.telegram.org/apps</p>
+<div class="highlight"><pre><span></span><code>App api_id: 00000000
+App api_hash: 00000000000000000000000000000000 
+</code></pre></div>
+<ol>
+<li>Inviter @telegrambot</li>
+<li>Sur l’application mobile : <em>paramètres de l’app &gt; “Scanner le code <span class="caps">QR</span>”</em></li>
+<li>Envoyer la commande au bot : <code>login-qr</code></li>
+</ol>
+<h2>WeChat</h2>
+<p>La palme d’or de la torture revient à nos amis Chinois avec leur outil abominable.</p>
+<p>Créé par un nerd Chinois répondant au nom de <a href="https://github.com/duo/matrix-wechat-docker">lxduo</a>, ce dernier (probablement considéré par un terroriste par le gouvernement chinois), a eu la patience de mettre au monde un Bridge capable de s’accoupler avec cette horreur de WeChat.</p>
+<p>Ce qui donne naissance à une terrible usine à Gaz qui vous servira d’hôte, qui vous faudra accompagner d’autant d’usines à gaz supplémentaire que vous souhaitez ajouter de compte WeChat … Le gros délire en termes de consommation de ressource 😭.</p>
+<p>Bon dans mon cas <a href="https://github.com/duo/matrix-wechat-docker/issues/2">je n’ai même pas réussi à le faire tomber en marche</a> et à vrai dire, j’ai sûrement été banni de l’outil par le gouvernement car impossible de me créer un compte, j’ai donc renoncé.
+Je prévois un voyage en Chine en 2024, je vais en profiter pour me créer un compte en catimini avec un numéro sur place, je ferais peut-être un article à ce sujet un jour si c’est croustillant.</p>
+<ol>
+<li>Inviter @wechatbot</li>
+<li>Sur l’application mobile : <em>paramètres de l’app &gt; “Scanner le code <span class="caps">QR</span>”</em></li>
+<li>Envoyer la commande au bot : <code>login</code> pour tenter de détecter l’agent WeChat</li>
+</ol>
+<h2><span class="caps">SMS</span></h2>
+<p>En bonus, j’ai tenté l’utilisation de <a href="https://f-droid.org/en/packages/eu.droogers.smsmatrix/">SmsMatrix</a>, une application Android qui peut fonctionner avec un Bridge, j’ai fait fonctionner le machin ainsi :</p>
+<p>S’authentifier sur le compte <strong>@smsbot:matrix.domain.tld</strong> et inviter son compte utilisateur pour créer un canal de discussion.
+Après autorisation, installer SmsMatrix sur votre téléphone :</p>
+<div class="highlight"><pre><span></span><code><span class="n">Bot</span> <span class="n">Username</span> : <span class="n">smsbot</span>
+<span class="n">Bot</span> <span class="n">Password</span> : **********
+<span class="n">Homeserver</span> <span class="n">url</span> : <span class="n">https:</span>//<span class="n">matrix</span>.<span class="n">domain</span>.<span class="n">tld</span>
+<span class="n">Your</span> <span class="n">username</span> @<span class="s">&lt;USER&gt;</span>:<span class="n">matrix</span>.<span class="n">com</span>
+<span class="n">Devicename</span> : <span class="s">&lt;NOM-DU-TEL&gt;</span>
+</code></pre></div>
+<p>Il suffit ensuite de recevoir un <span class="caps">SMS</span> pour initialiser une conversation.</p>
+<h1>Conclusion 🗒</h1>
+<ul>
+<li>
+<p>Matrix, c’est le top du top de la messagerie. Tant sur l’aspect technique qu’éthique.</p>
+</li>
+<li>
+<p>Peu de personne connaissent et n’utilisent ça dans le monde pro et encore moins ailleurs.</p>
+</li>
+<li>
+<p>La configuration d’un serveur <span class="caps">TURN</span> supplémentaire est nécessaire si vous souhaitez profiter de la Visioconférence.</p>
+</li>
+<li>
+<p>La configuration des Bridges est très chronophage et instable.</p>
+</li>
+</ul>
+<p>C’est tout pour moi 😉 je vous relais maintenant les notes de mon ami <a href="https://www.linkedin.com/in/lucasassier">Lucas Assier</a>, qui souhaite également partager son expérience avec Matrix.
+Sans aller aussi loin que moi sur la quantité de Bridge testés, il a cependant abordé le Double Puppetting, très intéressant pour profiter pleinement des Bridges.</p>
+<hr/>
+<p>L’article ci-dessous, rédigé par <a href="https://www.linkedin.com/in/lucasassier">Lucas Assier</a>, date de Septembre 2023.</p>
+<hr/>
+<h1>Pourquoi Matrix</h1>
+<p>À cela plusieurs raisons et cas d’usages :</p>
+<ul>
+<li>
+<p>En premier, les communications sont chiffrées, dans la mesure du possible, par design, ce qui permet de discuter avec des amis de sujets sensibles sans avoir à se soucier de voir nos communications et pièces jointes sur un <span class="caps">CDN</span> random (N’est-ce pas Discord ?).</p>
+</li>
+<li>
+<p>En second, le système de fédération : un utilisateur d’un serveur peut communiquer sur un serveur différent de manière transparente. J’ai pu voir cela l’an dernier sur l’instance de visioconférence de la Fosdem qui n’est autre qu’une instance Matrix avec un plugin jitsi</p>
+</li>
+<li>
+<p>Le système de bridges : Le protocole de serveur Matrix a été pensé pour inclure un système de “passerelles” permettant de lier un service quelconque a Matrix. C’est notamment ce système qui m’a poussé à passer le pas et à déployer ma propre instance Matrix.</p>
+</li>
+</ul>
+<h1>Terminologie</h1>
+<h2>Provider</h2>
+<p>Matrix, c’est un peu comme le système de mails, il faut un fournisseur ou <strong>provider</strong> pour pouvoir communiquer. Pour cela, un <strong>homeserver</strong> va leur donner un compte, exemple :</p>
+<p><img alt="Matrix Exemple 1" class="img-fluid" src="../../assets/matrix_exemple_1.png"/></p>
+<h2>Homeserver</h2>
+<p>Un <strong>homeserver</strong> est un serveur Matrix (Synapse, Conduit, etc …).</p>
+<p>Il est lié a un seul domaine qui n’est pas voué a changer.
+Les comptes générés via les <strong>homeserver</strong> sont en deux parties comme suit :</p>
+<p><code>@user@homeserver.tld</code></p>
+<p>Pour reprendre l’exemple ci-dessus, cela donnerait :</p>
+<p><img alt="Matrix Exemple 2" class="img-fluid" src="../../assets/matrix_exemple_2.png"/></p>
+<h2>AppService</h2>
+<p>C’est ce que l’on peut comparer à un bot standard.
+Les AppServices doivent être enregistrés dans la configuration du serveur, il n’est pas possible de les enregistrer à la volée.</p>
+<h2>Bridges</h2>
+<p>Un bridge est un système permettant de connecter un groupement Matrix à une autre plateforme, par exemple, Slack ou encore Signal.</p>
+<p>Les bridges fonctionnent de deux manières :</p>
+<ol>
+<li>
+<p>Dans Matrix, les utilisateurs des autres plateformes sont vus en tant que “<em>ghost</em>“.</p>
+</li>
+<li>
+<p>Dans l’autre plateforme, les comptes utilisateurs de Matrix sont appelés des “<em>puppets</em>“.</p>
+</li>
+</ol>
+<p>Exemple :</p>
+<p><img alt="Matrix Exemple 3" class="img-fluid" src="../../assets/matrix_exemple_3.png"/></p>
+<p>Les spécifications Matrix sont complexe mais entièrement documentées <a href="https://spec.matrix.org/latest/">ici</a>.</p>
+<h1>Choisir son serveur</h1>
+<p>Aujourd’hui, Matrix possède plusieurs implémentations serveurs plus ou moins aboutis.
+Il y en a trois qui en ont retenu mon attention :</p>
+<ol>
+<li>
+<p><strong>Synapse</strong> - la référence originale en python. C’est le seul projet de serveur marqué comme stable.</p>
+</li>
+<li>
+<p><strong>Conduit</strong> - une implémentation en <em><span class="caps">RUST</span></em> du protocole serveur de Matrix mais avec une empreinte mémoire plus faible.</p>
+</li>
+<li>
+<p><strong>Dendrite</strong> - la même volonté que Conduit, mais en <em><span class="caps">GO</span></em>. Certaines fonctions sont manquantes, la priorité étant l’implémentation des fonctions pour les instances single user.</p>
+</li>
+</ol>
+<h1>Monter son homeserver</h1>
+<h2>Préparations</h2>
+<p>Pour des raisons pratiques, nous allons assumer que le serveur retenu est Synapse (car officiel et implémente l’intégralité des fonctionnalités).
+En premier lieu, il faut réfléchir à un nom de domaine, c’est très important car il est
+impossible de le changer une fois le serveur installé.</p>
+<p>Ensuite, il y a plusieurs manières d’installer un serveur Synapse :</p>
+<ol>
+<li>
+<p>Via un package manager</p>
+</li>
+<li>
+<p>Via Ansible</p>
+</li>
+<li>
+<p>Via Docker</p>
+</li>
+</ol>
+<p>Ici, nous verrons via Docker.</p>
+<h2>La stack technique de la démo</h2>
+<h3>Un reverse-proxy</h3>
+<p>Initialement, le projet est déployé dans une colocation de homelabs derrière un seul et même port.</p>
+<p>Par conséquent, nous passons par Caddy afin de faire le routage en reverse-proxy.</p>
+<p>Cela, peut-être contraignant, mais il est quand même nécessaire d’en avoir un avec Synapse, notamment quand on va vouloir faire de la délégation.</p>
+<h3>Une instance Docker</h3>
+<p>Pour héberger le serveur ainsi que les bridges, le serveur et les bridges seront en deux stacks Docker-compose séparés.</p>
+<h2>Déployer le serveur Synapse</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">'3'</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">synapse</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/matrixdotorg/synapse:latest</span>
+<span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SYNAPSE_CONFIG_PATH=/data/homeserver.yaml</span>
+<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse-data:/data</span>
+<span class="w">        </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse-db</span>
+<span class="w">        </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8448:8448/tcp</span><span class="w"> </span><span class="c1"># Federation Traffic</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8008:8008/tcp</span><span class="w"> </span><span class="c1"># Client Traffic</span>
+<span class="w">        </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridgenet</span>
+
+<span class="w">    </span><span class="nt">synapse-db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse-pgsql</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/postgres:12-alpine</span>
+<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_USER=synapse</span>
+<span class="err">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_PASSWORD=changeme!</span>
+<span class="err">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_DB=synapse</span>
+<span class="err">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C</span>
+<span class="err">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="err">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse-pgsql:/var/lib/postgresql/data</span>
+<span class="err">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="err">            </span><span class="nt">synapse-data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="err">            </span><span class="nt">synapse-pgsql</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="err">        </span><span class="nt">networks</span><span class="p">:</span>
+<span class="err">            </span><span class="nt">bridgenet</span><span class="p">:</span>
+<span class="err">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse_bridges</span>
+<span class="err">                </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<blockquote class="blockquote">
+<p>À noter, nous avons un réseau Docker dédié a l’intercommunication entre Synapse et les Bridges installés comme suit :</p>
+<p><code>docker network create synapse_bridges</code></p>
+</blockquote>
+<p>En premier lieu, il faudra lancer Synapse pour lui dire de générer la configuration :</p>
+<p><code>docker-compose run --rm -e SYNAPSE_SERVER_NAME=matrix.kestrel.ovh -e
+SYNAPSE_REPORT_STATS=no synapse generate</code></p>
+<p>En suivant, il faudra éditer la configuration <code>homeserver.yaml</code> dans le volume synapse-data. </p>
+<p>Il sera important de regarder les options de configuration, notamment la configuration de la connexion à la base Postgres, le nom du serveur (<em>server name</em>), que les serveurs de clés de confiance ainsi que l’option pour autoriser la création de comptes ou non. </p>
+<p>Une fois cela fait, nous pouvons démarrer la stack via <code>docker compose up</code>. </p>
+<blockquote class="blockquote">
+<p>On pourrait faire en background mais comme nous en sommes à la phase de lancement initiale, je préfère laisser en premier plan afin de voir si l’application lance des erreurs ou non.</p>
+</blockquote>
+<h2>Configurer le reverse proxy et setup une délégation</h2>
+<p>Par délégation, nous sous-entendons relayer le trafic Matrix a une entité dans un sous-domaine ou ailleurs.</p>
+<p>Ici, mon server name est <code>kestrel.ovh</code>, pour autant, le trafic est délégués vers <code>matrix.kestrel.ovh</code> via la configuration suivante :</p>
+<div class="highlight"><pre><span></span><code><span class="err">kes</span><span class="kc">trel</span><span class="err">.ovh</span><span class="w"> </span><span class="p">{</span>
+<span class="err">       header</span><span class="w"> </span><span class="err">/.well</span><span class="mi">-</span><span class="err">k</span><span class="kc">n</span><span class="err">ow</span><span class="kc">n</span><span class="err">/ma</span><span class="kc">tr</span><span class="err">ix/* Content-Type application/json</span>
+<span class="err">       header /.well-known/matrix/* Access-Control-Allow-Origin *</span>
+<span class="err">       respond /.well-known/matrix/server `{"m.server":</span>
+<span class="err">"matrix.kestrel.ovh:443"}`</span>
+<span class="err">       respond /.well-known/matrix/client `{"m.homeserver":</span>
+<span class="err">{"base_url":"https://matrix.kestrel.ovh"}}`</span>
+<span class="err">}</span>
+<span class="err">matrix.kestrel.ovh {</span>
+<span class="err">       reverse_proxy /_matrix/* 192.168.1.102:8008</span>
+<span class="err">       reverse_proxy /_synapse/client/* 192.168.1.102:8008</span>
+<span class="err">}</span>
+</code></pre></div>
+<p>Il existe <a href="https://matrix-org.github.io/synapse/latest/reverse_proxy.html">une documentation</a> sur la configuration de divers reverse-proxy pour Matrix, avec ou sans délégation.
+Pour tester si la configuration est correcte, on peut utiliser <a href="https://federationtester.matrix.org">le testeur de fédération</a> et voir si le trafic de fédération est <span class="caps">OK</span>.</p>
+<h2>Créer des comptes</h2>
+<p>Pour créer des comptes, il est possible de passer via une interface cliente Matrix tel que <a href="https://app.element.io/#/register">Element</a>.</p>
+<p>Pour les serveurs qui n’acceptent pas la création de comptes, il est possible de le faire via le conteneur Synapse via la commande suivante :</p>
+<p><code>docker exec -it synapse register_new_matrix_user http://localhost:8008 -c
+/data/homeserver.yaml</code></p>
+<p>Synapse demandera quelques questions puis créera les comptes.</p>
+<p>Personnellement, j’ai opté pour un compte admin dont je ne me sers uniquement pour l’administration du serveur ainsi qu’un utilisateur standard pour mon usage quotidien.</p>
+<p>À ce stade, nous avons une instance Matrix fonctionnelle, avec un compte. Nous pouvons donc nous pencher sur l’ajout de Bridges !</p>
+<h1>Ajouter un Bridge</h1>
+<blockquote class="blockquote">
+<p>Le déploiement d’un Bridge peut être long et fastidieux, par conséquent, nous ne verrons que pour le Bridge Mautrix-signald</p>
+</blockquote>
+<h2>Docker Compose 2: Electric Boogaloo</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.7"</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mautrix-signal</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dock.mau.dev/mautrix/signal</span>
+<span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal-data:/data</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal-signald:/signald</span>
+<span class="w">        </span><span class="nt">depends_on</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signald</span>
+<span class="w">        </span><span class="nt">networks</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bridgenet</span><span class="w"> </span><span class="c1"># Communication w/ Synapse</span>
+
+<span class="w">    </span><span class="nt">signald</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signald</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker.io/signald/signald</span>
+<span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal-signald:/signald</span>
+
+<span class="w">    </span><span class="nt">mau-signal-db</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mau-signal-db</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">postgres:13-alpine</span>
+<span class="w">        </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+<span class="w">        </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">POSTGRES_USER</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrixsignal</span>
+<span class="w">            </span><span class="nt">POSTGRES_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrixsignal</span>
+<span class="w">            </span><span class="nt">POSTGRES_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">changeme!</span>
+<span class="w">        </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mautrix-signal-db:/var/lib/postgresql/data</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mautrix-signal-data</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">mautrix-signal-signald</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">    </span><span class="nt">mautrix-signal-db</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+
+<span class="nt">networks</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">bridgenet</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse_bridges</span>
+<span class="w">        </span><span class="nt">external</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
+<p>Ici, pas énormément de choses à dire, on lance la <span class="caps">DB</span>, puis signald (en vérifiant que cela ne crash pas). Ensuite, on lance le Bridge qui crée un fichier de configuration.</p>
+<p>Il faudra remplir le fichier avec les informations comme :</p>
+<ul>
+<li>L’adresse du serveur Synapse</li>
+<li>L’adresse du conteneur du bridge (Pour que Synapse relaie nos messages)</li>
+<li>Désactiver le manhole</li>
+<li>Régler les permissions</li>
+<li>Connecter la base postgres</li>
+</ul>
+<h2>Enregistrer une AppService dans Synapse</h2>
+<p>Une fois cela fait, on relance le conteneur. Si tout est correct, celui-ci va générer un fichier <code>appservice.yaml</code></p>
+<p>Il faudra le copier dans le volume du conteneur synapse et le référencer comme suit dans la configuration <code>homeserver.yaml</code></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># NB: Il est pas necessaire de faire de sous-dossiers appservices mais c'est</span>
+<span class="l l-Scalar l-Scalar-Plain">plus sympa.</span>
+<span class="l l-Scalar l-Scalar-Plain">app_service_config_files</span><span class="p p-Indicator">:</span>
+<span class="err">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/appservices/mau-signal.yaml</span>
+<span class="err">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/appservices/mau-instagram.yaml</span>
+<span class="err">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data/appservices/mau-slack.yaml</span>
+</code></pre></div>
+<p>Une fois ceci fait, relancer Synapse ainsi que le Bridge. Si tout fonctionne, le doit être joignable via message privé à l’adresse <strong>@signalbot:homeserver.tld</strong></p>
+<h2>Se connecter à Signal</h2>
+<p>Pour se connecter à Signal, il faudra ouvrir un canal avec le bot, puis choisir une des deux options possibles :</p>
+<p><code>**link** [device name] - Link the bridge as a secondary device</code>
+<code>**register** &lt;phone&gt; - Sign into Signal as the primary device</code></p>
+<p>Malheureusement, j’ai eu une erreur quand j’ai voulu “register”” donc je suis passé via “link”, le bot fournit un <span class="caps">QR</span> Code permettant de s’authentifier.</p>
+<p>Une fois l’authentification effectuée, vous recevrez tout un tas d’invitations de messages privés et de canaux. </p>
+<p>Ceux-ci sont gérés via le bot et font le lien avec toutes les conversations présentes sur Signal.</p>
+<p>Par exemple, ici, un canal avec des amis :</p>
+<p><img alt="Matrix Exemple 4" class="img-fluid" src="../../assets/matrix_exemple_4.png"/></p>
+<blockquote class="blockquote">
+<p>À noter, le bot est présent dans chaque room afin de faire le lien. Il est possible de lui parler directement via <code>!signal</code> ou via <span class="caps">MP</span>.
+En gris, tous les utilisateurs ayant le tag <code>(signal)</code> sont des “<strong>ghosts</strong>” contrôlés par le bot.</p>
+<p>Il est bon de noter aussi que nous ne sommes pas administrateur du canal mais que les admins du groupe Signal le sont par extension sur ce canal Matrix.</p>
+</blockquote>
+<h2>Le Double Puppetting</h2>
+<p>Sur la capture d’écran précédente, nous avons pu voir que je possède deux comptes, un compte Matrix et un compte Signal.</p>
+<p>On pourrait dire que l’on s’en fiche dans certains cas mais cela pose problème lorsque les gens veulent me mentionner. </p>
+<p>Exemple ici :</p>
+<p><img alt="Matrix Exemple 5" class="img-fluid" src="../../assets/matrix_exemple_5.png"/></p>
+<p>Ici on me mentionne pour un événement. Problème, le Bridge mentionne mon compte Signal et non moi-même.
+Pour palier à cela, les développeurs ont ajouté une fonction permettant de remplacer le compte de la plateforme en question (Ici, <em>Lucas(Signal)</em> ) par mon propre compte Matrix.</p>
+<p>Pour ce faire, il est possible de passer par deux manières de faire :</p>
+<ul>
+<li>
+<p>A la main via des “access tokens (à coup de <code>curl</code> puis via des <span class="caps">MP</span> aux différents bots de Bridge).</p>
+</li>
+<li>
+<p>Automatiquement via <a href="https://github.com/devture/matrix-synapse-shared-secret-auth">ce plugin</a>. Pour des raisons évidentes, nous allons passer par le plugin.</p>
+</li>
+</ul>
+<h3>Installer le module Shared Secret Authenticator</h3>
+<p>Pour installer le module, il faudra cloner depuis le dépôt <span class="caps">GIT</span>, le fichier python, puis l’ajouter aux volumes du conteneur synapse.</p>
+<p>Cloner le dépôt : <code>git clone https://github.com/devture/matrix-synapse-shared-secret-auth</code></p>
+<p>Puis l’ajouter en tant que volume :</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span><span class="nv">...</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">synapse-data:/data</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/opt/matrix-synapse-shared-secret-auth/shared_secret_authenticator.py:/usr/local/lib/python3.11/site-packages/shared_secret_authenticator.py</span>
+</code></pre></div>
+<p>Générer un secret : <code>pwgen -s 128 1</code></p>
+<p>Puis, dans le fichier <code>homeserver.yaml</code>, saisir les informations recensées dans le <span class="caps">GIT</span> croisées avec <a href="https://docs.mau.fi/bridges/general/double-puppeting.html">la documentation de Mautrix</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">modules</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shared_secret_authenticator.SharedSecretAuthProvider</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">config</span><span class="p p-Indicator">:</span>
+<span class="w">            </span><span class="nt">shared_secret</span><span class="p">:</span><span class="w"> </span><span class="s">"YOUR_SHARED_SECRET_GOES_HERE"</span>
+<span class="w">            </span><span class="nt">m_login_password_support_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">            </span><span class="nt">com_devture_shared_secret_auth_support_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<p>Une fois cela fait et le conteneur Synapse relancé, dans la configuration du Bridge Signal, remplacer :</p>
+<div class="highlight"><pre><span></span><code><span class="nt">double_puppet_server_map</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">example.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://example.com</span>
+<span class="w w-Error">    </span><span class="nt">login_shared_secret_map</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">example.com</span><span class="p">:</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">double_puppet_server_map</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">kestrel.ovh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://synapse:8008</span>
+<span class="w w-Error">    </span><span class="nt">login_shared_secret_map</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">kestrel.ovh</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">YOUR_SHARED_SECRET_GOES_HERE</span>
+</code></pre></div>
+<p>Ceci fait, relancer le conteneur Signal.
+Si cela fonctionne correctement, le compte en trop doit disparaître et les mentions envers ce compte sont maintenant redirigées vers l’utilisateur Matrix correct.</p>
+<p><img alt="Matrix Exemple 6" class="img-fluid" src="../../assets/matrix_exemple_6.png"/></p>
+    </div>
+  </article>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+    <li class="list-inline-item"><a href="https://heuzef.com/index.html"><i class="fa fa-home"></i> Accueil</a></li>
+    <li class="list-inline-item"><a href="https://heuzef.com/categories.html"><i class="fa fa-cubes"></i> Catégories</a></li>
+    <li class="list-inline-item"><a href="https://heuzef.com/tags.html"><i class="fa fa-tags"></i> Tags</a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Généré avec <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+    / <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a>
+  </p>
+</div>    </div>
+  </footer>
+
+</body>
+
+</html>
