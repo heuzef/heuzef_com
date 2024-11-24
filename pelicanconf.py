@@ -26,7 +26,7 @@ SITEIMAGE = "assets/logo_heuzef_hd.png"
 # Links
 ICONS = (
             ('linkedin', 'https://www.linkedin.com/in/heuzef/'),
-            ('git', 'https://git.heuzef.com'),
+            ('git', 'https://github.com/heuzef'),
             ('fas fa-heartbeat', 'https://status.heuzef.com'),
             ('fas fa-map', 'https://network.heuzef.com'),
             ('rss', 'https://heuzef.com/feeds/all.atom.xml'),

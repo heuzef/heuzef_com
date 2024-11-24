@@ -25,7 +25,7 @@ Cet outil est absolument parfait pour les dingos exigeants comme moi, ce moteur 
 
 Aucune base de données ni moteur web requis, il suffit de lancer la moulinette et Pelican va vous recracher fissa un site web statique complet (HTML, CSS, JS).
 
-Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonction (Gestion de thème, extenssion, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plât et versionné sur mon [git](https://git.heuzef.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
+Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonction (Gestion de thème, extenssion, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plât et versionné sur mon [git](https://github.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
 
 C'est auto-hébergeable, libre et documenté, bref rien à redire, c'est le pied, fait tourner c'est de la bonne.
 
@@ -35,7 +35,7 @@ Merci à mon tout-puissant Sensei [Ephase](https://xieme-art.org) pour m'avoir i
 
 Une fois votre serveur web prêt, il vous faudra installer quelques nécessités : Python avec virtualenv, pip et make.
 
-Pour les modules pip, voici une liste de quelques dépendances que j'utilise : [<i class="fa fa-file"></i> requirements.txt](https://git.heuzef.com/heuzef/heuzef_com/src/branch/master/requirements.txt)
+Pour les modules pip, voici une liste de quelques dépendances que j'utilise : [<i class="fa fa-file"></i> requirements.txt](https://github.com/heuzef/heuzef_com/blob/master/requirements.txt
 
 ### Installation et configuration
 

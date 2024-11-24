@@ -14,4 +14,4 @@ Inutile d'en dire plus, ceux qui en ont besoin vont rapidement apprécier !
 
 **[<i class="fa fa-link"></i> https://pinyin.heuzef.com](https://pinyin.heuzef.com)**
 
-Et pour ceux qui souhaite récupérer le code source, pour héberger leur propre instance ou l'utiliser hors-ligne, vous pouvez récupérer ça **[<i class="fa fa-link"></i> ICI](https://git.heuzef.com/heuzef/pinyin)**.
+Et pour ceux qui souhaite récupérer le code source, pour héberger leur propre instance ou l'utiliser hors-ligne, vous pouvez récupérer ça **[<i class="fa fa-link"></i> ICI](https://github.com/heuzef/pinyin)**.
