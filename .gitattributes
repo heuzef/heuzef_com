@@ -1,0 +1,4 @@
+content/articles filter=lfs diff=lfs merge=lfs -text
+content/assets filter=lfs diff=lfs merge=lfs -text
+content/files filter=lfs diff=lfs merge=lfs -text
+content/pages filter=lfs diff=lfs merge=lfs -text
