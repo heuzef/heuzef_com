@@ -119,7 +119,16 @@ Gardez à l'esprit que ces choix sont généralement définitif car couteux à c
 Il est temps de concevoir vos touches maintenant ! :)
 
 # Les Switchs (Commutateurs)
-...
+Si vous avez bien pris soin de vous assurer que votre  clavier  est  compatible **Hot-Swap**,  cela  signifie  que chaqu'une des touches  de votre clavier peuvent être  changés à chaud indépendament.
+Plus  précisément,  il  vous est possible  de changer le  switch, qui  correspond a la méchanique du  bouton.
+
+Il existe ainsi de nombreux  type  de switch ayant des  effets et  senssation bien  différentes  ainsi que plusieurs fabricants, le plus  connus et servant  de standard sont **Cherry MX** car ce sont  les pionniers, cependant il existe aussi des alternatives populaires comme **Gateron**,  leur gammes et tarrifs sont plus  abordable. **Kailh**, qui eux vont plutôt  chercher à  vendre de la haute qualité innovante. **Outemu**, fabricant chinois avec  des prix agressifs et  d'autres marques plus spécialisée (TTC, Tealios, Holy Panda, ...).
+
+Ces fabriquants peuvent  proposer  des centaines de  type de Switch  diversifiant alors la sensation de frappe (frappe linéaire sans résistance, frappe tactile avec un point de résistance ou encore une frappe "clicky" avec un clic audible, ...),  la durabilité, les matériaux, lestendances et  innovation, ...
+
+Ce  qui  est interessant  ici, c'est qu'un Switch équivaudra de façon universel à une touche de  votre  clavier,  peut importe  la marque ou la touche, il vous  est  possible de  changer ou  remplacer une  touche  très  rapidement sans outil, c'est pour cela  que l'on  à tendance  à acheter des  boites de  switch  pour  avoir  un  petit  stock et de la variété,  surtout  si  vous souhaitez utilisez plusieurs type de switch pour votre clavier (ce que  je  vous reommande ! Faites  vous  plaisir sur la  personalisation  !).
+
+Mais comment  savoir  quel  type  de  Switch choisir  dans ce cas  ! Facile  de  s'y  perdre en effet. Et bien  la  réponse  est  simple  : il  vous faut vous  procurer des testeurs de Switch.
 
 # Les Keycaps (Capuchons)
 ...
