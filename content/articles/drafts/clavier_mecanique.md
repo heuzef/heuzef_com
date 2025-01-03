@@ -4,6 +4,8 @@ Tags: clavier, mécanique, diy
 Date: 2023-08-01
 Status: draft
 
+https://mechanicalkeyboards.com/blogs/mk-101/what-is-a-mechanical-keyboard
+
 # Pourquoi fabriquer son propre clavier sur mesure ?
 
 Si vous passer une grande partie de votre vuie derière un écran, vous avez probablement déjçà investie  dans un clavier haut de gamme et vous ne regrettez certainement  pas  d'avoir  investie une somme  importante  dans ce  périphértique très important.
@@ -92,7 +94,7 @@ Si vous êtes prêt à vous réadapter et réapprendre à tapper au clavier, vou
 
 ##  Où en somme-nous ?
 
-Nous avons donc décidé le Layout, le format et l'agencement de notre bébé. Nous allons donc pouvoir commencer à regarder autour des constructeurs ce qu'ils nous propose. Pour ma part, je vais ne vous en présenter qu'un seul, car je ne connais pas meilleur.
+Nous avons donc décidé le Layout, le format et l'agencement de notre bébé. Nous allons donc pouvoir commencer à regarder autour des constructeurs ce qu'ils nous propose. Pour ma part, je vous recommande Keychron car j'ai une expérience parfaite avec eux.
 
 > Découvrir la marque **KEYCHRON** sur [https://keychron.fr](https://keychron.fr)
 
@@ -103,6 +105,8 @@ Le plus important et de garder à l'esprit que vous chercher un fabricant série
 * Le PCB et le chassis peuvent être achetée séparéments.
 * Possible d'acheter les pièces en kit pour monter le clavier soit même.
 * Offre de nombreux accessoires et pièces dans sa boutique.
+
+> Découvrir d'autres marques sur [https://mechanicalkeyboards.com/pages/brands](https://mechanicalkeyboards.com/pages/brands)
 
 L'objectif est de gagner en résilience pour être autonome sur l'évolution et l'entretient de la bête.
  Pour cela, le clavier devra **obligatoirement** disposer d'une carte PCB **HOT-SWAPPABLE** pour vous permettre de disposer les switchs comme bon vous semble. Si le clavier ne permet pas ça, c'est éliminatoire.
@@ -119,16 +123,87 @@ Gardez à l'esprit que ces choix sont généralement définitif car couteux à c
 Il est temps de concevoir vos touches maintenant ! :)
 
 # Les Switchs (Commutateurs)
-Si vous avez bien pris soin de vous assurer que votre  clavier  est  compatible **Hot-Swap**,  cela  signifie  que chaqu'une des touches  de votre clavier peuvent être  changés à chaud indépendament.
-Plus  précisément,  il  vous est possible  de changer le  switch, qui  correspond a la méchanique du  bouton.
+
+Si vous avez bien pris soin de vous assurer que votre clavier  est compatible **Hot-Swap**, cela  signifie  que chaque touches  de votre clavier peut être  changés à chaud.
+Plus  précisément,  il  vous est possible  de changer le  switch, qui  correspond a la méchanique du  bouton avec un simple extracteur.
 
 Il existe ainsi de nombreux  type  de switch ayant des  effets et  senssation bien  différentes  ainsi que plusieurs fabricants, le plus  connus et servant  de standard sont **Cherry MX** car ce sont  les pionniers, cependant il existe aussi des alternatives populaires comme **Gateron**,  leur gammes et tarrifs sont plus  abordable. **Kailh**, qui eux vont plutôt  chercher à  vendre de la haute qualité innovante. **Outemu**, fabricant chinois avec  des prix agressifs et  d'autres marques plus spécialisée (TTC, Tealios, Holy Panda, ...).
 
-Ces fabriquants peuvent  proposer  des centaines de  type de Switch  diversifiant alors la sensation de frappe (frappe linéaire sans résistance, frappe tactile avec un point de résistance ou encore une frappe "clicky" avec un clic audible, ...),  la durabilité, les matériaux, lestendances et  innovation, ...
+Ces fabriquants peuvent  proposer  des centaines de  type de Switch  diversifiant alors la sensation de frappe, la durabilité, les matériaux, les tendances et  innovation, ...
 
-Ce  qui  est interessant  ici, c'est qu'un Switch équivaudra de façon universel à une touche de  votre  clavier,  peut importe  la marque ou la touche, il vous  est  possible de  changer ou  remplacer une  touche  très  rapidement sans outil, c'est pour cela  que l'on  à tendance  à acheter des  boites de  switch  pour  avoir  un  petit  stock et de la variété,  surtout  si  vous souhaitez utilisez plusieurs type de switch pour votre clavier (ce que  je  vous reommande ! Faites  vous  plaisir sur la  personalisation  !).
+Ce  qui  est interessant  ici, c'est qu'un Switch équivaudra de façon universel à une touche de  votre  clavier,  peut importe  la marque ou la touche, c'est pour cela  que l'on  à tendance  à acheter des  boites de  switch  pour  avoir  un  petit  stock et de la variété,  surtout  si  vous souhaitez utilisez plusieurs type de switch pour votre clavier (ce que  je  vous recommande ! Faites  vous  plaisir !).
 
-Mais comment  savoir  quel  type  de  Switch choisir  dans ce cas  ! Facile  de  s'y  perdre en effet. Et bien  la  réponse  est  simple  : il  vous faut vous  procurer des testeurs de Switch.
+Voici les 4 catégories communes à tous les switchs :
+
+**Tactile, (classique et infaillible)** : désigne un interrupteur doté d'une bosse physique et sensorielle pendant la frappe, ce qui vous donne la tranquillité d'esprit subconsciente pendant que vous tapez, sachant que vos frappes sont enregistrées.
+
+**Linéaire, (vite vite !)** : désigne un interrupteur sans bosse tactile. Un interrupteur linéaire est souvent privilégié par les joueurs, en particulier pour les jeux nécessitant une saisie rapide.
+
+**Cliquable (CLIC CLIC !)** : signifie exactement ce que cela signifie. Ce type d'interrupteur est connu pour son "CLICKY !" fort et audible pendant que vous tapez. Similaire aux interrupteurs que l'on trouve sur un clavier d'ordinateur vintage ou une machine à écrire. Adoré par les dactylos et destesté par les personnes dans le même bureau que vous.
+
+**Silencieux (chuuut ...)** : sont conçus pour minimiser le bruit produit pendant la frappe. Ils sont généralement dotés d'un matériau souple qui atténue le bruit de l'actionnement de l'interrupteur et de son appui, ce qui les rend idéaux pour les environnements de bureau ou les espaces partagés.
+
+Mais comment  savoir  quel  type  de  Switch choisir  dans ce cas ! Facile  de  s'y  perdre en effet. Et bien  la  réponse  est  simple  : il  vous faut vous  procurer des testeurs de Switch.
+
+En général les testeurs de switch comprennent une dizaine de switch d'une marque et il est possible d'en avoir qui offrent une centaine de touches. Les prix varient en moyenne entre 10€ et 50€ pour des versions sans Keycaps.
+
+Le problème ici, c'est qu'il est assez important de prendre son temps pour tester un maximum de switch possible et de plusieurs marque. Je me suis surpris à tapoter des testeurs pendant 1h et aller jusqu'à prendre des notes pour chaque touche tant l'expérience est interessante pour trouver la senssation idéal pour nous. Ainsi, dans le meilleur des mondes, nous avons tout un tas de grands testeurs pour chacune des marques, ce qui revient à plusieurs centaines d'euro pour juste choisir et enfin les mettres aux placards ... Ou alors vous êtes copains avec un  geek qui dispose déjà d'un stock de testeurs chez lui.
+
+Pas simple, mais je vais être honnête, je vous conseil d'éviter de limiter votre expérience de choix à un petit testeur de 9 touches.
+Certaines personnes propose des vidéos pendant les tests, mais cela donne une idée de la senssation, bien éloignée de votre réalitée propre.
+
+Je vous laisse avec votre conscience et votre portefeuille à ce stade ;)
 
 # Les Keycaps (Capuchons)
-...
+
+Dernière étape, les Keycaps, la c'est juste l'éclate sur la personalisation !
+
+Quelques infos technique :
+
+* Le matériaux le plus commun et adaptée, c'est le **PBT**, mais tous est possible (ABS, résine, bois, marbre, céramique, laiton, titane, or massif, ...)
+* La plupart des Switch utilise une potence compatible "Cherry MX", mais vérifier toujours vos switchs avant d'acheter vos Keycaps pour ne pas vous faire avoir.
+* Les keycaps sont divisées 4 profils (R1, R2, R3 et R4).
+* Il existe plusieurs familles de profils.
+
+Un ensemble complet de touche personalisée de qualitée coûte dans les 50€ en moyenne. Il est possible surement de trouver des clavier mecanique d'occasion ou en vide grenier pour récupérer les keycaps (voir avec les switchs si vous êtes chanceux) pour vraiment pas chère.
+
+Il est possible de trouver des artistes très talenteux qui fabriquent de véritables oeuvres d'art qui viderons votre compte en banque : [https://www.etsy.com/fr/search?q=capuchons%20de%20clavier](https://www.etsy.com/fr/search?q=capuchons%20de%20clavier)
+
+#  Bonus : Créez vos propres Keycaps
+
+Si vous êtes motivés, voici comment procéder. 
+
+Vous aurez besoin dêtre à l'aise avec Inkscape pour concevoir vos motifs au format SVG. Pour cela, l'entreprise WASD à mis à disposition des templates prêt à l'emplois. Je partage les fichiers directement ici, car leur site ne semblent pas très pérenne.
+
+keyboard_templates.zip
+
+Si vous n'êtes pas inspiré, [SVG Repo](https://www.svgrepo.com) vous dépannera.
+
+Imprimez vos motifs sur du papier de sublimation. Si vous ne souhaitez pas investir dans ce type d'imprimante spéciale, [certaines personnes vous ferons payer dans les 10€ la page A4 sur ce papier spécial](https://www.etsy.com/fr/search?q=Impression%20sublimation%20A4).
+
+**Attention, vos motifs doivent être imprimés en mirroir sur le papier !**
+
+Procurez-vous des Keycaps vierges, il en existe pas mal sur [Aliexpress](https://fr.aliexpress.com/w/wholesale-blank-keycaps-PBT.html). Faites attention à choisir du PBT dans notre cas.
+
+Finalement, pour le transfert, vous devez presser à chaud le papier de sublimation sur une touche vierge pendant quelques secondes.
+
+Pour cela, une machine à bronzer ou une presse à chaud est idéal.
+De mon côté, j'ai fabriqué un petit socle pour y stabiliser un petit fer à lisser, ça fonctionne, prévoyer 230°C minimum (40W).
+
+IMAGE SOCLE FER
+
+Voici les sources du socle pour fer à  lisser si vous avez accès à une imprimante 3D cela peut vous servir :
+
+ keyboard_keycaps_machine.zip
+
+Il existe aussi une methode à la graveuse laser, personnellement le rendu était très moche de mon côté, je vous recommande de tenter l'aventure avec des graveuses de haute précision.
+
+N'hésitez pas à chercher [des vidéos sur ce sujet](https://www.youtube.com/watch?v=8NTH36BTq4Y&list=PLDAnRch_iwbGM9jQVQaib-y4iswCPqIIr), c'est très instructif.
+
+Prévoyez bien sur quelques echecs, le temps de maîtriser les gestes.
+
+# Conclusion
+
+Vous avez toutes les armes en main pour vous équiper du meilleur clavier possible pour vous. Ce petit bijou vous accompagnera probablement quotidiennement et pour toute la vie, prenez en soin, huiler les switch et faite lui un nettoyage à l'alcool IPA de temps en temps.
+
+Et pour ceux qui en veulent toujours plus, les [Macropad](https://xieme-art.org/post/jouer-avec-le-macropad-adafruit-mais-en-serie) devrait vous instéresser.
