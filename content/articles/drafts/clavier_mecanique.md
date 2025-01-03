@@ -4,55 +4,68 @@ Tags: clavier, mécanique, diy
 Date: 2023-08-01
 Status: draft
 
-https://mechanicalkeyboards.com/blogs/mk-101/what-is-a-mechanical-keyboard
+# Pourquoi fabriquer son propre clavier sur mesure ? 🧰
 
-# Pourquoi fabriquer son propre clavier sur mesure ?
+Si vous passer une grande partie de votre vie derière un écran, vous avez probablement déjà investi dans un clavier haut de gamme et vous ne regrettez certainement pas l'achat de ce périphértique très important.
 
-Si vous passer une grande partie de votre vuie derière un écran, vous avez probablement déjçà investie  dans un clavier haut de gamme et vous ne regrettez certainement  pas  d'avoir  investie une somme  importante  dans ce  périphértique très important.
+Je vous proprose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur-mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijoux que vous aller fabriquer sera unique pour vous, vraiment durable, évolutif et facile d'entretient.
 
-A travers cet  article,  je vous proprose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier de  luxe sur-mesure, le temps et l'argent que cela demande est largement compensée par le gain en  confort et productivité que cela vous  apportera. De plus,  le  petit bijoux que vous aller fabriquer sera unique pour vous, vraiment durable, évolutif et facile d'entretient.
+![keyboard_001](../../assets/keyboard_001.webp)
 
-C'est tous de même plus plaisant que de jetter son clavier tous les 5 ans, pensez-y la prochaine fois que vous reflechissez à acheter un nouveau clavier : **fabriquez-le !**
+Pensez-y sérieusement, la prochaine fois que vous reflechissez à acheter un nouveau clavier : **fabriquez-le !** Je vous rassure, c'est simple et agréable, un peu comme fabriquer son propre PC finalement.
 
-Nous allons donc passer en revue toutes les étapes à suivre  dans l'ordre pour obtenir le clavier ultime de vos rêves et pour la vie.
+Nous allons donc passer en revue toutes les étapes à suivre dans l'ordre pour obtenir le clavier ultime de vos rêves et pour la vie.
 
-# Mais combien ça va me coûter !?
+# Mais combien ça va me coûter !? 🧐
 
-Bonne nouvelle, ça dépend  de vous,  même  si le but du  projet c'est d'y mettre plus cher qu'un clavier de luxe, il  faut savoir que certaine marque, comme par exemple Razer, vendent des claviers à 350€, ils ont en  moyenne une durée de vie de 1 an, c'est donc clairement un mauvais investissement.
-Pour ce projet, je  vous  recommande d'envisager une enveloppe de 500€, vous aviserez ensuite selon vos ambitions, car c'est très facile de partir dans du tunning pour se faire plaisir ;)
+Bonne nouvelle, ça dépend de vous, même si le but du projet c'est d'y mettre plus cher qu'un clavier de luxe, il faut savoir que certaines marque, comme par exemple Razer, vendent des claviers à 350€, ils ont en moyenne une durée de vie de 1 an, c'est donc clairement un mauvais investissement.
+Pour ce projet, je vous recommande d'envisager une enveloppe de 300€ à 500€, vous aviserez ensuite selon vos ambitions, car il  est facile de se laisser  tenter pour se faire plaisir 🤗
 
-#  Comprendre ce qu'est un clavier mécanique
-Il est important de bien comprendre que les vrais clavier, historique, sont mécanique. Car il existe également des clavier plus récent, de bien moindre qualitée et donc moins  cher que nous retrouvons assez fréquement : les claviers à membrane.
+# Deux types de clavier ⌨️
+Il est important de bien comprendre que les vrais clavier historique, sont mécaniques. Car il existe également des clavier plus récent, de bien moindre qualitée et donc moins cher, que nous retrouvons assez fréquement : les claviers à membrane.
 
-Comme le nom l'indique, ces claviers dispose d'une membrane en silicone pour la pression des touches ce qui en fais clavier :
+![keyboard_002](../../assets/keyboard_002.webp)
+
+## Clavier à membrane
+Comme le nom l'indique, ces claviers disposent d'une membrane en silicone pour la pression des touches ce qui en fais clavier :
 
 * Pas chère (prix moyen 20€)
-* Capable d'encaisser des accidents de café (le silicone est étanche et protegera des liquides)
+* Capable d'encaisser des accidents de café (le silicone est étanche et "protegera" des liquides)
 * Silencieux
 
-C'est simple et efficace, adapté pour de la bureautique occasionnelle, mais dans notre cas c'est asbolument à fuire, car nous voulons le top du top : Un clavier macanique de luxe sur-mesure !
+C'est simple et efficace, adapté pour de la bureautique occasionnelle, ce type de clavier jetable est particulièrement médiocre et dispose d'une durée de vie de quelques année tout au  plus.
+Certaines marque peux scrupuleuses ne vont pas hésiter à vendre ce type de clavier plusieurs centaines d'euro, ne vous faites plus avoir.
 
-Ce type de clavier bénéficie d'une vitesse de frappe ultra rapide, fluide, précise et peuvent bénéficier de toutes les qualités imaginable et s'absoudre de tout les défauts si l'on est prêt à  faire du sur-mesure.
-En effet, vous pourriez très bien rendre votre clavier IP65 si vous êtes très maladroit avec votre café. Le rendre ultra silencieux, tous  est possible car nous aurons la possibilité de démonter ce dernier entrièrement.
-Donc pour  résumer,  si vous n'êtes pas prêt à mettre la main au portefeuille, procurez-vous un clavier  à membrane  en grande surface, sinon, nous allons pouvoir commencer à jouer dans la cours des grands :)
+## Clavier mécanique
+Bénéficie d'une vitesse de frappe rapide, fluide, précise et peuvent bénéficier de toutes les qualités imaginable et s'absoudre de tout les défauts. Sont prix est assez élevé.
+
+![keyboard_003](../../assets/keyboard_003.webp)
+
+## Le choix est  donc simple
+Donc pour résumer, si vous n'êtes pas prêt à mettre la main au portefeuille, procurez-vous un clavier à membrane en grande surface, sinon, nous allons pouvoir commencer à jouer dans la cours des grands 🤓
 
 # Composant d'un clavier
 
-Un clavier, c'est plutôt simple, nous avons une carte PCB, le coeur du clavier, dans un chassis.
+Un clavier, c'est plutôt simple, nous avons  :
 
-Le chassis lui même est en deux parties inférieur et supérieur dans laquel nous retrouverons une plaque qui accueillera les touches.
+* Une carte PCB, le coeur du clavier, dans un chassis.
+* Le chassis lui même est en deux parties inférieur et supérieur dans laquel nous retrouverons une plaque qui accueillera les touches.
+* Les touches se décomposent en deux parties :
+	* les switchs (commutateurs)
+	* les keycaps (capuchons)
 
-Les touches eux-même se décompose en deux parties, les switchs (commutateurs) et les keycaps (capuchons).
+Voila, il vous suffira donc de concentrer vos choix sur ces composants. Mais vous allez voir, que nous avons l'embarra du choix justement !
 
-Voila, il vous suffira donc de concentrer vos choix sur ces composants. Mais vous allez voir, que nous l'embarra du choix justement !
+# La mise en page et le format
 
-# Le layout (mise en page) et le format
+Commençons par le plus important : décider du layout que vous souhaitez, il s'agit de la taille et forme de votre clavier. Puis enfin le format, qui est définie par une norme.
 
-Le point le plus important et de commencer par décider du Layout que vous souhaitez, il s'agit de la taille et forme de votre clavier mais aussi du format, qui est définie par une norme.
+## Mise en page
 
-## Layout
+Concernant le layout, le standard est le 100%, soit la taille offrant un pavé numérique complet, une rangée de fonctions et un cluster de navigation. C'est le format le plus grand et le plus proche d'un clavier d'ordinateur historique.
 
-Concernant la taille, le standard est le 100%, c'est la taille offrant un pavé numérique complet, une rangée de fonctions et un cluster de navigation. C'est le format le plus répandu et le plus proche d'un clavier d'ordinateur classique. Si votre but est d'avoir le clavier le plus grand et complet, alors le 100% est fait pour vous.
+Si votre but est d'avoir le clavier le plus complet, alors le 100% est fait pour vous.
+
 Plus grand que 100%, signifirais un ajout de module externe au clavier.
 
 Enssuite, il est possible de rendre le clavier plus compact en supprimant des touches :
@@ -63,7 +76,7 @@ Enssuite, il est possible de rendre le clavier plus compact en supprimant des to
 
 Et bien entendu, il existe toutes une multitude de layout entre 100% et 40%, pour répondre à votre besoin.
 
-## Le format
+## Format
 
 La norme ISO est la plus répendue car international, c'est surement ce type de clavier que vous avez l'habitude d'utiliser. Mais il existe également une norme américaine ANSI.
 La différence n’est pas évidente de prime abord. Mais il existe des nuances bien réelles qui les distinguent :
@@ -73,6 +86,8 @@ La différence n’est pas évidente de prime abord. Mais il existe des nuances 
 * La touche Shift gauche est plus large sur les clavier ANSI. Supprimant donc une touche.
 
 Voici une image pour visualiser les différences :
+
+IMAGE
 
 Les nuances entre ces 2 normes est importante et je vous recommande de tester les deux claviers pendant un temps pour conforter dans votre choix.
 
@@ -92,7 +107,7 @@ Si cela vous interesse, l'équivalent le plus optimal de l'**AZERTY** s'appel le
 
 Si vous êtes prêt à vous réadapter et réapprendre à tapper au clavier, vous pouvez envisager ces agencements : **gain monumental de confort et vitesse de frappe assuré !**
 
-##  Où en somme-nous ?
+## Où en somme-nous ?
 
 Nous avons donc décidé le Layout, le format et l'agencement de notre bébé. Nous allons donc pouvoir commencer à regarder autour des constructeurs ce qu'ils nous propose. Pour ma part, je vous recommande Keychron car j'ai une expérience parfaite avec eux.
 
@@ -124,14 +139,14 @@ Il est temps de concevoir vos touches maintenant ! :)
 
 # Les Switchs (Commutateurs)
 
-Si vous avez bien pris soin de vous assurer que votre clavier  est compatible **Hot-Swap**, cela  signifie  que chaque touches  de votre clavier peut être  changés à chaud.
-Plus  précisément,  il  vous est possible  de changer le  switch, qui  correspond a la méchanique du  bouton avec un simple extracteur.
+Si vous avez bien pris soin de vous assurer que votre clavier est compatible **Hot-Swap**, cela signifie que chaque touches de votre clavier peut être changés à chaud.
+Plus précisément, il vous est possible de changer le switch, qui correspond a la méchanique du bouton avec un simple extracteur.
 
-Il existe ainsi de nombreux  type  de switch ayant des  effets et  senssation bien  différentes  ainsi que plusieurs fabricants, le plus  connus et servant  de standard sont **Cherry MX** car ce sont  les pionniers, cependant il existe aussi des alternatives populaires comme **Gateron**,  leur gammes et tarrifs sont plus  abordable. **Kailh**, qui eux vont plutôt  chercher à  vendre de la haute qualité innovante. **Outemu**, fabricant chinois avec  des prix agressifs et  d'autres marques plus spécialisée (TTC, Tealios, Holy Panda, ...).
+Il existe ainsi de nombreux type de switch ayant des effets et senssation bien différentes ainsi que plusieurs fabricants, le plus connus et servant de standard sont **Cherry MX** car ce sont les pionniers, cependant il existe aussi des alternatives populaires comme **Gateron**, leur gammes et tarrifs sont plus abordable. **Kailh**, qui eux vont plutôt chercher à vendre de la haute qualité innovante. **Outemu**, fabricant chinois avec des prix agressifs et d'autres marques plus spécialisée (TTC, Tealios, Holy Panda, ...).
 
-Ces fabriquants peuvent  proposer  des centaines de  type de Switch  diversifiant alors la sensation de frappe, la durabilité, les matériaux, les tendances et  innovation, ...
+Ces fabriquants peuvent proposer des centaines de type de Switch diversifiant alors la sensation de frappe, la durabilité, les matériaux, les tendances et innovation, ...
 
-Ce  qui  est interessant  ici, c'est qu'un Switch équivaudra de façon universel à une touche de  votre  clavier,  peut importe  la marque ou la touche, c'est pour cela  que l'on  à tendance  à acheter des  boites de  switch  pour  avoir  un  petit  stock et de la variété,  surtout  si  vous souhaitez utilisez plusieurs type de switch pour votre clavier (ce que  je  vous recommande ! Faites  vous  plaisir !).
+Ce qui est interessant ici, c'est qu'un Switch équivaudra de façon universel à une touche de votre clavier, peut importe la marque ou la touche, c'est pour cela que l'on à tendance à acheter des boites de switch pour avoir un petit stock et de la variété, surtout si vous souhaitez utilisez plusieurs type de switch pour votre clavier (ce que je vous recommande ! Faites vous plaisir !).
 
 Voici les 4 catégories communes à tous les switchs :
 
@@ -143,11 +158,11 @@ Voici les 4 catégories communes à tous les switchs :
 
 **Silencieux (chuuut ...)** : sont conçus pour minimiser le bruit produit pendant la frappe. Ils sont généralement dotés d'un matériau souple qui atténue le bruit de l'actionnement de l'interrupteur et de son appui, ce qui les rend idéaux pour les environnements de bureau ou les espaces partagés.
 
-Mais comment  savoir  quel  type  de  Switch choisir  dans ce cas ! Facile  de  s'y  perdre en effet. Et bien  la  réponse  est  simple  : il  vous faut vous  procurer des testeurs de Switch.
+Mais comment savoir quel type de Switch choisir dans ce cas ! Facile de s'y perdre en effet. Et bien la réponse est simple : il vous faut vous procurer des testeurs de Switch.
 
 En général les testeurs de switch comprennent une dizaine de switch d'une marque et il est possible d'en avoir qui offrent une centaine de touches. Les prix varient en moyenne entre 10€ et 50€ pour des versions sans Keycaps.
 
-Le problème ici, c'est qu'il est assez important de prendre son temps pour tester un maximum de switch possible et de plusieurs marque. Je me suis surpris à tapoter des testeurs pendant 1h et aller jusqu'à prendre des notes pour chaque touche tant l'expérience est interessante pour trouver la senssation idéal pour nous. Ainsi, dans le meilleur des mondes, nous avons tout un tas de grands testeurs pour chacune des marques, ce qui revient à plusieurs centaines d'euro pour juste choisir et enfin les mettres aux placards ... Ou alors vous êtes copains avec un  geek qui dispose déjà d'un stock de testeurs chez lui.
+Le problème ici, c'est qu'il est assez important de prendre son temps pour tester un maximum de switch possible et de plusieurs marque. Je me suis surpris à tapoter des testeurs pendant 1h et aller jusqu'à prendre des notes pour chaque touche tant l'expérience est interessante pour trouver la senssation idéal pour nous. Ainsi, dans le meilleur des mondes, nous avons tout un tas de grands testeurs pour chacune des marques, ce qui revient à plusieurs centaines d'euro pour juste choisir et enfin les mettres aux placards ... Ou alors vous êtes copains avec un geek qui dispose déjà d'un stock de testeurs chez lui.
 
 Pas simple, mais je vais être honnête, je vous conseil d'éviter de limiter votre expérience de choix à un petit testeur de 9 touches.
 Certaines personnes propose des vidéos pendant les tests, mais cela donne une idée de la senssation, bien éloignée de votre réalitée propre.
@@ -169,7 +184,7 @@ Un ensemble complet de touche personalisée de qualitée coûte dans les 50€ e
 
 Il est possible de trouver des artistes très talenteux qui fabriquent de véritables oeuvres d'art qui viderons votre compte en banque : [https://www.etsy.com/fr/search?q=capuchons%20de%20clavier](https://www.etsy.com/fr/search?q=capuchons%20de%20clavier)
 
-#  Bonus : Créez vos propres Keycaps
+# Bonus : Créez vos propres Keycaps
 
 Si vous êtes motivés, voici comment procéder. 
 
@@ -192,7 +207,7 @@ De mon côté, j'ai fabriqué un petit socle pour y stabiliser un petit fer à l
 
 IMAGE SOCLE FER
 
-Voici les sources du socle pour fer à  lisser si vous avez accès à une imprimante 3D cela peut vous servir :
+Voici les sources du socle pour fer à lisser si vous avez accès à une imprimante 3D cela peut vous servir :
 
  keyboard_keycaps_machine.zip
 
