@@ -4,8 +4,6 @@ Tags: clavier, diy
 Date: 2025-01-04
 Status: published
 
-# Pourquoi fabriquer son propre clavier sur mesure ? 🧰
-
 Si vous passez une grande partie de votre vie derrière un écran, vous avez probablement déjà investi dans un clavier haut de gamme et vous ne regrettez certainement pas l'achat de ce périphérique très important.
 
 Je vous propose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijou que vous aller fabriquer sera unique pour vous, vraiment durable, évolutif et facile à l'entretient.
@@ -106,7 +104,7 @@ Si vous êtes un guerrier prêt à réapprendre à taper au clavier, vous pouvez
 
 # Où en somme-nous ? 🥵
 
-Nous avons donc décidé le Layout, le format et l'agencement. Nous allons donc pouvoir commencer à regarder autour des constructeurs ce qu'ils nous proposent. Pour ma part, je vous recommande [Keychron](https://keychron.fr), car j'ai une expérience parfaite avec eux.
+Nous avons donc décidé le Layout, le format et l'agencement. Nous allons donc pouvoir commencer à regarder autour des constructeurs ce qu'ils nous proposent. Pour ma part, je vous recommande [Keychron](https://keychron.fr), car j'ai une expérience parfaite avec eux. De plus, ils ont introduit un concept de retroéclairage par la face sud (South facing RGB), permettant de s'équiper de keycaps avec des symboles sur le côté.
 
 Libre à vous de fouiller chez la concurrence pour comparer. Le plus important et de garder à l’esprit que vous cherchez un fabricant sérieux, capable de vous fournir :
 
@@ -128,7 +126,7 @@ C’est bon, vous avez trouvé le modèle de vos rêves, nous allons maintenons 
 
 ![keyboard_006](../../assets/keyboard_006.webp)
 
-La couleur du châssis, les matériaux et si vous souhaitez du sans-fil. Gardez à l’esprit que ces choix sont généralement définitifs, car coûteux à changer, ainsi, je vous recommande de partir sur quelque chose de durable et intemporelle : un châssis en métal et en filaire (pas de problème d'usure ni de batterie). Mais c’est strictement personnel comme décision.
+La couleur du châssis, les matériaux, le retroéclairage et si vous souhaitez du sans-fil. Gardez à l’esprit que ces choix sont généralement définitifs, car coûteux à changer, ainsi, je vous recommande de partir sur quelque chose de durable et intemporelle : un châssis en métal et en filaire (pas de problème d'usure ni de batterie). Mais c’est strictement personnel comme décision.
 
 Il est temps de concevoir vos touches maintenant !
 
@@ -194,6 +192,10 @@ Finalement, il est possible de trouver des artistes très talentueux qui fabriqu
 <video id="tesla_art" controls preload="auto" width="900" height="500">
 <source src="../../assets/keyboard_014.mp4" type='video/mp4'>
 </video>
+
+> PS : n'oubliez pas de vous procurer des stabilisateurs pour les grandes touches ! C'est essentiel pour aider à répartir le poids de chaque pression sur toute la touche et il maintient l'équilibre des touches plus grandes pour réduire les oscillations.
+
+---
 
 # Bonus : Fabriquer ses keycaps ❤️‍🔥
 
