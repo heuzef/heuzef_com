@@ -6,7 +6,7 @@ Status: published
 
 Si vous passez une grande partie de votre vie derrière un écran, vous avez probablement déjà investi dans un clavier haut de gamme et vous ne regrettez certainement pas l'achat de ce périphérique très important.
 
-Je vous propose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijou que vous aller fabriquer sera unique pour vous, vraiment durable, évolutif et facile à l'entretient.
+Je vous propose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijou que vous aller allez fabriquer sera unique pour vous, vraiment durable, évolutif et facile à l’entretient.
 
 ![keyboard_001](../../assets/keyboard_001.webp)
 
@@ -76,7 +76,7 @@ Et bien entendu, il existe toute une multitude de layout entre 100% et 40%, pour
 
 ## Format (Norme)
 
-La norme **ISO** est la plus rependue, car international, c’est sûrement ce type de clavier que vous avez l’habitude d’utiliser. Mais il existe également une norme américaine **ANSI**. La différence n’est pas évidente de prime abord. Mais il existe des nuances bien réelles qui les distinguent avec leurs avantages et inconvénients :
+La norme **ISO** est la plus rependue, car internationale, c’est sûrement ce type de clavier que vous avez l’habitude d’utiliser. Mais il existe également une norme américaine **ANSI**. La différence n’est pas évidente de prime abord. Mais il existe des nuances bien réelles qui les distinguent avec leurs avantages et inconvénients :
 
 * Le nombre de touches varie, cinq sont concernées.
 * Sur un clavier **ISO**, la touche *ENTER* est large, alors que sur un format **ANSI**, il n’apparaît que sur une seule.
