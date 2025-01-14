@@ -6,7 +6,7 @@ Status: published
 
 Si vous passez une grande partie de votre vie derrière un écran, vous avez probablement déjà investi dans un clavier haut de gamme et vous ne regrettez certainement pas l'achat de ce périphérique très important.
 
-Je vous propose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijou que vous aller allez fabriquer sera unique pour vous, vraiment durable, évolutif et facile à l’entretient.
+Je vous propose d'aller encore plus loin dans cette logique en fabriquant votre propre clavier sur mesure, le temps et l'argent que cela demande est largement compensée par le gain en confort et productivité que cela vous apportera. De plus, le petit bijou que vous aller fabriquer sera unique pour vous, vraiment durable, évolutif et facile à l'entretient.
 
 ![keyboard_001](../../assets/keyboard_001.webp)
 
