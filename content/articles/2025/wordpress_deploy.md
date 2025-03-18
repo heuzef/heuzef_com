@@ -1,12 +1,12 @@
-Title: Déployer vos instances Workpress en un clic
+Title: Déployer vos instances WordPress en un clic
 Category: Informatique
 Tags: autohébergement, web, docker, wordpress, ansible, jenkins
 Date: 2025-03-18
 Status: published
 
-Via cet article, nous verrons comment mettre en place un workflow de déploiement de site WordPress via Jenkins, Ansible et Docker.
+Voyons comment mettre en place un workflow de déploiement de site WordPress via Jenkins, Ansible et Docker.
 
-Cela permet de concevoir un pipeline CI/CD unifié qui transforme un processus manuel complexe en un déploiement en un clic. Finalement à la manière des hébergeurs qui propose de l'installation automatique.
+Cela permet de concevoir un pipeline CI/CD qui transforme un processus manuel lourd en un déploiement en un clic. Finalement à la manière des hébergeurs qui propose de l'installation automatique.
 
 ![wordpress_deploy_01](../../assets/wordpress_deploy_01.png)
 
@@ -20,7 +20,7 @@ Concernant le choix des outils :
 
 * Ansible pour la CaC, le playbooks executé par Jenkins exploite un rôle conçu pour l'occasion.
 
-* Docker fournira les environnements nécessaires pour nos instances Wordpress.
+* Docker fournira trois conteneurs nécessaires par instance : wordpress, phpmyadmin et sftp.
 
 Bien entendu, il est possible de remplacer Jenkins par n'importe quel outil d'orchestration capable d'éxecuter notre playbook Ansible 😉 Ici je pars du principe que vous avez déjà à disposition un nœud Jenkins prêt, pour commencer, il faut installer le [plugin Ansible](https://plugins.jenkins.io/ansible).
 
@@ -55,11 +55,11 @@ Dans le cadre de ce projet, voici les variables d'environnement personnalisables
 
 En effet, ce projet ne se contente pas de déployer un Wordpress "vanilla", il est configuré avec un nom de domaine, un serveur mail, une connexion à une base de données mysql ou mariadb, un SGBDR (phpMyAdmin) et finalement un service SFTP. Ainsi, le client bénéficie de tous ces outils isolés et dédiés pour son instance Wordpress lui permettant d'en avoir le contrôle complet.
 
-Enfin, le serveur hôte doit pouvoir faire tourner, en plus de Docker, tar, mysqldump et crontab pour assurer des sauvegardes hebdomadaires automatique qui seront accessibles par le client sous forme d'archive dans un dossier "backups".
+Enfin, le serveur hôte doit pouvoir faire tourner (en plus de Docker) : Tar, MysqlDump et Crontab pour assurer des sauvegardes hebdomadaires automatique qui seront accessibles par le client sous forme d'archive dans un dossier "backups".
 
-# Le playbook des variables d'environnement par défaut
+# Variables d'environnement par défaut
 
-Dans votre rôle Ansible *docker_wordpress/defaults/main.yml*, initialiser les variables par defauts :
+Dans votre rôle Ansible *docker_wordpress/defaults/main.yml*, initialiser les variables d'environnement par defaut :
 
 ```yaml
 ---
@@ -91,17 +91,17 @@ wpdocker_sftp_port: 10000
 ```
 
 Vous constaterez ici que le rôle Ansible déploie également un plugin Wordpress automatiquement.
-J'utilise ici [Post SMTP](https://wordpress.org/plugins/post-smtp/) qui est le plugin le plus basique que j'ai trouvé pour l'envoi de mail.
+J'utilise ici [Post SMTP](https://wordpress.org/plugins/post-smtp/) qui est le plugin le plus basique que j'ai trouvé pour l'envoi de mail via Wordpress.
 
-Attention, ce plugin doit bien entendu être configuré une fois l'instance Wordpress prête, mais sa configuration est très simple et rapide.
+Attention, ce plugin doit bien entendu être configuré une fois l'instance Wordpress prête, mais c'est très simple et rapide 👌
 
 Si vous souhaitez utiliser une version plus récente du plugin, pensez à actualiser aussi son empreinte SHA1.
 
 # Les templates Ansible
 
-3 Templates Jinja sont utilisés par le rôle :
+3 templates Jinja sont utilisés par le rôle :
 
-Le template d'email envoyé automatiquement à la fin du déploiement :
+Le template d'email (*welcome.j2*) envoyé automatiquement à la fin du déploiement :
 
 ```yaml
 Bonjour,
@@ -144,9 +144,9 @@ Tous les accès se font avec le protocole sécurisé HTTPS.
 Nous restons à votre disposition pour tout complément d'information,
 ```
 
-> Notez ici que l'url pour l'accès au SGBDR est systèmatiquement fixé avec un sous-domaine *https://**db**.domain.tld*
+> Notez ici que l'url pour l'accès au SGBDR est systèmatiquement fixé avec un sous-domaine https://db.domain.tld
 
-Un template pour Docker-Compose :
+Un template pour Docker-Compose (*docker-compose.yml.j2*) :
 
 ```yaml
 version: '3.1'
@@ -190,11 +190,11 @@ services:
 
 > L'accès au fichier *custom.ini* est judicieux pour permettre au client d'avoir un maximum de l'attitude sur la configuration de son instance Wordpress, mais cela reste facultatif.
 
-> Ici, le service SFTP utilise un volume limité au repertoire des données Wordpress exclusivement.
+> Ici, le service SFTP utilise un volume limité au repertoire "data" exclusivement.
 
-Finalement, un template pour les sauvegardes quotidienne :
+Finalement, un template pour les sauvegardes quotidienne (*backups.sh.j2*) :
 
-```yaml
+```bash
 #!/bin/sh
 # Backups Wordpress {{ item.docker_name }}
 
@@ -212,6 +212,7 @@ chown -R 33:33 /opt/{{ item.docker_name }}/data/backups/
 ```
 
 > Ici, les sauvegardes de plus de 3 mois sont prunés avec un méthode très brutale avant de déclencher les backups. Ansi, assurez-vous que le fuseau horraire de votre serveur est correctement configuré ! ⏱️
+
 > L'application des permissions est a adapter en fonction de votre serveur, dans mon cas ici, c'est L'UID 33.
 
 # Tâches du rôle ansible
@@ -359,6 +360,8 @@ Dans votre rôle ansible *docker_wordpress/tasks/main.yml*, initialiser la tâch
 
 ```
 
+> Ici, fonctionne sur un environnement CentOS. Adaptez cette tâche à votre OS.
+
 ``wpdocker_root_dir`` est utilisé pour configurer le chemin racine de votre docker.
 Ainsi, chaque instance crée un dossier utilisant le nom de vos conteneurs (nom du projet). Dans ce dossier d'instance, vous pouvez trouver :
 
@@ -368,13 +371,91 @@ Ainsi, chaque instance crée un dossier utilisant le nom de vos conteneurs (nom 
 
 Ici, les sauvegardes hebdomadaires lancées avec Crontab chaque dimanche à minuit.
 
-Pour terminer, il faut bien sûr enregistrer les entrées DNS du nom de domaine utilisé par l'instance déployé.
+# Variables d'hôtes
+
+Voici à quoi pourrait ressembler votre inventaire d'hôtes **wpdockers** :
+
+```yaml
+---
+
+# List of Websites
+wpdockers:
+  - name: Wordpress 01
+    docker_name: wp01
+    email_from: Heuzef <contact@heuzef.com>
+    email_to:
+    - Heuzef <contact@heuzef.com>
+    email_host: localhost
+    email_port: 25
+    # Wordpress
+    wp_image: "{{ wpdocker_wp_image }}"
+    wp_port: 8000
+    url: wp01.heuzef.com
+    # DB
+    db_host: db.heuzef.com
+    db_user: heuzef
+    db_pass: "{{ vault_heuzef_mariadb_pass.replace('$','$$') }}"
+    db_name: heuzef
+    # phpMyAdmin
+    pma_image: "{{ wpdocker_pma_image }}"
+    pma_port: 9000
+    # SFTP
+    sftp_image: "{{ wpdocker_sftp_image }}"
+    sftp_port: 10000
+    sftp_user: heuzef
+    sftp_pass: "{{ vault_heuzef_sftp_pass.replace('$','$$') }}"
+
+  - name: Wordpress 02
+    docker_name: wp02
+    email_from: Heuzef <contact@heuzef.com>
+    email_to:
+    - Heuzef <contact@heuzef.com>
+    email_host: "{{ wpdocker_email_host }}"
+    email_port: "{{ wpdocker_email_port }}"
+    # Wordpress
+    wp_image: "{{ wpdocker_wp_image }}"
+    wp_port: 8001
+    url: wp02.heuzef.com
+    # DB
+    db_host: db.heuzef.com
+    db_user: heuzef
+    db_pass: "{{ vault_heuzef_mariadb_pass.replace('$','$$') }}"
+    db_name: heuzef
+    # phpMyAdmin
+    pma_image: "{{ wpdocker_pma_image }}"
+    pma_port: 9001
+    # SFTP
+    sftp_image: "{{ wpdocker_sftp_image }}"
+    sftp_port: 10001
+    sftp_user: heuzef
+    sftp_pass: "{{ vault_heuzef_sftp_pass.replace('$','$$') }}"
+
+# Customs rules for rev-proxy
+proxyin_ip: 0.0.0.0
+wp_ports_range: 8000:8099
+pma_ports_range: 9000:9099
+sftp_ports_range: 10000:10099
+
+iptables_custom_rules:
+  - name: Allow Wordpress ports for rev-proxy
+    rules: "-A INPUT -m state --state NEW -p tcp --dport {{ wp_ports_range }} -s {{ proxyin_ip }} -j ACCEPT"
+    state: present
+  - name: Allow phpMyAdmin ports for rev-proxy
+    rules: "-A INPUT -m state --state NEW -p tcp --dport {{ pma_ports_range }} -s {{ proxyin_ip }} -j ACCEPT"
+    state: present
+  - name: Allow SFTP ports for rev-proxy
+    rules: "-A INPUT -m state --state NEW -p tcp --dport {{ sftp_ports_range }} -s {{ proxyin_ip }} -j ACCEPT"
+    state: present
+```
+
+# Configuration DNS :
+Pour terminer, il faut bien sûr enregistrer les entrées DNS des noms de domaine utilisés par les instances déployés.
 
 ``@ 10800 IN A <your-reverse-proxy-ip>``
 
 ``db 10800 IN A <your-reverse-proxy-ip>``
 
 
-Et voilà ✌️ Avec ceci, vous devriez avoir une très bonne base pour concevoir votre projet de déploiement automatisé.
+Et voilà ✌️ Avec ceci, vous devriez avoir une très bonne base pour concevoir votre projet de déploiement Wordpress automatisé.
 
 
