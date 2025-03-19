@@ -188,7 +188,7 @@ services:
       - {{ wpdocker_root_dir }}/{{ item.docker_name }}/data/:/home/{{ item.sftp_user }}/ # DATA files
 ```
 
-> L'accès au fichier *custom.ini* est judicieux pour permettre au client d'avoir un maximum de l'attitude sur la configuration de son instance Wordpress, mais cela reste facultatif.
+> L'accès au fichier *custom.ini* est judicieux pour permettre au client d'avoir un maximum de latitude sur la configuration de son instance Wordpress, mais cela reste facultatif.
 
 > Ici, le service SFTP utilise un volume limité au repertoire "data" exclusivement.
 
