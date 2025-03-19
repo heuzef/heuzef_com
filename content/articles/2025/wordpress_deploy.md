@@ -211,7 +211,7 @@ tar -czf /opt/{{ item.docker_name }}/data/backups/www-{{ item.db_user }}-$(date 
 chown -R 33:33 /opt/{{ item.docker_name }}/data/backups/
 ```
 
-> Ici, les sauvegardes de plus de 3 mois sont prunés avec un méthode très brutale avant de déclencher les backups. Ansi, assurez-vous que le fuseau horraire de votre serveur est correctement configuré ! ⏱️
+> Ici, les sauvegardes de plus de 3 mois sont prunés avec un méthode très brutale avant de déclencher les backups. Ainsi, assurez-vous que le fuseau horraire de votre serveur est correctement configuré ! ⏱️
 
 > L'application des permissions est a adapter en fonction de votre serveur, dans mon cas ici, c'est L'UID 33.
 
