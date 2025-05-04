@@ -52,13 +52,15 @@ Une fois activé, ajouter une nouvelle règle.
 
 La nouvelle règle doit utiliser les paramètres suivants :
 
-1. Cible : Appel Entrant
-2. Filtrage : permanant (24/7/365)
-3. Action : **BLOQUAGE**
+1. Communications : Entrante
+2. Numéro : ``0162*``
+3. Filtrage : Permanant (24/7)
+4. Cible : Zppels
+5. Action : **Bloquer**
 
 L'énorme atout ici, est qu'il est possible d'utiliser le *wildcard* joker, soit l'*étoile* qui brille de mille feux et permet de remplacer tout chiffre !
 
-Ainsi, en saisissant ``0162*``, c'est un filtre sur l'integralité des numéros commençant par **0162** qui est appliqué, radical !
+Ainsi, en saisissant la syntaxe ``0162*``, c'est un filtre sur l'integralité des numéros commençant par **0162** qui est appliqué, radical !
 
 ![demarchage_telephonique_004](../../assets/demarchage_telephonique_004.png)
 
