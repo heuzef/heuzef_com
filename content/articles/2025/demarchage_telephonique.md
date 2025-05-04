@@ -18,7 +18,7 @@ Comment savent-ils que votre numéro est valide ? Très simple, vous avez répon
 La stratégie n'est pas d'indiquer que vous ne souhaitez pas être contacté via une liste d'opposition aussi efficace que le "stop pub" sur votre boîte aux lettres ... mais plutôt d'effectuer une manipulation technique sur votre ligne téléphonique qui bloque ces appels, sans passer par votre téléphone ou une application foireuse.
 
 # Les règles du jeu qui rendent cela possible ⚖️
-Le plan de numérotation adopté par l’ARCEP applicable dès 2023 a pour objectif notamment de renforcer la protection des utilisateurs contre les fraudes et abus. Ce dernier oblige depuis les centres d'appels qui respectent la lois à exploiter des **NVP** (numéros polyvalents vérifiés), autrement, ils prennent chère. Concrétement, cela les oblige à utiliser une plage de numéros avec les racines communes suivante :
+[Le plan de numérotation adopté par l’ARCEP](https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/plan-numerotation-professionnels.html) applicable dès 2023 a pour objectif notamment de renforcer la protection des utilisateurs contre les fraudes et abus. Ce dernier oblige depuis les centres d'appels qui respectent la lois à exploiter des **NVP** (numéros polyvalents vérifiés), autrement, ils prennent chère. Concrétement, cela les obliges à utiliser une plage de numéros avec les 12 racines communes suivante :
 
 * 01 62
 * 01 63
