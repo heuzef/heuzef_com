@@ -55,7 +55,7 @@ La nouvelle règle doit utiliser les paramètres suivants :
 1. Communications : Entrante
 2. Numéro : ``0162*``
 3. Filtrage : Permanant (24/7)
-4. Cible : Zppels
+4. Cible : Appels
 5. Action : **Bloquer**
 
 L'énorme atout ici, est qu'il est possible d'utiliser le *wildcard* joker, soit l'*étoile* qui brille de mille feux et permet de remplacer tout chiffre !
