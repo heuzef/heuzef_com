@@ -18,7 +18,7 @@ Comment savent-ils que votre numéro est valide ? Très simple, vous avez répon
 La stratégie n'est pas d'indiquer que vous ne souhaitez pas être contacté via une liste d'opposition aussi efficace que le "stop pub" sur votre boîte aux lettres ... mais plutôt d'effectuer une manipulation technique sur votre ligne téléphonique qui bloque ces appels, sans passer par votre téléphone ou une application foireuse.
 
 # Les règles du jeu qui rendent cela possible ⚖️
-[Le plan de numérotation adopté par l’ARCEP](https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/plan-numerotation-professionnels.html) applicable dès 2023 a pour objectif notamment de renforcer la protection des utilisateurs contre les fraudes et abus. Ce dernier oblige depuis les centres d'appels qui respectent la lois à exploiter des **NVP** (numéros polyvalents vérifiés), autrement, ils prennent chère. Concrétement, cela les obliges à utiliser une plage de numéros avec les 12 racines communes suivante :
+[Le plan de numérotation adopté par l’ARCEP](https://www.arcep.fr/mes-demarches-et-services/entreprises/fiches-pratiques/plan-numerotation-professionnels.html) applicable dès 2023 a pour objectif notamment de renforcer la protection des utilisateurs contre les fraudes et abus. Ce dernier oblige depuis les centres d'appels qui respectent la lois à exploiter des **NPV** (numéros polyvalents vérifiés), autrement, ils prennent chère. Concrétement, cela les obliges à utiliser une plage de numéros avec les 12 racines communes suivante :
 
 * 01 62
 * 01 63
@@ -35,7 +35,7 @@ La stratégie n'est pas d'indiquer que vous ne souhaitez pas être contacté via
 
 Leurs conditions d’utilisation prévoient que l’opérateur qui exploite ces numéros doit assurer à la personne appelée que l’affichage du numéro a bien fait l’objet d’une autorisation explicite de titulaire de ce numéro. Cela donne la possibilité d’identifier lors d’une enquête de manière plus fiable l’auteur d’une éventuelle infraction.
 
-Cette disposition est un coup fort de l'ARCEP qui change tout pour nous ! Il "suffit" de ne plus jamais répondre à ces numéros "NVP" donc.
+Cette disposition est un coup fort de l'ARCEP qui change tout pour nous ! Il "suffit" de ne plus jamais répondre à ces numéros "NPV" donc.
 
 # Exploitons ce cadeau 🎁
 Je vous montre une astuce avec Free Mobile, mais vous pouvez tenter d'effectuer une manipulation équivalente chez un autre opérateur (en espérant qu'il propose un mécanisme similaire). En-tout-cas, il suffit de savoir que ça existe pour que ça nous améliore la vie !
@@ -64,7 +64,7 @@ Ainsi, en saisissant la syntaxe ``0162*``, c'est un filtre sur l'integralité de
 
 ![demarchage_telephonique_004](../../assets/demarchage_telephonique_004.png)
 
-Vous avez compris, il nous suffit donc de créer 12 filtres avec cette syntaxe pour bloquer tous les NVP. Cela donne quelque chose comme ceci :
+Vous avez compris, il nous suffit donc de créer 12 filtres avec cette syntaxe pour bloquer tous les NPV. Cela donne quelque chose comme ceci :
 
 ![demarchage_telephonique_005](../../assets/demarchage_telephonique_005.png)
 
