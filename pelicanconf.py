@@ -11,7 +11,7 @@ DEFAULT_PAGINATION = 5
 TYPOGRIFY = True
 
 LINKS = (
-    ('<i class="fa fa-file"></i> mon cv', 'https://cv.heuzef.com'),
+    ('<i class="fa fa-file-pdf"></i> CV', 'https://cv.heuzef.com'),
     ('<i class="fa fa-envelope"></i> contact', 'contact.html'),
 )
 
