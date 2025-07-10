@@ -68,6 +68,4 @@ Vous avez compris, il nous suffit donc de créer 12 filtres avec cette syntaxe p
 
 ![demarchage_telephonique_005](../../assets/demarchage_telephonique_005.png)
 
-Et nous voici enfin en paix, pour de bons ! 🤗
-
-De rien 😙
+Et nous voici enfin en paix, pour toujours et à jamais. De rien ! 🤗
