@@ -17,14 +17,4 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-                  sudo -u heuzef bash << 'EOF'
-                  # Update, generate and publish the website with Pelican
-                  echo "Current user: $(whoami)"
-                  echo "Current directory: $(pwd)"
-                  echo "Python version: $(python --version)"
-                  echo "Pelican version: $(pelican --version)"
-                  cd ~/GIT/heuzef_com
-                  git pull
-                  make html
-                  make publish
-                  EOF
+                  sudo -u heuzef -H bash -l -c 'cd /home/heuzef/GIT/heuzef_com && ./deploy_pelican.sh'
