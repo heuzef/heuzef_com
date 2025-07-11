@@ -17,4 +17,4 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-                  sudo -u heuzef -H bash -l -c 'cd /home/heuzef/GIT/heuzef_com && ./deploy_pelican.sh'
+                  sudo -u ${{ secrets.SSH_USER }} -H bash -l -c 'cd /home/${{ secrets.SSH_USER }}/GIT/heuzef_com && ./deploy_pelican.sh'
