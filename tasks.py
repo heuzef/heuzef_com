@@ -29,7 +29,7 @@ CONFIG = {
     'ssh_user': 'heuzef',
     'ssh_host': 'localhost',
     'ssh_port': '22',
-    'ssh_path': '/var/www/html',
+    'ssh_path': '/home/heuzef/GIT/heuzef_com/',
     # Host and port for `serve`
     'host': 'localhost',
     'port': 8000,

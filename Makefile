@@ -11,7 +11,7 @@ PUBLISHCONF=$(BASEDIR)/publishconf.py
 SSH_HOST=localhost
 SSH_PORT=22
 SSH_USER=heuzef
-SSH_TARGET_DIR=/var/www/html
+SSH_TARGET_DIR=/home/heuzef/GIT/heuzef_com
 
 
 DEBUG ?= 0

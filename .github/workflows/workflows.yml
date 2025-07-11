@@ -18,4 +18,4 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         script: |
                   cd ~/GIT/heuzef_com
-                  sh deploy_pelican.sh
+                  /usr/bin/bash deploy_pelican.sh
