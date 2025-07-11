@@ -72,7 +72,7 @@ AUTHOR_FEED_RSS = None
 
 THEME = 'themes/pelican-alchemy/alchemy'
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-bootstrapify']
+PLUGINS = ['bootstrapify']
 
 BOOTSTRAPIFY = {
         'table': ['table', 'table-striped', 'table-hover'],
