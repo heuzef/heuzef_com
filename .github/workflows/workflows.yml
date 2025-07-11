@@ -17,5 +17,12 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+                  # Update, generate and publish the website with Pelican
+                  echo "Current user: $(whoami)"
+                  echo "Current directory: $(pwd)"
+                  echo "Python version: $(python --version)"
+                  echo "Pelican version: $(pelican --version)"
                   cd ~/GIT/heuzef_com
-                  ./deploy_pelican.sh
+                  git pull
+                  make html
+                  make publish
