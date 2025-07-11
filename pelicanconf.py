@@ -70,7 +70,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-THEME = 'theme/'
+THEME = 'themes/pelican-alchemy/alchemy'
 PLUGIN_PATHS = ['plugins']
 PLUGINS = ['pelican-bootstrapify']
 
