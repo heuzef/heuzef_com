@@ -1,5 +1,3 @@
-// static/js/custom.js
-
 // UMAMI
 window.addEventListener('DOMContentLoaded', (event) => {
     var script = document.createElement('script');
