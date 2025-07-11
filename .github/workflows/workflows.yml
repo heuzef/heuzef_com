@@ -17,6 +17,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+                  sudo -u heuzef bash << 'EOF'
                   # Update, generate and publish the website with Pelican
                   echo "Current user: $(whoami)"
                   echo "Current directory: $(pwd)"
@@ -26,3 +27,4 @@ jobs:
                   git pull
                   make html
                   make publish
+                  EOF
