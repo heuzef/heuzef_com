@@ -10,7 +10,7 @@ Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et
 
 ![obs_studio](../../assets/obs-overlay.webp)
 
-# Qu'est-ce que OBS Studio et pourquoi c'est utile ? 🎥
+# Qu'est-ce que OBS Studio (est-ce utile ?) 🎥
 
 OBS Studio est un outil très utilisé par les vidéastes, en particulier sur Twitch ou Youtube dans le domaine du Jeux-Vidéo (Let's play).
 
