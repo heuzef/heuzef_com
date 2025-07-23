@@ -1,46 +1,53 @@
 Title: Innover par le traitement de la donnée pour le Service Public
 Category: Informatique
 Tags: ia, cartographie, projet, analyse
-Date: 2025-07-21
+Date: 2025-07-23
 Status: published
 
 # Retour d'expérience avec Cartofriches, de la théorie à la réalité 🫴
 
 ![cartofriches_001.jpg](../../assets/cartofriches_001.jpg)
 
-L'IA s'accélère à une vitesse fulgurante, le fossé entre les fantasmes qui entourent ses capacités et la réalité tangible d'une mise en production concrète reste considérable. C'est précisément cette disparité, bien éloignée de l'idéal théorique, que notre équipe a fait face à travers notre projet ambitieux : l'amélioration du dispositif [Cartofriches](https://cartofriches.cerema.fr) pour le compte du CEREMA, un outil de service public crucial pour l'identification et la valorisation des friches.
+L'IA s'accélère à une vitesse fulgurante, le fossé entre les fantasmes qui entourent ses capacités et la réalité tangible d'une mise en production concrète reste considérable. C'est précisément cette disparité, bien éloignée de l'idéal théorique, à laquelle notre équipe a fait face à travers notre projet ambitieux : l'amélioration du dispositif [Cartofriches](https://cartofriches.cerema.fr) pour le compte du CEREMA, un outil de service public crucial pour l'identification et la valorisation des friches.
 
 En nous immergeant dans les complexités opérationnelles de [Cartofriches](https://cartofriches.cerema.fr), notre projet a eu pour but de combler ce fossé, démontrant comment le traitement pratique de la donnée peut véritablement transformer les services publics, passant de la théorie à une réalité concrète.
 
 # Conception du produit 🦾
 
-La conception de notre produit, baptisé [PROFIL](https://github.com/heuzef/cartofriches/tree/PROFIL/profil), a été guidée par une approche structurée et itérative, visant à répondre efficacement aux besoins identifiés dans le cadre du projet. Notre objectif était de créer un service d'accompagnement au lancement de projets de réhabilitation de friches, en comblant un manque crucial d'accompagnement dans ce domaine.
+La conception de notre produit, baptisé [PROFIL](https://github.com/heuzef/cartofriches/tree/PROFIL/profil), a été guidée par une approche structurée et itérative, visant à répondre efficacement aux besoins identifiés dans le cadre du projet. Notre objectif était de créer un service d'accompagnement au lancement de projets de réhabilitation de friches fonctionnalité actuellement limitée à un simple lien vers le site [UrbanVitaliz](https://urbanvitaliz.fr).
 
 ## Vision
 
-Notre démarche a commencé par l'élaboration d'un Product Vision Board, un outil stratégique qui nous a permis de définir clairement : objectif du produit, problématique visée, besoins et cible du projet.
+Notre démarche a commencé par l'élaboration d'un PVB[^1], un outil stratégique qui nous a permis de définir clairement : 
 
-Pour répondre à ces besoins, nous avons envisagé plusieurs solutions, chacune associée à des indicateurs clés de performance (KPI) spécifiques.
+* les Persona cibles
+* les besoins à couvrir
+* l'objectif du produit
+* la valeur ajoutée générée par le produit
 
-Les valeurs portées par notre produit incluent la multiplication des investissements pour atteindre l'objectif européen [ZAN 2050](https://www.ecologie.gouv.fr/politiques-publiques/artificialisation-sols), l'aide à la rétention des utilisateurs et la continuité dans l'accompagnement pour investir dans des projets durables.
-
-## Analyse fonctionnelle et développement du PoC
-
-Suite à l'élaboration du PVB, nous avons mené une analyse fonctionnelle approfondie, qui a donné naissance à trois fonctionnalités principales orientées data.
-
-Cette analyse nous a permis de commencer l'élaboration d'un Proof of Concept (PoC). Le PoC est une étape cruciale dans le développement de notre produit, car il nous permet de valider nos hypothèses et de démontrer la faisabilité technique de notre solution. 
-
-Pour illustrer cette étape, nous vous proposons de visionner une démo vidéo de notre PoC. 
-
-<video id="cartofriches_001.mp4" controls preload="auto" width="900" height="500">
-<source src="../../assets/cartofriches_001.mp4" type='video/mp4'>
-</video>
-
-> Montre l’état d’une “Fiche Friche” actuellement sur [Cartofriches](https://cartofriches.cerema.fr), puis notre PoC équivalent revisité.
+Pour répondre aux besoins identifiés, nous avons envisagé plusieurs solutions et associé à chacune des indicateurs clés de performance (KPI) spécifiques.
 
 ![cartofriches_002.png](../../assets/cartofriches_002.png)
 
-C’est souvent durant cette partie d’un projet Data que la dure réalitée nous rattrape : *“Qu’avons-nous comme données ? Que souhaitons-nous vraiment obtenir et pour quoi ?”*
+Les valeurs portées par notre produit incluent la multiplication des investissements pour atteindre l'objectif européen [ZAN 2050](https://www.ecologie.gouv.fr/politiques-publiques/artificialisation-sols), l'aide à la rétention des utilisateurs et la continuité dans l'accompagnement pour investir dans des projets durables.
+
+## Analyse fonctionnelle et développement du PoC[^2]
+
+Suite à l'élaboration du PVB, nous avons mené une analyse fonctionnelle approfondie, pour donner naissance à trois fonctionnalités orientées data.
+
+Nous débutons l'élaboration d'un PoC[^2], étape cruciale dans le développement de notre produit, car il nous permet de valider nos hypothèses et de démontrer la faisabilité technique de notre solution. 
+
+![cartofriches_003.png](../../assets/cartofriches_003.png)
+
+Pour illustrer, voici une démo vidéo de notre PoC[^2]. 
+
+<video id="cartofriches_004.mp4" controls preload="auto" width="900" height="500">
+<source src="../../assets/cartofriches_004.mp4" type='video/mp4'>
+</video>
+
+_Montre l’état d’une “Fiche Friche” actuellement sur [Cartofriches](https://cartofriches.cerema.fr), puis notre PoC[^2] équivalent revisité (Avant / Après)._
+
+C’est souvent durant cette partie d’un projet Data que la dure réalitée nous rattrape : _“Qu’avons-nous comme données ? Que souhaitons-nous vraiment obtenir et pour quoi ?”_
 
 Cette étape est anxiogène car nous devons placer le curseur entre les fantasmes et la réalité. Se mettre au défi avec de grandes ambitions est très stimulant, mais cela à un coût et des enjeux ayant un impact immense, il faut faire preuve d’une grande communication avec son équipe afin de définir la bonne stratégie.
 
@@ -48,21 +55,21 @@ Dans cet article, afin d’éviter que ce dernier ne soit trop dense, nous abord
 
 ## Modèle de prédiction d’usage le plus probable pour une friche
 
-### Analyses sommaires et première idée
+### Analyses rapides
 
-Notre démarche a commencé par des analyses sommaires des données disponibles. 
+Notre démarche a commencé par des analyses rapides des données disponibles (EDA[^3]).
 
-Ces analyses nous ont permis d'obtenir une vague idée de ce qui était réalisable. Nous avons envisagé un petit modèle de machine learning effectuant de la catégorisation, capable de déterminer la popularité d'une friche sans projet en se basant sur les reconversions de friches similaires. 
+Ces analyses nous ont permis d'obtenir une première idée de ce qui était réalisable. Nous avons alors envisagé un modèle de machine learning simple de catégorisation capable de déterminer la popularité d'une friche sans projet en se basant sur les reconversions de friches similaires.
 
-Grâce à notre première EDA, nous avions suffisamment d'éléments pour être rassurés sur la faisabilité de cette approche.
+Grâce à cette EDA[^3], nous avions suffisamment d'éléments pour être rassurés sur la faisabilité de cette approche.
 
-Cependant, cette première idée s'est rapidement heurtée à la réalité des besoins de notre fonction. En effet, cette approche, bien que réalisable, n'était pas assez ambitieuse et pouvait même être contre-productive. Elle risquait de démotiver les porteurs de projets, ce qui était l'effet inverse de notre objectif initial.
+Cependant, cette première idée s'est rapidement heurtée à la réalité des besoins de notre fonction. En effet, cette approche, bien que réalisable, n'était pas assez ambitieuse et pouvait même être contre-productive. Elle risquait en effet de démotiver les porteurs de projets, ce qui était l'effet inverse de notre objectif initial.
 
 ### Conception d'un Canevas de machine learning
 
 Face à cette limitation, nous avons décidé de partir sur la conception d'un canevas de machine learning plus sophistiqué. Ce canevas nous a permis d'imaginer un modèle de régression linéaire beaucoup plus adapté à nos besoins. Cependant, cette approche idéale s'est rapidement révélée irréalisable en raison d'un manque cruel de données et de métriques d'évaluation fantasmagoriques.
 
-Cette prise de conscience a été un coup dur pour l'équipe. Les nombreuses heures de réflexion et de travail ont semblé vaines, et des frictions sont apparues dans les échanges au sein de l'équipe vis-à-vis des directions stratégiques prises. Ce fut une période difficile, mais nous avons su tirer des leçons précieuses de cette expérience.
+Cette prise de conscience a été un coup dur pour l'équipe. Les nombreuses heures de réflexion et de travail ont semblé vaines, et des divergences sont apparues au sein de l'équipe vis-à-vis des directions stratégiques à prendre. Ce fut une période difficile, mais nous avons su tirer des leçons précieuses de cette expérience.
 
 ### Persévérance et solution réaliste
 
@@ -70,22 +77,21 @@ Cette prise de conscience a été un coup dur pour l'équipe. Les nombreuses heu
 
 Cette avancée a été une véritable délivrance pour l'équipe. Nous étions enfin tous alignés sur une vision commune et satisfaits de ce que nous pourrions produire comme modèle à ce stade. Cette solution était à la fois réalisable et pleine de sens, et notre persévérance ainsi qu'un travail de réflexion commune nous ont permis de surmonter cette mauvaise passe. Et ceci, nous le devons **à la force de notre communication**, qui prévaut sur toutes les méthodes et outils du monde.
 
-### Développement d'un PoC
+### Développement d'un nouveau PoC[^3]
 
-Chauds bouillant, nous avons décidé de nous lancer dans le développement d'un Proof of Concept pour nous assurer de la faisabilité de notre modèle. Nous avions un objectif très humble : obtenir une exactitude de 60% avec notre PoC. Cependant, nous avions un énorme obstacle à surmonter : **nous étions à 96 heures de la remise du projet**.
+Remotivés et convaincus par cette nouvelle approche, nous avons décidé de nous lancer dans le développement d'un nouveau PoC[^3]. Pour nous assurer de la faisabilité de notre modèle, nous avions un objectif très humble : atteindre une exactitude de 60% sur nos prédictions. Cependant, nous avions un énorme obstacle à surmonter : **nous étions à 96 heures de la remise du projet**.
 
 Ce délai serré s'explique par le fait qu'il n'était pas attendu de notre part un PoC, mais nous y tenons fermement. Pour nous, c'était un moyen infaillible de démontrer nos propos en développant une IA qui fonctionne pour de vrai. Nous avons donc organisé un hackathon improvisé pour relever ce défi.  Épuisés par les longues heures de travail et sans attentes particulières, nous n'espérons pas accomplir de miracle en si peu de temps. Cependant, nous étions déterminés à donner le meilleur de nous-mêmes pour atteindre notre objectif.
 
 ### Premiers jets
 
-Nos premiers essais furent très décourageants, avec des scores pitoyables avoisinant les 43% d’exactitude. Ces résultats ont mis en lumière de nombreux problèmes dans les données disponibles que nous n'avions pas identifiées lors de notre première analyse sommaire. Nous avons rapidement réalisé que nous devions organiser notre travail de manière plus efficace pour maximiser nos chances de succès.
+Nos premiers essais furent très décourageants, avec des scores avoisinant les 43% d’exactitude. Ces résultats ont mis en lumière de nombreux problèmes dans les données disponibles que nous n'avions pas identifiées lors de notre première analyse sommaire. Nous avons rapidement réalisé que nous devions organiser notre travail de manière plus efficace pour maximiser nos chances de succès.
 
 ### Organisation du travail
 
-Nous avons décidé de diviser les tâches entre nous trois de manière à couvrir tous les aspects essentiels du développement du PoC :
+Nous avons décidé de diviser les tâches entre nous trois de manière à couvrir tous les aspects essentiels du développement du PoC[^3] :
 
-1. [Rova](https://www.linkedin.com/in/rova-ralaimidona) s'est occupé de l'analyse des données, une tâche cruciale sur laquelle reposerait tous nos travaux. Son travail a été très conséquent et a jeté les bases de notre compréhension des données disponibles. 
-> **Le chapitre suivant est consacré à la présentation de son analyse des données.**  
+1. [Rova](https://www.linkedin.com/in/rova-ralaimidona) s'est occupé de l'analyse des données, une tâche cruciale sur laquelle reposerait tous nos travaux. Son travail a été très conséquent et a posé les bases de notre compréhension des données disponibles. _(Le chapitre ci-dessous est consacré à la présentation de son analyse des données)._
 2. Moi-même, je me suis chargé du prétraitement du jeu de données brut à notre disposition. Étant donné le temps extrêmement réduit, j'ai dû procéder à un nettoyage très rapide, en prenant des décisions basées sur l'intuition dans l'espoir d'augmenter la qualité des données. C'était à la fois enrichissant de voir que nous pouvions accomplir autant en si peu de temps, et frustrant de réduire autant la qualité de notre travail par manque de temps. Cependant, l'objectif de ce PoC était bien d'obtenir un résultat minimum le plus vite possible.  
 3. Enfin, [Frédéric](https://www.linkedin.com/in/frederic-vincent-saurel) s'est occupé de récupérer mes données prétraitées pour se concentrer sur l'entraînement et l'évaluation des modèles. Les expérimentations portaient sur deux algorithmes basés sur des méthodes d'ensembles.
 
@@ -104,13 +110,13 @@ Frédéric, de son côté, était focalisé sur l'amélioration continue de l'en
 
 Finalement, au petit matin de la veille de la réunion, nous avons obtenu un score très décevant avoisinant les 50%. C'était vraiment frustrant de ne pas avoir atteint l'objectif visé après autant d'efforts, mais c'est la réalité qui se cache derrière la conception des IA.
 
-Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en ré-ajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
+Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC[^3] n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en ré-ajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
 
  **🤯 Et c'est à une heure de notre réunion pour rendre nos travaux que nous avons obtenu le score de 63%. Victoire ! 🤯**
 
 Difficile à réaliser sur le coup, mais nous avons ajusté en urgence notre rapport, car cela changeait complètement la donne : nous venions de démontrer que ce modèle était réalisable. Notre exploit n'a pas manqué de sidérer les acteurs durant la réunion, et nous étions très fiers de ce que nous venions d'accomplir.
 
-![cartofriches_003.png](../../assets/cartofriches_003.png)
+![cartofriches_005.png](../../assets/cartofriches_005.png)
 
 ## Processus de lancement et mise en production
 
@@ -173,3 +179,7 @@ L’objectif n’est pas seulement technique : il s’agit de renforcer la fiabi
 Par ailleurs, ce travail a facilité la préparation d’une phase de modélisation par apprentissage automatique. Le regroupement des variables en domaines cohérents a permis de cibler des agrégations pertinentes, tout en simplifiant l’architecture du modèle et en réduisant l’impact des déséquilibres entre classes.
 
 👉 [Lire le rapport interactif](https://hagatiana.github.io/cartofriches/data_quality_cartofriches.html)
+
+[^1]: Product Vision Board
+[^2]: Proof of Concept
+[^3]: Exploratory Data Analysis
