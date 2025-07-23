@@ -77,9 +77,9 @@ Cette prise de conscience a été un coup dur pour l'équipe. Les nombreuses heu
 
 Cette avancée a été une véritable délivrance pour l'équipe. Nous étions enfin tous alignés sur une vision commune et satisfaits de ce que nous pourrions produire comme modèle à ce stade. Cette solution était à la fois réalisable et pleine de sens, et notre persévérance ainsi qu'un travail de réflexion commune nous ont permis de surmonter cette mauvaise passe. Et ceci, nous le devons **à la force de notre communication**, qui prévaut sur toutes les méthodes et outils du monde.
 
-### Développement d'un nouveau PoC[^3]
+### Développement d'un nouveau PoC[^2]
 
-Remotivés et convaincus par cette nouvelle approche, nous avons décidé de nous lancer dans le développement d'un nouveau PoC[^3]. Pour nous assurer de la faisabilité de notre modèle, nous avions un objectif très humble : atteindre une exactitude de 60% sur nos prédictions. Cependant, nous avions un énorme obstacle à surmonter : **nous étions à 96 heures de la remise du projet**.
+Remotivés et convaincus par cette nouvelle approche, nous avons décidé de nous lancer dans le développement d'un nouveau PoC[^2]. Pour nous assurer de la faisabilité de notre modèle, nous avions un objectif très humble : atteindre une exactitude de 60% sur nos prédictions. Cependant, nous avions un énorme obstacle à surmonter : **nous étions à 96 heures de la remise du projet**.
 
 Ce délai serré s'explique par le fait qu'il n'était pas attendu de notre part un PoC, mais nous y tenons fermement. Pour nous, c'était un moyen infaillible de démontrer nos propos en développant une IA qui fonctionne pour de vrai. Nous avons donc organisé un hackathon improvisé pour relever ce défi.  Épuisés par les longues heures de travail et sans attentes particulières, nous n'espérons pas accomplir de miracle en si peu de temps. Cependant, nous étions déterminés à donner le meilleur de nous-mêmes pour atteindre notre objectif.
 
@@ -89,7 +89,7 @@ Nos premiers essais furent très décourageants, avec des scores avoisinant les 
 
 ### Organisation du travail
 
-Nous avons décidé de diviser les tâches entre nous trois de manière à couvrir tous les aspects essentiels du développement du PoC[^3] :
+Nous avons décidé de diviser les tâches entre nous trois de manière à couvrir tous les aspects essentiels du développement du PoC[^2] :
 
 1. [Rova](https://www.linkedin.com/in/rova-ralaimidona) s'est occupé de l'analyse des données, une tâche cruciale sur laquelle reposerait tous nos travaux. Son travail a été très conséquent et a posé les bases de notre compréhension des données disponibles. _(Le chapitre ci-dessous est consacré à la présentation de son analyse des données)._
 2. Moi-même, je me suis chargé du prétraitement du jeu de données brut à notre disposition. Étant donné le temps extrêmement réduit, j'ai dû procéder à un nettoyage très rapide, en prenant des décisions basées sur l'intuition dans l'espoir d'augmenter la qualité des données. C'était à la fois enrichissant de voir que nous pouvions accomplir autant en si peu de temps, et frustrant de réduire autant la qualité de notre travail par manque de temps. Cependant, l'objectif de ce PoC était bien d'obtenir un résultat minimum le plus vite possible.  
@@ -110,7 +110,7 @@ Frédéric, de son côté, était focalisé sur l'amélioration continue de l'en
 
 Finalement, au petit matin de la veille de la réunion, nous avons obtenu un score très décevant avoisinant les 50%. C'était vraiment frustrant de ne pas avoir atteint l'objectif visé après autant d'efforts, mais c'est la réalité qui se cache derrière la conception des IA.
 
-Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC[^3] n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en ré-ajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
+Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC[^2] n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en ré-ajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
 
  **🤯 Et c'est à une heure de notre réunion pour rendre nos travaux que nous avons obtenu le score de 63%. Victoire ! 🤯**
 
@@ -132,7 +132,7 @@ Je vous relais maintenant les notes de Rova, qui présente en détail la partie 
 
 ----
 
-> L'article ci-dessous, rédigé par [Rova Ralaimidona](https://www.linkedin.com/in/rova-ralaimidona), date de Juillet 2025.
+> Par [Rova Ralaimidona](https://www.linkedin.com/in/rova-ralaimidona), Juillet 2025.
 
 # L'analyse et le traitement des données 📊
 
