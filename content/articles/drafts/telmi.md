@@ -1,7 +1,7 @@
 Title: Concevoir une boite à histoires pour enfant
 Category: Parentalité
 Tags: enfant, astuce, ressources, histoire
-Date: 2023-07-28
+Date: 2026-03-09
 Status: draft
 
 ![telmi_001.png](../../assets/telmi_001.png)
