@@ -102,7 +102,7 @@ Et du côté de l'enfant ? Ma fille de 3 ans a réussi à maîtriser la machine 
 
 Si Telmi est déjà la meilleure boîte à histoires du marché, la **[SUPER TELMI](https://github.com/heuzef/super-telmi)**, c’est la version boostée aux hormones. 
 
-Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif et de réunir les différentes améliorationsS de la communauté.
+Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif et de réunir les différentes améliorations de la communauté.
 
 ![telmi_004.png](../../assets/telmi_004.png)
 
