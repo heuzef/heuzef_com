@@ -2,11 +2,11 @@ Title: Concevoir une boîte à histoires pour enfant
 Category: Parentalité
 Tags: enfant, astuce, ressources, histoire, 3D
 Date: 2026-03-09
-Status: draft
+Status: published
 
 ![telmi_001.png](../../assets/telmi_001.png)
 
-Vous avez des enfants ? Salut ! 👋 Cette article va vous plaire, nous parlerons ici des boîtes à histoire (ou conteuse) qui intéresse de plus en plus les parents ces dernières années.
+Vous avez des enfants ? Salut ! 👋 Cet article va vous plaire, nous parlerons ici des boîtes à histoire (ou conteuse) qui intéresse de plus en plus les parents ces dernières années.
 
 ## C’est quoi, une boîte à histoires ? 🤔
 
@@ -26,7 +26,7 @@ Voici un petit tableau comparatif des conteuses les pus populaires pour y voir p
 |        Max        	|            ❌            	|         ✅         	|      ❌      	|            ✅           	|     ❌     	|           70€          	|         5€ - 15€/histoire         	|
 |       Merlin      	|            ❌            	|         ✅         	|      ❌      	|            ✅           	|     ❌     	|           90€          	|         4€ - 23€/histoire         	|
 |       Morphée         |            ✅            	|         ❌         	|      ❌      	|            ❌           	|     ❌     	|           80€          	|         0€         	|
-|    Lunii / Flam   	|            ❌            	|         ✅         	|      ❌      	|            ✅           	|     ❌     	|           70€ - 100€         	|         10€/mois (Lunii+)         	|
+|    Lunii / Flam   	|            ❌            	|         ✅         	|      ❌      	|            ✅           	|     ❌     	|           70€ - 100€         	|         13€ - 15€/histoire         	|
 |      T'choupi     	|            ✅            	|         ❌         	|      ❌      	|            ❌           	|     ❌     	|           35€          	|         0€         	|
 |       Telmi       	|            ✅            	|         ✅            |      ✅      	|            ✅           	|     ✅     	|           0€ - 100€          	|         0€         	|
 |      Tikino       	|            ❌            	|         ❌              |      ❌      	|            ✅           	|     ❌     	|           170€          	|         3€ - 8€        	|
@@ -34,18 +34,18 @@ Voici un petit tableau comparatif des conteuses les pus populaires pour y voir p
 |        Yoto       	|            ❌            	|         ✅         	|      ❌      	|            ✅           	|     ❌     	|           70€ - 100€          	|         7€ - 35€/carte         	|
 
 
-> Comme vous pouvez le constater rapidement, cet article met clairement **[Telmi](https://telmi.fr)** à l'honneur.
+> Comme vous pouvez le constater rapidement, cet article a pour objectif de mettre **[Telmi](https://telmi.fr)** à l'honneur. Et ce n'est pas pour rien !
 
 
 ## Pourquoi Telmi les domines tous ? 🌟
 
-![telmi_002.png](../../assets/telmi_002.svg)
+![telmi_002.png](../../assets/telmi_002.png)
 
-Pour faire simple **[Telmi](https://telmi.fr)** sera imbattable, sur tous les plans, pour toujours et à jamais. Faire un comparatif avec les autres n'a pas de sens vu qu'il est hors catégorie. Pour comprendre tout cela, il faut essayer de comprendre l'histoire de cette communauté.
+Pour faire simple **[Telmi](https://telmi.fr)** est imbattable, sur tous les plans. Faire un comparatif avec les autres n'a pas de sens vu qu'il est hors catégorie. Pour comprendre pourquoi, il faut essayer de connaître l'histoire de ce projet.
 
 Telmi est une association à but non-lucratif, réunissant des milliers de parents bénévoles passionnés et dévoués pour leurs enfants.
 
-À l'origine de ce projet, le Français [DantSu](https://dantsu.com), qui, en bon papa, a décidé de développer son propre système sur mesure lui-même pour ses enfants afin de contrer les nombreuses frustrations offertes par les boîtes à histoire sur le marché.
+À l'origine, le Français [DantSu](https://dantsu.com), qui en bon papa, a décidé de développer son propre système sur mesure lui-même pour ses enfants afin de contrer les nombreuses frustrations offertes par les boîtes à histoire sur le marché.
 
 ### 1️⃣ Libre
 Contrairement aux autres boîtes à histoires qui vous enferment dans un écosystème payant et fermé, **[Telmi](https://telmi.fr)** est libre. Cela signifie qu'il sera toujours gratuit et open-source, vous pouvez le modifier, l’améliorer, le partager, etc ...
@@ -78,12 +78,12 @@ En cas de problème, il devient facile de récupérer des pièces de rechange et
 
 Venons-en au point qui fâche, si certains boudent **[Telmi](https://telmi.fr)**, c'est simplement parce que pour en bénéficier, il va falloir vous remonter les manches et y consacrer du temps et de l'énergie (bouuuuh ! 🍅)
 
-Évidement, acheter un produit tout prêt, ça ne vous demandera qu'un simple achat en magasin puis une petite après-midi tranquille pour maîtriser le machin. Avec **[Telmi](https://telmi.fr)**, ça ne va clairement pas être la même sauce, car vous avez ici la mission de comprendre le processus. Mais après tout, qu'est-ce qu'on ne serait pas prêt à faire pour offrir le meilleur à nos enfants ?!
+Évidement, acheter un produit tout prêt, ça ne vous demandera qu'un simple achat en magasin puis une petite après-midi tranquille pour maîtriser le machin. Avec **[Telmi](https://telmi.fr)**, ça ne va clairement pas être la même sauce, car vous avez ici la mission de comprendre le processus. Mais après tout, qu'est-ce qu'on ne serait pas prêt à faire pour offrir le meilleur à nos enfants ?! Et franchement, c'est vraiment accessible :
 
 - Si vous savez utiliser un ordinateur, vous en êtes capable.
 - Si vous êtes plutôt à l'aise avec la technologie, ça sera tranquille et la création d'histoire ne vous fera pas peur.
-- Si vous êtes un geek, alors là, vous aller kiffer comme jamais.
-- Si vous êtes un gamer ... oui, vous pouvez utiliser [OnionOS](https://onionui.github.io) en parallèle en lousdé héhéhé 🎮
+- Si vous êtes un geek, alors là, vous aller vous amuser comme un petit fou.
+- Si vous êtes un gamer ... oui, vous pouvez utiliser [OnionOS](https://onionui.github.io) en parallèle en douce héhéhé 🎮
 
 ![telmi_003.png](../../assets/telmi_003.png)
 
@@ -93,7 +93,7 @@ Voici les étapes à suivre pour vous lancer dans l'aventure :
 * Réunir le matériel (Android ou Mini Miyoo Mini Plus, carte SD et un ordinateur)
 * Installer et prendre en main Telmi-Sync sur votre ordinateur
 * Déployer TelmiOS sur une carte SD
-* Synchroniser ses premières histoires et musique
+* Synchroniser ses premières histoires et musiques
 * [Rejoindre la communauté](https://discord.gg/ZTA5FyERbg) et créer ses propres histoires interactives
 
 Et du côté de l'enfant ? Ma fille de 3 ans a réussi à maîtriser la machine en 1h, toute seule ... Que ça nous serve de leçon 😼
@@ -102,9 +102,9 @@ Et du côté de l'enfant ? Ma fille de 3 ans a réussi à maîtriser la machine 
 
 Si Telmi est déjà la meilleure boîte à histoires du marché, la **[SUPER TELMI](https://github.com/heuzef/super-telmi)**, c’est la version boostée aux hormones. 
 
-Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif et de réunir les différentes améliorations de la communauté.
+Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif et de réunir les différentes améliorationsS de la communauté.
 
-![telmi_004.png](../../assets/telmi_004.svg)
+![telmi_004.png](../../assets/telmi_004.png)
 
 Nous y avons intégré un **haut-parleur haute qualité** pour un son clair et puissant. Plus besoin de casque (même si c’est toujours possible). Avec en option, une **station d'accueil** très confortable pour la recharge quotidienne.
 
