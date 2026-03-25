@@ -4,6 +4,8 @@ Tags: linux, astuce, opensource, chiffrement
 Date: 2026-04-01
 Status: draft
 
+![nixos_001.png](../../assets/nixos_001.png)
+
 Si vous êtes un Linuxien vous avez surement déjà testé quelques distributions dans votre vie, je vous invite à partir à l'aventure avec moi pour découvrir **tranquillement** NixOS.
 
 "Encore une, j'ai déjà ma favortie et [NixOS stagne dans le top 20 en popularité](https://distrowatch.com) ..." me direz-vous. Et bien, si vous ne connaissez pas ce qui la rend spéciale, vous risquez d'être surpris.
@@ -14,8 +16,7 @@ NixOS est une distribution qui suscite l'admiration d'un côté, mais aussi la t
 
 Le gros point noir de cet OS, c'est sa courbe d'apprentissage attroce. Ainsi, si vous n'êtes pas prêt à faire un gros effort, vous pouvez arrêter la lecture de cet article et retourner sur votre Ubuntu. 
 
-
-![nixos_001.png](../../assets/nixos_001.png)
+![nixos_002.png](../../assets/nixos_002.png)
 
 Toujours partant ? Alors vous aller découvrir à quel point cet OS est incroyable. Alors finalement, quel est son secret ? La réponse : **c'est un OS déclaratif**. Explications :
 
@@ -78,6 +79,8 @@ Convaincu ? Alors je vous propose maintenant de découvrir son fonctionnement. E
 Bonne nouvelle, rien de nouveau ici, [vous installez NixOS exactement de la même façon que n'importe quel autre distribution](https://nixos.org/download/#nixos-iso), aucun piège, c'est hyper simple. Choisiez votre environnement graphique favoris (Gnome, KDE, ...), puis, vous démarrez sur votre installation toute fraîche. 
 
 C'est ici que l'aventure commence : forcez-vous a ne rien configurer, car, toute modification apportée sera perdue, par exemple, si vous réinstallez le système.
+
+Je vous recommande donc de poursuivre la lecture de cet article depuis votre NixOS flambant neuf.
 
 # Déclarer sa configuration 📋
 
@@ -154,7 +157,6 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
    ntfs3g
    sshfs
    usbutils
-   vlc
   ];
  
   # Activation de service
@@ -167,8 +169,30 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
   networking.firewall.enable = false;
 ```
 
-Vous avez déjà commencé à le bidouiller ? C'est bon signe 😜 Mais comment appliquer cette dernière ? C'est très simple, avec la commande ``sudo nixos-rebuild switch`` (l'argument __switch__ permet de forcer la bascule sur votre nouvelle version, immédiatement après la re-construction).
+Vous avez déjà envie de le bidouiller ? C'est bon signe 😜 Mais comment appliquer cette dernière ? C'est très simple, avec la commande ``sudo nixos-rebuild switch`` (l'argument __switch__ permet de forcer la bascule sur votre nouvelle version, immédiatement après la re-construction).
 
-Et si vous souhaitez effectuer la mise à jour du système : ``sudo nixos-rebuild switch --upgrade`` suivi d'un redémarrage.
+Et si vous souhaitez effectuer la mise à jour du système : ``sudo nixos-rebuild switch --upgrade``, suivi d'un redémarrage.
 
-Vous avez déjà les bases fondamentales de NixOS ! Continons !
+Vous avez déjà les bases fondamentales de NixOS ! Continuons !
+
+# Principes des générations 🆕
+
+A chaque modification appliqués, une nouvelle version de l'état de votre système est créée dans un état immuable (donc non modifiable). Ainsi, si le resultat de votre rebuild ne vous convient pas, alors il vous suffit de redémarrer votre système, puis basculer sur la génération précédente depuis le menu de Grub.
+
+![nixos_003.png](../../assets/nixos_003.png)
+
+La commande ``nixos-rebuild list-generations`` vous permet de lister vos generations. 
+
+Pour apprendre à manipuler, nettoyer, rollback, etc ...vos générations, [je vous renvoi vers ce très bon article dédié](https://www.linuxtricks.fr/wiki/nixos-gestion-des-generations-rollback-suppression-menage).
+
+# Principe des environnements temporaires 🗑️
+
+Un autre truc absolument trop cool, c'est qu'il est possible de créer des environnements éphémères pour des usages très ponctuelle.
+
+![nixos_004.png](../../assets/nixos_004.png)
+
+Sur cette même logique, vous pouvez même créer des VM sur-mesure sur le pouce.
+
+<video id="nixos_vm" controls preload="auto" width="900" height="500">
+<source src="../../assets/nixos_vm.mp4" type='video/mp4'>
+</video>
