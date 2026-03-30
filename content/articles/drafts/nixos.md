@@ -171,7 +171,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
 
 Vous avez déjà envie de le bidouiller ? C'est bon signe 😜 Mais comment appliquer cette dernière ? C'est très simple, avec la commande ``sudo nixos-rebuild switch`` (l'argument __switch__ permet de forcer la bascule sur votre nouvelle version, immédiatement après la re-construction).
 
-Et si vous souhaitez effectuer la mise à jour du système : ``sudo nixos-rebuild switch --upgrade``, suivi d'un redémarrage.
+Et si vous souhaitez effectuer la mise à jour du système : ``sudo nixos-rebuild switch --upgrade``, gérer les éventuels conflits, suivi d'un redémarrage.
 
 Vous avez déjà les bases fondamentales de NixOS ! Continuons !
 
@@ -196,3 +196,60 @@ Sur cette même logique, vous pouvez même créer des VM sur-mesure sur le pouce
 <video id="nixos_vm" controls preload="auto" width="900" height="500">
 <source src="../../assets/nixos_vm.mp4" type='video/mp4'>
 </video>
+
+Sous condition bien sûr d'avoir activé la virtualisation sur votre système. Comment faire ? Dans le fichier de configuration évidement :
+
+```nix
+services.qemuGuest.enable = true;
+```
+
+# Principe des modules 🧩
+
+L'avantage de travailler avec des fichiers de configuration modulaire, c'est que cela simplifie la maintenance et la gestion du déploiement.
+Par exemple, voici un fichier de configuration très basique pour Steam :
+
+```nix
+{ pkgs, ... }:
+
+{
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
+
+  programs.steam.gamescopeSession.enable = true;
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
+
+  environment.systemPackages = with pkgs; [
+    steam-tui
+    steamcmd
+  ];
+}
+```
+
+Puis, sur chaque machine où vous souhaitez pouvoir jouer aux jeux-vidéo, il suffira d'ajouter :
+
+```nix
+  imports = [ ./steam.nix ];
+```
+
+Astuce, le site [mynixos.com](https://mynixos.com/nixpkgs/options/programs.steam) est très confortable pour trouver les options de configurations des programmes.
+
+# Les AppImages
+
+Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
+
+* Déclarer le package ``appimage-run``
+* Télécharger votre fichier .AppImage et autoriser son execution (``sudo chmod +x -R *.AppImage``)
+* Démarrer le programme : ``appimage-run *.AppImage``
+
+# Passer au niveau supérieur ⭐
+
+Vous êtes surement convaincu des possibilités, cependant, NixOS commence à prendre tout son sens lorsque nous embrassons tout les avantages offert par le déclaratif. Ainsi, nous allons à présent voir comment  :
+
+* Versionner sa configuration sur GIT
+* Utiliser Home-Manager avec Flake pour exploiter toutes les fonctionnalités expérimentales
+* Gérer plusieurs machines
