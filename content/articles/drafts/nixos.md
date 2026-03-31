@@ -70,7 +70,9 @@ Ce n'est qu'un début, j'ai été témoins de sacrés trucs, pour ceux qui matr�
 
 NixOS est un des OS les plus puissants et interessant qui existe, mais il est sans pitié. 
 
-Il force à avoir une rigueur et une logique irréprochable, chaque petite configuration de votre environnement de travail sera un challenge. Si vous vous prenez au truc, vous aller surement rester pendant un moment insatisfait de votre code ... puis, finalement, un beau jour, vous avez une configuration élégante qui vous maitrisez et appréciez, c'est le nirvana qui vous attend 🤩 
+Il force à avoir une rigueur et une logique irréprochable, chaque petite configuration de votre environnement de travail sera un challenge. Si vous vous prenez au truc, vous aller surement rester pendant un moment insatisfait de votre code ... puis, finalement, un beau jour, vous avez une configuration élégante qui vous maitrisez et appréciez, c'est le nirvana qui vous attend 🤩
+
+La meilleur astuce, c'est finalement de configurer votre système tranquillement, au minimum de ce que vous avez vraiment besoin, en prenant le temps de le faire vous même, tester et bien maitriser votre code. Vous aller ainsi progressivement basculer sur une configuration maîtrisé et très personnel qui vous correspond.
 
 Convaincu ? Alors je vous propose maintenant de découvrir son fonctionnement. Enfin, nous metterons en place un versionnage de votre configuration sur GIT avec des modules expérimentaux pour en tirer le plein potentiel. Suivez le guide 👉
 
@@ -135,7 +137,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
   };
  
   # Votre compte utilisateur
-  users.users.adrien = {
+  users.users.heuzef = {
     isNormalUser = true;
     description = "heuzef";
     extraGroups = [ "networkmanager" "wheel" ];
@@ -253,3 +255,93 @@ Vous êtes surement convaincu des possibilités, cependant, NixOS commence à pr
 * Versionner sa configuration sur GIT
 * Utiliser Home-Manager avec Flake pour exploiter toutes les fonctionnalités expérimentales
 * Gérer plusieurs machines
+
+## Versionning Git
+
+Pour commencer, nous allons initier un dépôt GIT sur Github. Je considère que vous avez déjà un compte Github et créé un dépôt. Vous pouvez le nommer **nixos-config** par exemple, c'est une sorte de convention, cela vous permet entre autre de trouver facilement [d'autre dépôt similaire pour vous inspirer de quelques pépites](https://github.com/search?q=nixos-config&type=repositories&s=stars&o=desc). Par exemple, voici le miens : [https://github.com/heuzef/nixos-config](https://github.com/heuzef/nixos-config)
+
+Basculons dans le terminal, placez-vous dans le repertoire où vous souhaitez maintenir la configuration de votre système. N'ayant pas encore GIT déployé sur le système, nous utiliserons Nix-Shell pour l'instant, le temps de cloner notre dépôt.
+
+```bash
+cd ~ # Utilisation du repertoire utilisateur, ici pour notre exemple
+nix-shell -p git --command "git clone git@github.com:<VOTRE-PSEUDO-GITHUB>/nixos-config.git"
+exit
+cd nixos-config
+```
+Créons à présent dedans un fichier de configuration contenant le minimum : ``cp -v /etc/nixos/configuration.nix ~/nixos-config/``.
+
+En plus de la configuration minimal (vu plus tôt ci-dessus), déclarer également :
+
+```nix
+  networking.hostName = "mon-pc"; # Le nom d'hôte de votre machine, c'est important
+  
+  programs.firefox.enable = true; # Activer Firefox
+
+  # Activer et configuer Git :
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    settings.user.name = "<VOTRE-PSEUDO-GITHUB>";
+    settings.user.email = "<VOTRE-EMAIL>";
+  };
+```
+
+Finalement, vous pouvez déjà reconstruire votre système avec ce fichier de configuration : ``sudo nixos-rebuild switch --file ~/nixos-config/configuration.nix``
+
+Si vous rencontrez une erreur, pas de panique, analyser-la, elle sont généralement plutôt claire et sont là pour vous aider à valider un fichier de configuration parfaitement propre.
+Si cela prend du temps aussi c'est normal, NixOS analyse les différences trouvés entre le système et votre déclaration. Si vous re-construiser à nouveau sans rien modifier dans la configuration, vous constaterez que le rebuild est quasiment instantané, car aucun changement n'est appliqué.
+
+Git est maintenant installé et configuré, créons notre premier commit :
+```bash
+git add --all
+git commit -m "Init my NixOS configuration"
+git push
+```
+
+Et ba voilà 👌 Vous avez votre configuration verssionné sur GIT ! Vous avez compris le processus pour modifier votre configuration système :
+- Éditer les fichiers de configurations
+- Rebuild (en cas d'erreur, on corrige, on test, ...)
+- Si l'on est satisfait, on commit et push
+
+C'est déjà super ainsi, mais allons plus loins avec des fonctionnalités très populaires.
+
+## Home-Manager et Flakes
+
+Si NixOS gère la structure de base, Home-Manager, lui, s'occupe de personnaliser ses sessions. En effet, NixOS gère très bien la configuration du système, mais moins bien la configuration utilisateur. Home-Manager s'impose alors et utilise le langage Nix pour gérer les fichiers personnels (les fameux "dotfiles" comme .bashrc, etc ...). C'est donc un complément très utile pour personnaliser son système.
+
+Les Flakes (introduits comme une fonctionnalité expérimentale mais devenue le standard de fait) règlent un souci important : l'installation d'une configuration aujourd'hui peut varier dans le temps à cause des versions de logiciels différentes, car les "sources" de Nix ont été mises à jour entre-temps. Il s'agit donc d'un "verrou" de sécurité et de modernité.
+
+Un Flake est donc un projet, Nix qui définit explicitement ses dépendances. Un fichier __flake.lock__ enregistre la version précise (le "hash" Git) de chaque source utilisés.
+
+L'analogie de la recette de cuisine :
+
+* Sans Flake : La recette dit "Prenez du lait". Si le lait du supermarché change de marque, le goût du gâteau change.
+* Avec Flake : La recette dit "Prenez le lait de la marque X, lot n°1234, datant du 01/01/1970". Le gâteau sera exactement le même, à chaque fois, pour tout le monde.
+
+C'est donc vos commits Git qui deviennent la véritée absolue. Il donc recommandé d'effectuer un ``git add --all`` de votre dépôt, avant chaque rebuild ! (Sinon ça couine).
+
+Voici un exemple de structure basique à avoir à ce stade, nous permettant de gérer plusieurs machine :
+
+```bash
+ .
+├──  .git # GIT
+├──  configuration.nix # La configuration NixOS principale
+├──  flake.lock # Le verrou Flake
+├──  flake.nix # Configuration Flake
+├──  hardware # Les configurations matérielles de vos machines. Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
+│   ├──  mon-pc-01.nix
+│   ├──  mon-pc-02.nix
+│   └──  mon-pc-03.nix
+├──  home.nix # Configuration Home-Manager
+├── 󰂺 README.md # Vos notes perso pour le dépôt
+└──  software
+    └──  steam # Configuration du logiciel Steam pour le jeu-vidéo
+```
+
+Voyons à présent les fichiers de configuration de Home-Manager et Flakes
+
+### flake.nix
+...
+
+### home.nix
+...
