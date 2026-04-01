@@ -292,6 +292,7 @@ Si vous rencontrez une erreur, pas de panique, analyser-la, elle sont générale
 Si cela prend du temps aussi c'est normal, NixOS analyse les différences trouvés entre le système et votre déclaration. Si vous re-construiser à nouveau sans rien modifier dans la configuration, vous constaterez que le rebuild est quasiment instantané, car aucun changement n'est appliqué.
 
 Git est maintenant installé et configuré, créons notre premier commit :
+
 ```bash
 git add --all
 git commit -m "Init my NixOS configuration"
@@ -341,7 +342,87 @@ Voici un exemple de structure basique à avoir à ce stade, nous permettant de g
 Voyons à présent les fichiers de configuration de Home-Manager et Flakes
 
 ### flake.nix
-...
+
+Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera appelé pour le rebuild, afin de vous permettre d'executer avec des arguments conditionnels. Dans notre cas, cela sera pour préciser la machine, mais après, libre à vous d'être créatif.
+
+```nix
+{
+  description = "My NixOS-Config"; # Description de votre Flake
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";  # Activation de tous les paquets
+  };
+
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+    in {
+      nixosConfigurations = {
+
+        # mon-pc-01
+        mon-pc-01 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix # Nous retrouvons ici notre fichier de configuration
+            ./hardware/mon-pc-01.nix # sudo nixos-generate-config --show-hardware-config
+          ];
+        };
+
+        # mon-pc-02
+        mon-pc-02 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hardware/mon-pc-02.nix
+            ./software/steam.nix # sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+          ];
+        };
+        
+        # mon-pc-03
+        mon-pc-03 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./config-light.nix # cette machine est peu puissante, j'utilise une configuration plus économe en ressource.
+            ./hardware/mon-pc-02.nix
+          ];
+        };
+        
+      };
+    };
+}
+```
+
+Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ sera :
+
+``sudo nixos-rebuild switch --flake "~/nixos-config#mon-pc-01"``
 
 ### home.nix
+
+Voyons à présent comment activer Home-Manger, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
+
+Dans la partie __inputs__ :
+```nix
+    home-manager = {
+      url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+```
+
+Puis, dans la section __modules__ d'une machine :
+
+```nix
+home-manager.nixosModules.home-manager
+{
+  networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici, à supprimer, bien sûr, de configuration.nix qui est communs à toutes les machines
+  home-manager.useGlobalPkgs = true; # Activer les paquets système
+  home-manager.useUserPackages = true; # Activer les paquets utilisateur
+  home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home-Manager
+}
+```
+
+Passons à présent au coeur de Home-Manager, voici un exemple de fichier **home.nix**  :
+
+```nix
 ...
+```
