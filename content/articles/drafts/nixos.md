@@ -253,7 +253,7 @@ Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais u
 Vous êtes surement convaincu des possibilités, cependant, NixOS commence à prendre tout son sens lorsque nous embrassons tout les avantages offert par le déclaratif. Ainsi, nous allons à présent voir comment  :
 
 * Versionner sa configuration sur GIT
-* Utiliser Home-Manager avec Flake pour exploiter toutes les fonctionnalités expérimentales
+* Utiliser Home Manager avec Flake pour exploiter toutes les fonctionnalités expérimentales
 * Gérer plusieurs machines
 
 ## Versionning Git
@@ -306,9 +306,9 @@ Et ba voilà 👌 Vous avez votre configuration verssionné sur GIT ! Vous avez 
 
 C'est déjà super ainsi, mais allons plus loins avec des fonctionnalités très populaires.
 
-## Home-Manager et Flakes
+## Home Manager et Flakes
 
-Si NixOS gère la structure de base, Home-Manager, lui, s'occupe de personnaliser ses sessions. En effet, NixOS gère très bien la configuration du système, mais moins bien la configuration utilisateur. Home-Manager s'impose alors et utilise le langage Nix pour gérer les fichiers personnels (les fameux "dotfiles" comme .bashrc, etc ...). C'est donc un complément très utile pour personnaliser son système.
+Si NixOS gère la structure de base, Home Manager, lui, s'occupe de personnaliser ses sessions. En effet, NixOS gère très bien la configuration du système, mais moins bien la configuration utilisateur. Home Manager s'impose alors et utilise le langage Nix pour gérer les fichiers personnels (les fameux "dotfiles" comme .bashrc, etc ...). C'est donc un complément très utile pour personnaliser son système.
 
 Les Flakes (introduits comme une fonctionnalité expérimentale mais devenue le standard de fait) règlent un souci important : l'installation d'une configuration aujourd'hui peut varier dans le temps à cause des versions de logiciels différentes, car les "sources" de Nix ont été mises à jour entre-temps. Il s'agit donc d'un "verrou" de sécurité et de modernité.
 
@@ -333,13 +333,13 @@ Voici un exemple de structure basique à avoir à ce stade, nous permettant de g
 │   ├──  mon-pc-01.nix
 │   ├──  mon-pc-02.nix
 │   └──  mon-pc-03.nix
-├──  home.nix # Configuration Home-Manager
+├──  home.nix # Configuration Home Manager
 ├── 󰂺 README.md # Vos notes perso pour le dépôt
 └──  software
     └──  steam # Configuration du logiciel Steam pour le jeu-vidéo
 ```
 
-Voyons à présent les fichiers de configuration de Home-Manager et Flakes
+Voyons à présent les fichiers de configuration de Home Manager et Flakes
 
 ### flake.nix
 
@@ -399,7 +399,7 @@ Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ s
 
 ### home.nix
 
-Voyons à présent comment activer Home-Manger, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
+Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
 
 Dans la partie __inputs__ :
 ```nix
@@ -417,12 +417,86 @@ home-manager.nixosModules.home-manager
   networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici, à supprimer, bien sûr, de configuration.nix qui est communs à toutes les machines
   home-manager.useGlobalPkgs = true; # Activer les paquets système
   home-manager.useUserPackages = true; # Activer les paquets utilisateur
-  home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home-Manager
+  home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
 }
 ```
 
-Passons à présent au coeur de Home-Manager, voici un exemple de fichier **home.nix**  :
+Passons à présent au coeur de Home Manager, voici un exemple de fichier **home.nix** pour personnaliser votre session utilisateur :
 
 ```nix
-...
+{ config, lib, pkgs, ... }:
+
+{
+  # Activer Home-Manager
+  programs.home-manager.enable = true;
+
+  # Vos infos basiques à fournir à Home Manger
+  home.username = "heuzef";
+  home.homeDirectory = "/home/heuzef";
+  home.stateVersion = "25.11";
+
+  # Activer Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # home.packages permet de déployer des logiciels dans son environment utilisateur
+  home.packages = with pkgs; [
+    google-chrome
+    libreoffice-fresh
+    librewolf
+    signal-desktop
+    vlc
+    yt-dlp
+    # etc ... => https://search.nixos.org
+  ];
+
+  # Git (à déplacer donc, depuis votre fichier configuration.nix)
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    settings.user.name = "Heuzef";
+    settings.user.email = "contact@heuzef.com";
+  };
+
+  # Editer le fichier .bashrc pour importer celui de Home Manager
+  home.file.".bashrc".text = ''
+    if [ -f "/etc/profiles/per-user/heuzef/etc/profile.d/hm-session-vars.sh" ]; then
+      source "/etc/profiles/per-user/heuzef/etc/profile.d/hm-session-vars.sh"
+    fi
+  '';
+
+    # Créer quelques Alias Bash
+    shellAliases = {
+      ls = "ls --color=auto";
+      ll = "ls -larth";
+      coin = "echo '\_ô< coin !'";
+      pong = "ping -4 -c 3 1.1.1.1";
+    };
+
+  # Créer quelques variables d'environment
+  home.sessionVariables = {
+    EDITOR = "nano";
+  };
+}
 ```
+
+Allons-y Alonso :
+
+```bash
+cd ~/nixos-config # On se place dans le repertoire de notre dépôt
+git add --all # On versionne le tout pour permettre d'activer le verrou Flake
+nix flake update # On actualise les dépôts Flake (verification des mises à jour)
+nix-collect-garbage --delete-older-than 30d # Nettoyage pour supprimer les versions datant de plus de 30 jours.
+sudo nixos-rebuild switch --flake "~/nixos-config#mon-pc-01" # Admirez le resultat 🤟
+```
+
+# Gérez ses secrets 🔒
+
+Un autre avantage à publier sa configuration publiquement, en plus de pouvoir la partager facilement, c'est que cela nous oblige a être rigoureux sur la gestion de nos informations sensibles. Alors comment stocker et masquer ses clés, mot de passes, certificats, etc ... dans sa configuration ? Nous allons ici voir un exemple basique, (car ajouter de la sécurité peut très vite complexifer votre configuration, c'est logique), donc assurez-vous d'être suffisament en confort avec NixOS avant de franchir cette étape. J'ai pour ma part, laissé mon premier dépôt NixOS en privé pendant un moment, avant de tout reprendre à zéro pour ajouter une vrais gestion sécurisé des secrets.
+
+Dans notre exemple, je vais vous expliquer comment chiffrer des fichiers de configurations et également stocker des secrets dans un document YAML chiffré pour gérer des certificats. Pour cela, nous utiliserons le tout puissant **SOPS**. Pour la suite, je part du principe que vous avez les pré-requis en compétence de cyber-sécurité.
+
+## Présentation de AGE
+
+## Présentation de SOPS
+
+## Présentation de SOPS-NIX
