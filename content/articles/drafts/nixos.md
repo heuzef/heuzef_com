@@ -495,8 +495,29 @@ Un autre avantage à publier sa configuration publiquement, en plus de pouvoir l
 
 Dans notre exemple, je vais vous expliquer comment chiffrer des fichiers de configurations et également stocker des secrets dans un document YAML chiffré pour gérer des certificats. Pour cela, nous utiliserons le tout puissant **SOPS**. Pour la suite, je part du principe que vous avez les pré-requis en compétence de cyber-sécurité.
 
-## Présentation de AGE
+## Présentation des outils de chiffrement.
 
-## Présentation de SOPS
+1. AGE
 
-## Présentation de SOPS-NIX
+[AGE](https://age-encryption.org) est un outil libre de chiffrement moderne simple, sécurisé et rapide qui va à l'essentiel sans configuration complexe. Il utilise des paires de clés (publique/privée) ou des mots de passe. Il est facile à manipuler pour le chiffrement. Ce qui en fait bien souvent une brique de base pour des outils plus complexe tel que SOPS.
+
+2. SOPS
+
+Développé par Mozilla, [SOPS](https://getsops.io) est un éditeur de fichiers chiffrés. Il se focalise sur la gestion des secrets dans des fichiers de configuration (YAML, JSON, ENV, ...) en s'appuyant des technologie de chiffrements populaire (AWS KMS, GCP KMS, Azure KV, HuaweiCloud KMS, AGE, PGP, ...)
+
+Pour faire simple, SOPS ne chiffre que les valeurs du fichier de configuration, laissant le nom des clés en clair. Cela permet de versionner sur GIT tout en gardant une visibilité sur la structure de la configuration. Il peut également permettre un usage simultané "Multi-clés", ce qui est très confortable si vos secrets sont disperssés dans plusieurs services.
+
+![nixos_005.gif](../../assets/nixos_005.gif)
+
+3. SOPS-NIX
+
+Et maintenant, soyons fou, intégrons SOPS dans NixOS pour gérer et provisionner automatiquement nos secrets ! Voici [SOPS-NIX](https://github.com/Mic92/sops-nix) !
+
+Il y a tellement de possibilité de faire, franchement, que cela devient difficile de présenter un tuto d'apprentissage. À mon sens, l'idéal est déjà de définir votre besoin clairement, puis vous-y tenir.
+
+Pour la prise en mais de SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de l'excellent article de Ephase à ce sujet : [https://xieme-art.org/post/gerer-ses-secrets-avec-sops](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
+
+Pour la suite de cette article, je vais continuer de présenter ma logique de gestion sur la base de la configuration que nous avons mis en place depuis le début de cet article. L'objectif est simple : centraliser les données senssibles dans un dossier "secrets", ce dernier est ensuite entièrement géré via SOPS-NIX pour y stocker des fichiers chiffrés mais également y centraliser mes clés de chiffrements.
+
+
+Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires :
