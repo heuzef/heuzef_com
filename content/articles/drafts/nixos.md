@@ -36,20 +36,20 @@ Et maintenant ? J'en ai oublié la notion même de devoir le faire, car cette co
 
 Voici, par exemple, comment j'installe un logiciel. Je modifie très simplement mon fichier de configuration ainsi :
 
+
 ```nix {hl_lines=[4]}
 home.packages = with pkgs; [
     audacity
     gimp3
-    google-chrome # <---- Ajouter cette ligne
+    google-chrome # Ajouter cette ligne
     firefox
     vlc
     zoom-us
   ];
 ```
 
-Aussi simplement que ça, Google-Chrome sera déployé sur toutes mes machines.
 
-Avec cette logique, appliqué sur tous mon système, cela me permet de :
+Aussi simplement que ça, Google-Chrome sera déployé sur toutes mes machines. Avec cette logique, appliqué sur tous mon système, cela me permet de :
 
 * Coder absolument toute ma configuration
 * Prendre le temps de comprendre en profondeur ma configuration
