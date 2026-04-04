@@ -8,7 +8,7 @@ SITESUBTITLE = """
 Les notes excentriques d'un bidouilleur.
 """
 DEFAULT_PAGINATION = 5
-TYPOGRIFY = False
+TYPOGRIFY = True
 
 LINKS = (
     ('<i class="fa fa-file-pdf"></i> CV', 'https://cv.heuzef.com'),

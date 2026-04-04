@@ -34,10 +34,22 @@ Voici un exemple simple plus concret pour bien se représenter le truc : j'ai un
 
 Et maintenant ? J'en ai oublié la notion même de devoir le faire, car cette configuration est tous simplement déployé automatiquement sur toutes mes machines en parallèles, je n'aurais plus jamais besoin de m'en soucier, tant que je ne change pas d'imprimante. L'autre avantage, c'est que revenir sur ce fichier de configuration me permet de comprendre et de maîtriser tous le processus.
 
+
+
+::: {hl_lines=[4]}
+home.packages = with pkgs; [
+    audacity
+    gimp3
+    google-chrome # Ajouter cette ligne
+    firefox
+    vlc
+    zoom-us
+  ];
+
 Voici, par exemple, comment j'installe un logiciel. Je modifie très simplement mon fichier de configuration ainsi :
 
 
-```nix {hl_lines=[4]}
+``` {hl_lines=[4]}
 home.packages = with pkgs; [
     audacity
     gimp3
@@ -47,7 +59,6 @@ home.packages = with pkgs; [
     zoom-us
   ];
 ```
-
 
 Aussi simplement que ça, Google-Chrome sera déployé sur toutes mes machines. Avec cette logique, appliqué sur tous mon système, cela me permet de :
 
