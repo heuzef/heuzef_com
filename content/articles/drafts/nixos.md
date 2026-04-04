@@ -34,9 +34,9 @@ Voici un exemple simple plus concret pour bien se représenter le truc : j'ai un
 
 Et maintenant ? J'en ai oublié la notion même de devoir le faire, car cette configuration est tous simplement déployé automatiquement sur toutes mes machines en parallèles, je n'aurais plus jamais besoin de m'en soucier, tant que je ne change pas d'imprimante. L'autre avantage, c'est que revenir sur ce fichier de configuration me permet de comprendre et de maîtriser tous le processus.
 
-Voici par exemple comment j'installe un logiciel. Si je souhaite, par exemple, installer Google-Chrome, je modifie très simplement mon fichier de configuration ainsi :
+Voici, par exemple, comment j'installe un logiciel. Je modifie très simplement mon fichier de configuration ainsi :
 
-```nix
+```nix {hl_lines=[4]}
 home.packages = with pkgs; [
     audacity
     gimp3
@@ -52,16 +52,16 @@ Aussi simplement que ça, Google-Chrome sera déployé sur toutes mes machines.
 Avec cette logique, appliqué sur tous mon système, cela me permet de :
 
 * Coder absolument toute ma configuration
-* Prendre le temps de comprendre en profondeur la configuration que j'applique
-* Versionner toute ma configuration sur GIT
+* Prendre le temps de comprendre en profondeur ma configuration
+* Versionner toute ma configuration avec GIT
 * Exposer ma configuration publiquement, très pratique pour le partage (nous abordement un peu plus loin l'aspect chiffrement des secrets)
 * Ne plus jamais avoir besoin de réinstaller mon OS en Vanilla
-* Me forcer à adopoter un comportement rigoureux et ne plus permettre de mauvaises pratique (sécurité, organisation, etc ...)
+* Me forcer à adopoter un comportement rigoureux et ne plus permettre de mauvaises pratique
 * Ne plus altérer mon système à cause de manipulations regretables
-* Profiter d'environnement virtuelle temporaires pour des besoins ponctuelle
+* Profiter d'environnement virtuelle temporaires
 * Obtenir un OS de plus en plus confortable et évolutif dans le temps
 * Automatiser des déploiements
-* Pré-paramétrer tous mes outils
+* Pré-paramétrer mon environnement utilisateur et mes outils
 * ...
 
 Ce n'est qu'un début, j'ai été témoins de sacrés trucs, pour ceux qui matrîse la bête, c'est fabuleux.
