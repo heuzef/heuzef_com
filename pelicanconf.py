@@ -103,6 +103,5 @@ MARKDOWN = {
 HIDE_AUTHORS = True
 RFG_FAVICONS = True
 
-# THEME_CSS_OVERRIDES: Sequence of stylesheet URLs to override CSS provided by theme. Both relative and absolute URLs are supported.
-# THEME_JS_OVERRIDES: Sequence of JavaScript URLs to enable with this theme. Alchemy uses no JS by default. Both relative and absolute URLs are supported.
-THEME_JS_OVERRIDES = ('assets/custom.js',)
+THEME_CSS_OVERRIDES = ['assets/custom.css']
+THEME_JS_OVERRIDES = ['assets/custom.js']
