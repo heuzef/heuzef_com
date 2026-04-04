@@ -258,7 +258,7 @@ Vous êtes surement convaincu des possibilités, cependant, NixOS commence à pr
 
 ## Versionning Git
 
-Pour commencer, nous allons initier un dépôt GIT sur Github. Je considère que vous avez déjà un compte Github et créé un dépôt. Vous pouvez le nommer **nixos-config** par exemple, c'est une sorte de convention, cela vous permet entre autre de trouver facilement [d'autre dépôt similaire pour vous inspirer de quelques pépites](https://github.com/search?q=nixos-config&type=repositories&s=stars&o=desc). Par exemple, voici le miens : [https://github.com/heuzef/nixos-config](https://github.com/heuzef/nixos-config)
+Pour commencer, nous allons initier un dépôt GIT sur Github. Je considère que vous avez déjà un compte Github et créé un dépôt. Vous pouvez le nommer **nixos-config** par exemple, c'est une sorte de convention, cela vous permet entre autre de trouver facilement [d'autre dépôt similaire pour vous inspirer de quelques pépites](https://github.com/search?q=nixos-config&type=repositories&s=stars&o=desc). 
 
 Basculons dans le terminal, placez-vous dans le repertoire où vous souhaitez maintenir la configuration de votre système. N'ayant pas encore GIT déployé sur le système, nous utiliserons Nix-Shell pour l'instant, le temps de cloner notre dépôt.
 
@@ -495,13 +495,13 @@ Un autre avantage à publier sa configuration publiquement, en plus de pouvoir l
 
 Dans notre exemple, je vais vous expliquer comment chiffrer des fichiers de configurations et également stocker des secrets dans un document YAML chiffré pour gérer des certificats. Pour cela, nous utiliserons le tout puissant **SOPS**. Pour la suite, je part du principe que vous avez les pré-requis en compétence de cyber-sécurité.
 
-## Présentation des outils de chiffrement.
+## Présentation des outils de chiffrement
 
-1. AGE
+### AGE
 
 [AGE](https://age-encryption.org) est un outil libre de chiffrement moderne simple, sécurisé et rapide qui va à l'essentiel sans configuration complexe. Il utilise des paires de clés (publique/privée) ou des mots de passe. Il est facile à manipuler pour le chiffrement. Ce qui en fait bien souvent une brique de base pour des outils plus complexe tel que SOPS.
 
-2. SOPS
+### SOPS
 
 Développé par Mozilla, [SOPS](https://getsops.io) est un éditeur de fichiers chiffrés. Il se focalise sur la gestion des secrets dans des fichiers de configuration (YAML, JSON, ENV, ...) en s'appuyant des technologie de chiffrements populaire (AWS KMS, GCP KMS, Azure KV, HuaweiCloud KMS, AGE, PGP, ...)
 
@@ -509,15 +509,130 @@ Pour faire simple, SOPS ne chiffre que les valeurs du fichier de configuration, 
 
 ![nixos_005.gif](../../assets/nixos_005.gif)
 
-3. SOPS-NIX
+### SOPS-NIX
 
 Et maintenant, soyons fou, intégrons SOPS dans NixOS pour gérer et provisionner automatiquement nos secrets ! Voici [SOPS-NIX](https://github.com/Mic92/sops-nix) !
 
-Il y a tellement de possibilité de faire, franchement, que cela devient difficile de présenter un tuto d'apprentissage. À mon sens, l'idéal est déjà de définir votre besoin clairement, puis vous-y tenir.
+Il y a tellement de possibilité de faire, franchement, que cela devient difficile de présenter un tuto d'apprentissage. À mon sens, l'idéal est déjà de définir votre besoin clairement, puis vous-y tenir, en commençant très simplement.
 
-Pour la prise en mais de SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de l'excellent article de Ephase à ce sujet : [https://xieme-art.org/post/gerer-ses-secrets-avec-sops](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
+## Mise en pratique
+
+Pour la prise en mains de SOPS et SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de l'excellent article de Ephase à ce sujet : [https://xieme-art.org/post/gerer-ses-secrets-avec-sops](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
 
 Pour la suite de cette article, je vais continuer de présenter ma logique de gestion sur la base de la configuration que nous avons mis en place depuis le début de cet article. L'objectif est simple : centraliser les données senssibles dans un dossier "secrets", ce dernier est ensuite entièrement géré via SOPS-NIX pour y stocker des fichiers chiffrés mais également y centraliser mes clés de chiffrements.
 
+Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires (configuration.nix) :
 
-Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires :
+
+```nix
+environment.systemPackages = with pkgs; [
+  age
+  sops
+  ssh-to-age
+];
+```
+
+Ajoutons notre nouveau module Flake (flake.nix) :
+
+```nix
+sops-nix = {
+  url = "github:Mic92/sops-nix";
+  inputs.nixpkgs.follows = "nixpkgs";
+};
+
+# J'active SOPS-NIX sur les machines de mon choix ainsi :
+home-manager.nixosModules.home-manager
+{
+  home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+}
+```
+
+C'est prêt, effectuer un rebuild à ce stade pour déployer les outils, puis créons le repertoire de stockage des secrets : ``mkdir -p ~/nixos-config/secrets/``.
+
+Débutons par la génération d'une clé AGE, qui s'occupera de chiffrer tout nos secrets :
+
+```bash
+mkdir -p "~/.config/sops/age/" # Créer le repertoire de stockage par défaut
+age-keygen -o "~/sops/age/keys.txt" # Générer la clé
+cat "~/sops/age/keys.txt" # Notez votre Public Key, je la nommerais <AGE-PUBLIC-KEY> pour la suite
+```
+
+> Je recommande de stocker cette dernière dans le répertoire prévu par SOPS (__~/.config/sops/age/__), en effet, changer l'emplacement par defaut prévu par SOPS est assez complexe en pratique, selon-moi, l'outil n'est pas assez mature pour gérer ceci intuitivement en pratique (__SOPS_AGE_KEY_FILE__).
+
+Charge à vous à présent, de sauvegarder votre **keys.txt** à l'abris, si vous la perdez, c'est la catastrophe.
+
+Avant de poursuivre, jouons un peu avec le chiffrement.
+
+```bash
+echo '\_ô< coin coin !!' > secretofduck.txt # Créons un secret
+sops encrypt --age <AGE-PUBLIC-KEY> secretofduck.txt > secretofduck.enc.txt # Chiffrons-le avec notre clé publique AGE.
+# ASTUCE : J'ajoute un préfix .enc AVANT l'extension pour mon fichier chiffré, car, j'ai tout interet à conserver la coloration syntaxique dans mon IDE ;)
+# En effet, consultez votre fichier, vous verrez que sa structure est intacte au format JSON ! Seules les valeurs des secrets sont chiffrés. SOPS POWA ! :D
+sops decrypt secretofduck.enc.txt # Déchiffrons le  fichier, pas besoin de préciser la clé, il la récupère automatiquement dans ~/sops/age/keys.txt
+sops edit -i secretofduck.enc.txt # Idem, l'edition direct est possible, une fois sauvegardée, le fichier sera automatiquement chiffré de nouveau (--in-place).
+```
+
+Et oui, si vous vous amusez à chiffrer des JSON, YAML, etc, leur structure seront conservés après chiffrement. SOPS permet même une gestion native des .ENV chiffrés. 
+Déjà, à ce stade, c'est trop de la balle, mais allons plus loin, en créant un fichier de gestion structuré. Cela permet de définir le comportement par des règles.
+
+Création du fichier de configuration SOPS dans ``~/nixos-config/secrets/.sops.yaml`` :
+
+```yaml
+creation_rules:
+  - path_regex: .*
+    age: "<AGE-PUBLIC-KEY>"
+```
+
+Ce fichier de configuration très basique, permet de préciser à SOPS la Public Key à utiliser systématiquement dans notre dossier **secrets**.
+Créons un fichier YAML pour y stocker nos secrets dans ``~/nixos-config/secrets/secrets.yaml`` :
+
+```yaml
+API_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx # Une clé API, c'est un exemple de secret strocké simplement dans une chaine de caractère
+id_ed25519: | # Une clé privé
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END OPENSSH PRIVATE KEY-----
+id_ed25519_pub: | # Et sa clé publique
+    ssh-ed25519 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+id_rsa: | # Une clé privé
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+    -----END OPENSSH PRIVATE KEY-----
+id_rsa_pub: | # Et sa clé publique
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+```bash
+# Maintenant, chiffrons-le
+cd ~/nixos-config/secrets/
+sops --encrypt secrets.yaml > secrets.enc.yaml
+rm -v secrets.yaml
+cat secrets.enc.yaml
+```
+
+Finalement, le graal, gérons les secrets avec Home Manager (home.nix) :
+
+```nix
+# SOPS
+sops = {
+  age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt"; # Charger la clé AGE
+  defaultSopsFile = ./secrets/secrets.enc.yaml; # Charger le fichier de configuration SOPS (chiffré)
+  secrets = { # Récupérons nos secrets pour les charger dans notre configuration NixOS
+    API_KEY = {};
+    id_ed25519 = { path = "${config.home.homeDirectory}/.ssh/id_ed25519"; }; 
+    id_ed25519_pub = { path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub"; };
+    id_rsa = { path = "${config.home.homeDirectory}/.ssh/id_rsa"; };
+    id_rsa_pub = { path = "${config.home.homeDirectory}/.ssh/id_rsa.pub"; };
+  };
+};
+```
+
+Ici, je créer un lien vers des fichiers généré par NixOS dynamiquement (mes clés SSH) depuis mon **secrets.yaml**, un pur plaisir. Vous pouvez par exemple appeler le secret **API_KEY** ainsi : ``${config.sops.secrets.API_KEY.path}``.
+
+#  Conclusion
+
+Grâce a sa logique, NixOS est certainement l'un des OS Linux les plus puissants et complexe à dompter. Il sera très apprécié par ceux qui souhaite avoir une maîtrise total de leur machine et son évolution dans le temps. Mon conseil si vous débutez : ne cherchez surtout pas à faire comme les autres, inspérez-vous seulement, mais surtout, commencez tout doucement, gardez la maitrise et la comprhéension de **votre**** configuration quoi qu'il arrive, puis faite la évoluer, en évitant toute compléxité inutile. Elle deviendra de plus en plus confortable à l'usage.
+
+Avec tout ceci, vous avez de quoi faire quelques nuits blanches très satisfaisantes pour la construction de votre OS de rêves. N'hésitez pas à demander de l'aide sur le [forum de la communautée](https://discourse.nixos.org). En partageant le dépôt GIT de votre config, vous aurez un soutient très efficace.
+
+Le mot de la fin, voici ma configuration bien sûr : [https://github.com/heuzef/nixos-config](https://github.com/heuzef/nixos-config) ❄️
