@@ -89,11 +89,8 @@ PYGMENTS_STYLE = 'manni'
 
 MARKDOWN = {
     'extension_configs': {
-        'markdown.extensions.codehilite': {
-            'css_class': 'highlight',  # Highlight in bloc code
-            'linenums': False,         # Enable line numbers
-            'use_pygments': True,      # Use Pygments
-        },
+        'markdown.extensions.codehilite': {'css_class': 'highlight'},
+        'markdown.extensions.fenced_code': {},
         'markdown.extensions.extra': {},
         'markdown.extensions.meta': {},
     },
