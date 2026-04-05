@@ -323,7 +323,7 @@ C'est donc vos commits Git qui deviennent la véritée absolue. Il donc recomman
 Voici un exemple de structure basique à avoir à ce stade, nous permettant de gérer plusieurs machine :
 
 ```bash
- .
+.
 ├── .git # GIT
 ├── configuration.nix # La configuration NixOS principale
 ├── flake.lock # Le verrou Flake
@@ -400,7 +400,7 @@ Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ s
 
 Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
 
-```nix hl_lines="6-9,25-31"
+```nix hl_lines="6-9 25-31"
 {
   description = "My NixOS-Config"; # Description de votre Flake
 
@@ -523,21 +523,23 @@ Allons-y Alonso :
 cd ~/nixos-config # On se place dans le repertoire de notre dépôt
 git add --all # On versionne le tout pour permettre d'activer le verrou Flake
 nix flake update # On actualise les dépôts Flake (verification des mises à jour)
-nix-collect-garbage --delete-older-than 30d # Nettoyage pour supprimer les versions datant de plus de 30 jours.
+nix-collect-garbage --delete-older-than 30d # Nettoyage pour supprimer les générations datant de plus de 30 jours.
 sudo nixos-rebuild switch --flake "~/nixos-config#mon-pc-01" # Admirez le resultat 🤟
 ```
 
 # Gérez ses secrets 🔒
 
-Un autre avantage à publier sa configuration publiquement, en plus de pouvoir la partager facilement, c'est que cela nous oblige a être rigoureux sur la gestion de nos informations sensibles. Alors comment stocker et masquer ses clés, mot de passes, certificats, etc ... dans sa configuration ? Nous allons ici voir un exemple basique, (car ajouter de la sécurité peut très vite complexifer votre configuration, c'est logique), donc assurez-vous d'être suffisament en confort avec NixOS avant de franchir cette étape. J'ai pour ma part, laissé mon premier dépôt NixOS en privé pendant un moment, avant de tout reprendre à zéro pour ajouter une vrais gestion sécurisé des secrets.
+Un autre avantage à publier sa configuration publiquement, en plus de pouvoir la partager facilement, c'est que cela nous oblige a être rigoureux sur la gestion de nos informations sensibles. Pour la suite, je part du principe que vous avez des compétences en cyber-sécurité.
 
-Dans notre exemple, je vais vous expliquer comment chiffrer des fichiers de configurations et également stocker des secrets dans un document YAML chiffré pour gérer des certificats. Pour cela, nous utiliserons le tout puissant **SOPS**. Pour la suite, je part du principe que vous avez les pré-requis en compétence de cyber-sécurité.
+Alors comment stocker et masquer ses clés, mot de passes, certificats, etc ... dans sa configuration ? Nous allons ici voir un exemple basique, (car ajouter de la sécurité peut très vite complexifer votre configuration, c'est logique), donc assurez-vous d'être suffisament en confort avec NixOS avant de franchir cette étape. J'ai pour ma part, laissé mon premier dépôt NixOS en privé pendant un moment, avant de tout reprendre à zéro pour ajouter une vrais gestion sécurisé des secrets.
+
+Dans notre exemple, je vais vous expliquer comment chiffrer des fichiers de configurations et également stocker des secrets dans un document YAML chiffré pour gérer des clés. Pour cela, nous utiliserons le tout puissant **SOPS**.
 
 ## Présentation des outils de chiffrement
 
 ### AGE
 
-[AGE](https://age-encryption.org) est un outil libre de chiffrement moderne simple, sécurisé et rapide qui va à l'essentiel sans configuration complexe. Il utilise des paires de clés (publique/privée) ou des mots de passe. Il est facile à manipuler pour le chiffrement. Ce qui en fait bien souvent une brique de base pour des outils plus complexe tel que SOPS.
+[AGE](https://age-encryption.org) est un outil libre de chiffrement moderne (successeur spirituel de PGP) qui va à l'essentiel sans configuration complexe. Il utilise des paires de clés (publique/privée) ou des mots de passe. Il est facile à manipuler pour le chiffrement. Ce qui en fait bien souvent une brique de base pour des outils plus complexe tel que SOPS.
 
 ### SOPS
 
