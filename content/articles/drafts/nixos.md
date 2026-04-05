@@ -400,7 +400,7 @@ Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ s
 
 Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
 
-```nix hl_lines="6-9 25-31"
+```nix hl_lines="6 7 8 9 25 26 27 28 29 30 31"
 {
   description = "My NixOS-Config"; # Description de votre Flake
 
