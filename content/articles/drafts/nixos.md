@@ -166,7 +166,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
   networking.firewall.enable = false;
 ```
 
-Vous avez déjà envie de le bidouiller ? C'est bon signe 😜 Mais comment appliquer cette dernière ? C'est très simple, avec la commande ``sudo nixos-rebuild switch`` (l'argument __switch__ permet de forcer la bascule sur votre nouvelle version, immédiatement après la re-construction).
+Vous avez déjà envie de le bidouiller ? C'est bon signe 😜 Mais comment appliquer cette dernière ? C'est très simple, avec la commande ``sudo nixos-rebuild switch`` (l'argument **switch** permet de forcer la bascule sur votre nouvelle version, immédiatement après la re-construction).
 
 Et si vous souhaitez effectuer la mise à jour du système : ``sudo nixos-rebuild switch --upgrade``, gérer les éventuels conflits, suivi d'un redémarrage.
 
@@ -240,7 +240,7 @@ Astuce, le site [mynixos.com](https://mynixos.com/nixpkgs/options/programs.steam
 Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
 
 * Déclarer le package ``appimage-run``
-* Télécharger votre fichier __app.AppImage__ et autoriser son execution (``sudo chmod +x -R app.AppImage``)
+* Télécharger votre fichier **app.AppImage** et autoriser son execution (``sudo chmod +x -R app.AppImage``)
 * Démarrer le programme : ``appimage-run app.AppImage``
 
 # Passer au niveau supérieur ⭐
@@ -311,7 +311,7 @@ Si NixOS gère la structure de base, Home Manager, lui, s'occupe de personnalise
 
 Les Flakes (introduits comme une fonctionnalité expérimentale mais devenue le standard de fait) règlent un souci important : l'installation d'une configuration aujourd'hui peut varier dans le temps à cause des versions de logiciels différentes, car les "sources" de Nix ont été mises à jour entre-temps. Il s'agit donc d'un "verrou" de sécurité et de modernité.
 
-Un Flake est donc un projet Nix qui définit explicitement ses dépendances. Un fichier __flake.lock__ enregistre la version précise (le "hash" Git) de chaque source utilisés.
+Un Flake est donc un projet Nix qui définit explicitement ses dépendances. Un fichier **flake.lock** enregistre la version précise (le "hash" Git) de chaque source utilisés.
 
 L'analogie de la recette de cuisine :
 
@@ -392,7 +392,7 @@ Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera 
 }
 ```
 
-Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ sera :
+Avec cette configuration, la commande de rebuild pour la machine **mon-pc-01** sera :
 
 ``sudo nixos-rebuild switch --flake "~/nixos-config#mon-pc-01"``
 
@@ -646,9 +646,9 @@ age-keygen -o "~/sops/age/keys.txt" # Générer la clé
 cat "~/sops/age/keys.txt" # Notez votre Public Key, je la nommerais <AGE-PUBLIC-KEY> pour la suite
 ```
 
-Je recommande de stocker cette dernière dans le répertoire prévu par SOPS (__~/.config/sops/age/__), en effet, changer l'emplacement par defaut prévu par SOPS est assez complexe en pratique, selon-moi, l'outil n'est pas assez mature pour gérer ceci intuitivement dans la pratique (__SOPS_AGE_KEY_FILE__).
+Je recommande de stocker cette dernière dans le répertoire prévu par SOPS (**~/.config/sops/age/**), en effet, changer l'emplacement par defaut prévu par SOPS est assez complexe en pratique, selon-moi, l'outil n'est pas assez mature pour gérer ceci intuitivement dans la pratique (SOPS_AGE_KEY_FILE).
 
-> Charge à vous à présent, de sauvegarder votre **keys.txt** à l'abris, si vous la perdez, c'est la catastrophe.
+> Charge à vous à présent, de sauvegarder votre **keys.txt**, si vous la perdez, c'est la catastrophe.
 
 Avant de poursuivre, jouons un peu avec le chiffrement.
 
@@ -699,28 +699,53 @@ rm -v secrets.yaml
 cat secrets.enc.yaml
 ```
 
-Finalement, le graal, gérons les secrets avec Home Manager (home.nix) :
+Finalement, le graal, gérons les secrets avec Home Manager (**home.nix**) :
 
-```nix
-# SOPS
-sops = {
-  age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt"; # Charger la clé AGE
-  defaultSopsFile = ./secrets/secrets.enc.yaml; # Charger le fichier de configuration SOPS (chiffré)
-  secrets = { # Récupérons nos secrets pour les charger dans notre configuration NixOS
-    API_KEY = {};
-    id_ed25519 = { path = "${config.home.homeDirectory}/.ssh/id_ed25519"; }; 
-    id_ed25519_pub = { path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub"; };
-    id_rsa = { path = "${config.home.homeDirectory}/.ssh/id_rsa"; };
-    id_rsa_pub = { path = "${config.home.homeDirectory}/.ssh/id_rsa.pub"; };
+```nix hl_lines="15 16 17 18 19 20 21 22 23 24 25 26"
+
+{ config, lib, pkgs, ... }:
+
+{
+  # Activer Home-Manager
+  programs.home-manager.enable = true;
+
+  # Vos infos basiques à fournir à Home Manger
+  home.username = "heuzef";
+  home.homeDirectory = "/home/heuzef";
+  home.stateVersion = "25.11";
+
+  # Activer Flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  # SOPS
+  sops = {
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt"; # Charger la clé AGE
+    defaultSopsFile = ./secrets/secrets.enc.yaml; # Charger le fichier de configuration SOPS (chiffré)
+    secrets = { # Récupérons nos secrets pour les charger dans notre configuration NixOS
+      API_KEY = {}; # Récuperation de la clé API ici
+      id_ed25519 = { path = "${config.home.homeDirectory}/.ssh/id_ed25519"; };
+      id_ed25519_pub = { path = "${config.home.homeDirectory}/.ssh/id_ed25519.pub"; };
+      id_rsa = { path = "${config.home.homeDirectory}/.ssh/id_rsa"; };
+      id_rsa_pub = { path = "${config.home.homeDirectory}/.ssh/id_rsa.pub"; };
+    };
   };
-};
+
+  # home.packages permet de déployer des logiciels dans son environment utilisateur
+  home.packages = with pkgs; [
+
+(...)
+}
 ```
 
-Ici, je créer un lien vers des fichiers généré par NixOS dynamiquement (mes clés SSH) depuis mon **secrets.yaml**, un pur plaisir. Vous pouvez par exemple appeler le secret **API_KEY** ainsi : ``${config.sops.secrets.API_KEY.path}``.
+Ainsi, je créer un lien vers des fichiers générés par NixOS dynamiquement (mes clés SSH) depuis mon **secrets.yaml**, grâce à l'argument ``path``, un pur plaisir. 
+
+Il est possible, par exemple, d'appeler le secret **API_KEY** grâce à la variable ``${config.sops.secrets.API_KEY.path}``.
 
 #  Conclusion
 
-Grâce a sa logique, NixOS est certainement l'un des OS Linux les plus puissants et complexe à dompter. Il sera très apprécié par ceux qui souhaite avoir une maîtrise total de leur machine et son évolution dans le temps. Mon conseil si vous débutez : ne cherchez surtout pas à faire comme les autres, inspérez-vous seulement, mais surtout, commencez tout doucement, gardez la maitrise et la comprhéension de **votre**** configuration quoi qu'il arrive, puis faite la évoluer, en évitant toute compléxité inutile. Elle deviendra de plus en plus confortable à l'usage.
+Grâce à sa logique, NixOS est certainement l'un des OS Linux les plus puissants et complexe à dompter. Il sera très apprécié par ceux qui souhaite avoir une maîtrise total de leur machine et de son évolution dans le temps. 
+
+Mon conseil si vous débutez : ne cherchez surtout pas à faire comme les autres, inspirez-vous, mais débutez doucement, gardez la maitrise et la comprhéension de **votre** configuration quoi qu'il arrive, puis faite la évoluer, en évitant toute compléxité inutile. Elle deviendra de plus en plus confortable à l'usage.
 
 Avec tout ceci, vous avez de quoi faire quelques nuits blanches très satisfaisantes pour la construction de votre OS de rêves. N'hésitez pas à demander de l'aide sur le [forum de la communautée](https://discourse.nixos.org). En partageant le dépôt GIT de votre config, vous aurez un soutient très efficace.
 
