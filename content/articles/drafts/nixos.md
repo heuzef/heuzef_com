@@ -303,7 +303,7 @@ Et ba voilà 👌 Vous avez votre configuration verssionné sur GIT ! Vous avez 
 - Rebuild (en cas d'erreur, on corrige, on test, ...)
 - Si l'on est satisfait, on commit et push
 
-C'est déjà super ainsi, mais allons plus loins avec des fonctionnalités très populaires.
+C'est déjà super ainsi, mais allons plus loin avec des fonctionnalités très populaires.
 
 ## Home Manager et Flakes
 
@@ -311,12 +311,12 @@ Si NixOS gère la structure de base, Home Manager, lui, s'occupe de personnalise
 
 Les Flakes (introduits comme une fonctionnalité expérimentale mais devenue le standard de fait) règlent un souci important : l'installation d'une configuration aujourd'hui peut varier dans le temps à cause des versions de logiciels différentes, car les "sources" de Nix ont été mises à jour entre-temps. Il s'agit donc d'un "verrou" de sécurité et de modernité.
 
-Un Flake est donc un projet, Nix qui définit explicitement ses dépendances. Un fichier __flake.lock__ enregistre la version précise (le "hash" Git) de chaque source utilisés.
+Un Flake est donc un projet Nix qui définit explicitement ses dépendances. Un fichier __flake.lock__ enregistre la version précise (le "hash" Git) de chaque source utilisés.
 
 L'analogie de la recette de cuisine :
 
-* Sans Flake : La recette dit "Prenez du lait". Si le lait du supermarché change de marque, le goût du gâteau change.
-* Avec Flake : La recette dit "Prenez le lait de la marque X, lot n°1234, datant du 01/01/1970". Le gâteau sera exactement le même, à chaque fois, pour tout le monde.
+* Sans Flake : La recette dit "Ajouter du lait". Si le lait du supermarché change de marque, le goût du gâteau change.
+* Avec Flake : La recette dit "Ajouter le lait de la marque X, lot n°1234, datant du 01/01/1970". Le gâteau sera exactement le même, à chaque fois, pour tout le monde.
 
 C'est donc vos commits Git qui deviennent la véritée absolue. Il donc recommandé d'effectuer un ``git add --all`` de votre dépôt, avant chaque rebuild ! (Sinon ça couine).
 
@@ -324,25 +324,25 @@ Voici un exemple de structure basique à avoir à ce stade, nous permettant de g
 
 ```bash
  .
-├──  .git # GIT
-├──  configuration.nix # La configuration NixOS principale
-├──  flake.lock # Le verrou Flake
-├──  flake.nix # Configuration Flake
-├──  hardware # Les configurations matérielles de vos machines. Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
-│   ├──  mon-pc-01.nix
-│   ├──  mon-pc-02.nix
-│   └──  mon-pc-03.nix
-├──  home.nix # Configuration Home Manager
-├── 󰂺 README.md # Vos notes perso pour le dépôt
-└──  software
-    └──  steam # Configuration du logiciel Steam pour le jeu-vidéo
+├── .git # GIT
+├── configuration.nix # La configuration NixOS principale
+├── flake.lock # Le verrou Flake
+├── flake.nix # Configuration Flake
+├── hardware # Les configurations matérielles de vos machines.
+│   ├── mon-pc-01.nix
+│   ├── mon-pc-02.nix
+│   └── mon-pc-03.nix
+├── home.nix # Configuration Home Manager
+├── README.md # Vos notes perso
+└── software
+    └── steam.nix # Configuration du logiciel Steam pour le jeu-vidéo
 ```
 
-Voyons à présent les fichiers de configuration de Home Manager et Flakes
+Voyons à présent les fichiers de configuration de Home Manager et Flakes.
 
 ### flake.nix
 
-Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera appelé pour le rebuild, afin de vous permettre d'executer avec des arguments conditionnels. Dans notre cas, cela sera pour préciser la machine, mais après, libre à vous d'être créatif.
+Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera appelé à la reconstruction, afin de permettre une execution avec des arguments conditionnels. Dans notre cas, cela sera pour préciser la machine en cours d'utilisation, mais après, libre à vous d'être créatif.
 
 ```nix
 {
@@ -364,7 +364,7 @@ Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera 
           inherit system;
           modules = [
             ./configuration.nix # Nous retrouvons ici notre fichier de configuration
-            ./hardware/mon-pc-01.nix # sudo nixos-generate-config --show-hardware-config
+            ./hardware/mon-pc-01.nix # Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
           ];
         };
 
@@ -374,7 +374,7 @@ Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera 
           modules = [
             ./configuration.nix
             ./hardware/mon-pc-02.nix
-            ./software/steam.nix # sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+            ./software/steam.nix # Sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
           ];
         };
         
@@ -382,7 +382,7 @@ Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera 
         mon-pc-03 = lib.nixosSystem {
           inherit system;
           modules = [
-            ./config-light.nix # cette machine est peu puissante, j'utilise une configuration plus économe en ressource.
+            ./configuration.nix
             ./hardware/mon-pc-02.nix
           ];
         };
@@ -417,6 +417,65 @@ home-manager.nixosModules.home-manager
   home-manager.useGlobalPkgs = true; # Activer les paquets système
   home-manager.useUserPackages = true; # Activer les paquets utilisateur
   home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
+}
+```
+
+```nix hl_lines="6-9,25-31"
+{
+  description = "My NixOS-Config"; # Description de votre Flake
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";  # Activation de tous les paquets
+    home-manager = {
+      url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+    in {
+      nixosConfigurations = {
+
+        # mon-pc-01
+        mon-pc-01 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix # Nous retrouvons ici notre fichier de configuration
+            ./hardware/mon-pc-01.nix # Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
+            home-manager.nixosModules.home-manager
+            {
+              networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici
+              home-manager.useGlobalPkgs = true; # Activer les paquets système
+              home-manager.useUserPackages = true; # Activer les paquets utilisateur
+              home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
+            }
+          ];
+        };
+
+        # mon-pc-02
+        mon-pc-02 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hardware/mon-pc-02.nix
+            ./software/steam.nix # Sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+          ];
+        };
+        
+        # mon-pc-03
+        mon-pc-03 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hardware/mon-pc-02.nix
+          ];
+        };
+        
+      };
+    };
 }
 ```
 
