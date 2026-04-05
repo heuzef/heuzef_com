@@ -553,18 +553,17 @@ Pour faire simple, SOPS ne chiffre que les valeurs du fichier de configuration, 
 
 Et maintenant, soyons fou, intégrons SOPS dans NixOS pour gérer et provisionner automatiquement nos secrets ! Voici [SOPS-NIX](https://github.com/Mic92/sops-nix) !
 
-Il y a tellement de possibilité de faire, franchement, que cela devient difficile de présenter un tuto d'apprentissage. À mon sens, l'idéal est déjà de définir votre besoin clairement, puis vous-y tenir, en commençant très simplement.
+Il y a tellement de possibilités que cela devient difficile de présenter un tuto d'apprentissage. À mon sens, l'idéal est déjà de définir votre besoin clairement, puis vous-y tenir, en commençant très simplement.
 
 ## Mise en pratique
 
-Pour la prise en mains de SOPS et SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de l'excellent article de Ephase à ce sujet : [https://xieme-art.org/post/gerer-ses-secrets-avec-sops](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
+Pour la prise en mains de SOPS et SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de [l'excellent article d'Ephase à ce sujet](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
 
 Pour la suite de cette article, je vais continuer de présenter ma logique de gestion sur la base de la configuration que nous avons mis en place depuis le début de cet article. L'objectif est simple : centraliser les données senssibles dans un dossier "secrets", ce dernier est ensuite entièrement géré via SOPS-NIX pour y stocker des fichiers chiffrés mais également y centraliser mes clés de chiffrements.
 
-Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires (configuration.nix) :
+Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires (**configuration.nix**) :
 
-
-```nix
+```nix hl_lines="2 3 4"
 environment.systemPackages = with pkgs; [
   age
   sops
@@ -572,26 +571,76 @@ environment.systemPackages = with pkgs; [
 ];
 ```
 
-Ajoutons notre nouveau module Flake (flake.nix) :
+Ajoutons notre nouveau module Flake (**flake.nix**) :
 
-```nix
-sops-nix = {
-  url = "github:Mic92/sops-nix";
-  inputs.nixpkgs.follows = "nixpkgs";
-};
-
-# J'active SOPS-NIX sur les machines de mon choix ainsi :
-home-manager.nixosModules.home-manager
+```nix hl_lines="10 11 12 13 35"
 {
-  home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ];
+  description = "My NixOS-Config"; # Description de votre Flake
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";  # Activation de tous les paquets
+    home-manager = {
+      url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+    in {
+      nixosConfigurations = {
+
+        # mon-pc-01
+        mon-pc-01 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix # Nous retrouvons ici notre fichier de configuration
+            ./hardware/mon-pc-01.nix # Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
+            home-manager.nixosModules.home-manager
+            {
+              networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici
+              home-manager.useGlobalPkgs = true; # Activer les paquets système
+              home-manager.useUserPackages = true; # Activer les paquets utilisateur
+              home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
+              home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ]; # Activer SOPS-NIX sur cette machine
+            }
+          ];
+        };
+
+        # mon-pc-02
+        mon-pc-02 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hardware/mon-pc-02.nix
+            ./software/steam.nix # Sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+          ];
+        };
+        
+        # mon-pc-03
+        mon-pc-03 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hardware/mon-pc-02.nix
+          ];
+        };
+        
+      };
+    };
 }
 ```
 
-C'est prêt, effectuer un rebuild à ce stade pour déployer les outils, puis créons le repertoire de stockage des secrets : ``mkdir -p ~/nixos-config/secrets/``.
-
-Débutons par la génération d'une clé AGE, qui s'occupera de chiffrer tout nos secrets :
+C'est prêt, reconstruisons à ce stade pour déployer les outils, puis débutons par la génération d'une clé AGE, qui s'occupera de chiffrer tout nos secrets :
 
 ```bash
+mkdir -p ~/nixos-config/secrets/ # Créer le repertoire de stockage des secrets
 mkdir -p "~/.config/sops/age/" # Créer le repertoire de stockage par défaut
 age-keygen -o "~/sops/age/keys.txt" # Générer la clé
 cat "~/sops/age/keys.txt" # Notez votre Public Key, je la nommerais <AGE-PUBLIC-KEY> pour la suite
