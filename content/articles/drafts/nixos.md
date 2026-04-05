@@ -205,7 +205,7 @@ services.qemuGuest.enable = true;
 Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
 
 * Déclarer le package ``appimage-run``
-* Télécharger votre fichier **app.AppImage** et autoriser son exécution (``sudo chmod +x -R app.AppImage``)
+* Télécharger votre fichier **app.AppImage** et autoriser son exécution (``sudo chmod +x app.AppImage``)
 * Démarrer le programme : ``appimage-run app.AppImage``
 
 # Principe des modules 🧩
