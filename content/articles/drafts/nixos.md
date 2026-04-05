@@ -30,7 +30,7 @@ Maintenant, la logique déclarative serait : J'écris mon livre de recette du g�
 
 L'effort initiale ici qui est donc de créer le livre de recette, c'est la phase importante (et chronophage), mais une fois fait, c'est la foire à la saucisse.
 
-Voici un exemple simple plus concret pour bien se représenter le truc : j'ai une imprimante à la maison. Nous prenons par exemple 1h sur chaque PC, à chaque fois que nécessaire de pour l'installer, mettre à jour les pilotes, logiciels, etc ... Sur NixOS, j'ai un fichier de configuration qui comprend tous ce qu'il faut pour profiter d'une imprimante opérationnelle et paramétré aux oinions, ce qui m'a pris 1 journée entière à coder et tester. 
+Voici un exemple simple plus concret pour bien se représenter le truc : j'ai une imprimante à la maison. Nous prenons par exemple 1h sur chaque PC, à chaque fois que nécessaire de pour l'installer, mettre à jour les pilotes, logiciels, etc ... Sur NixOS, j'ai un fichier de configuration qui comprend tous ce qu'il faut pour profiter d'une imprimante opérationnelle et paramétré aux oinions, ce qui m'a pris la journée entière à coder et tester. 
 
 Et maintenant ? J'en ai oublié la notion même de devoir le faire, car cette configuration est tous simplement déployé automatiquement sur toutes mes machines en parallèles, je n'aurais plus jamais besoin de m'en soucier, tant que je ne change pas d'imprimante. L'autre avantage, c'est que revenir sur ce fichier de configuration me permet de comprendre et de maîtriser tous le processus.
 
@@ -70,15 +70,13 @@ NixOS est un des OS les plus puissants et interessant qui existe, mais il est sa
 
 Il force à avoir une rigueur et une logique irréprochable, chaque petite configuration de votre environnement de travail sera un challenge. Si vous vous prenez au truc, vous aller surement rester pendant un moment insatisfait de votre code ... puis, finalement, un beau jour, vous avez une configuration élégante qui vous maitrisez et appréciez, c'est le nirvana qui vous attend 🤩
 
-La meilleur astuce, c'est finalement de configurer votre système tranquillement, au minimum de ce que vous avez vraiment besoin, en prenant le temps de le faire vous même, tester et bien maitriser votre code. Vous aller ainsi progressivement basculer sur une configuration maîtrisé et très personnel qui vous correspond.
+Ma meilleur astuce, c'est finalement de configurer son système tranquillement, au plus simple, en prenant le temps de le faire pour sois-même. Vous aller ainsi progressivement basculer sur une configuration maîtrisé et très personnel qui vous correspond.
 
 Convaincu ? Alors je vous propose maintenant de découvrir son fonctionnement. Enfin, nous metterons en place un versionnage de votre configuration sur GIT avec des modules expérimentaux pour en tirer le plein potentiel. Suivez le guide 👉
 
 # Installation 📀
 
-Bonne nouvelle, rien de nouveau ici, [vous installez NixOS exactement de la même façon que n'importe quel autre distribution](https://nixos.org/download/#nixos-iso), aucun piège, c'est hyper simple. Choisiez votre environnement graphique favoris (Gnome, KDE, ...), puis, vous démarrez sur votre installation toute fraîche. 
-
-C'est ici que l'aventure commence : forcez-vous a ne rien configurer, car, toute modification apportée sera perdue, par exemple, si vous réinstallez le système.
+Bonne nouvelle, rien de nouveau ici, [vous installez NixOS exactement de la même façon que n'importe quel autre distribution](https://nixos.org/download/#nixos-iso), aucun piège, c'est hyper simple. Choisiez votre environnement graphique favoris (Gnome, KDE, ...), puis, nous démarrons sur une installation Vanilla. C'est ici que l'aventure commence : il faut ce forcer a ne rien configurer, car, toute modification apportée sera perdue si vous réinstallez le système.
 
 Je vous recommande donc de poursuivre la lecture de cet article depuis votre NixOS flambant neuf.
 
@@ -100,21 +98,20 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
   boot.loader.efi.canTouchEfiVariables = true;
  
   networking.hostName = "nixos"; # Le nom d'hôte de votre machine
-  networking.wireless.enable = false;  # Activer le Wi-Fi
- 
-  networking.networkmanager.enable = true; # Activer Network Manager
+  networking.wireless.enable = false;  # Le Wi-Fi
+  networking.networkmanager.enable = true; # Network Manager
  
   time.timeZone = "Europe/Paris"; # Le fuseau horaire
  
   i18n.defaultLocale = "fr_FR.UTF-8"; # Le codage international
 
-  services.xserver.enable = true; # Activer X11
+  services.xserver.enable = true; # Activer X11 si besoin
  
   # Activer GNOME Desktop Environment
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
  
-  # Configurer votre clavier
+  # Configuration du clavier
   services.xserver.xkb = {
     layout = "fr";
     variant = "azerty";
@@ -140,7 +137,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
     description = "heuzef";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    #  ici, vous pouvez définir une liste de logiciel pour cet utilisateur
+    #  ici, il est possible de définir une liste de logiciel pour cet utilisateur
     ];
   };
  
@@ -148,7 +145,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
  
   nixpkgs.config.allowUnfree = true; # Permettre l'utilisation des logiciels non-libres
  
-  # La liste des logiciels à déployer sur votre system (https://search.nixos.org)
+  # La liste des logiciels à déployer sur le system (https://search.nixos.org)
   environment.systemPackages = with pkgs; [
    vim
    wget
@@ -162,7 +159,7 @@ La configuration principale s'effectue dans un fichier **configuration.nix** qui
   # Activation de service
   services.openssh.enable = true;
  
-  # Configurer votre Pare-feu
+  # Configuration du Pare-feu
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
@@ -206,7 +203,7 @@ services.qemuGuest.enable = true;
 # Principe des modules 🧩
 
 L'avantage de travailler avec des fichiers de configuration modulaire, c'est que cela simplifie la maintenance et la gestion du déploiement.
-Par exemple, voici un fichier de configuration très basique pour Steam :
+Par exemple, voici un fichier de configuration très basique pour Steam si vous êtes un Gamer (**steam.nix**) :
 
 ```nix
 { pkgs, ... }:
@@ -243,53 +240,56 @@ Astuce, le site [mynixos.com](https://mynixos.com/nixpkgs/options/programs.steam
 Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
 
 * Déclarer le package ``appimage-run``
-* Télécharger votre fichier .AppImage et autoriser son execution (``sudo chmod +x -R *.AppImage``)
-* Démarrer le programme : ``appimage-run *.AppImage``
+* Télécharger votre fichier __app.AppImage__ et autoriser son execution (``sudo chmod +x -R app.AppImage``)
+* Démarrer le programme : ``appimage-run app.AppImage``
 
 # Passer au niveau supérieur ⭐
 
-Vous êtes surement convaincu des possibilités, cependant, NixOS commence à prendre tout son sens lorsque nous embrassons tout les avantages offert par le déclaratif. Ainsi, nous allons à présent voir comment  :
+Vous êtes surement convaincu des possibilités, cependant, NixOS commence à prendre tout son sens lorsque nous embrassons les avantages offert par le déclaratif. Ainsi, nous allons à présent voir comment  :
 
 * Versionner sa configuration sur GIT
 * Utiliser Home Manager avec Flake pour exploiter toutes les fonctionnalités expérimentales
 * Gérer plusieurs machines
 
-## Versionning Git
+## Versionner avec Git
 
-Pour commencer, nous allons initier un dépôt GIT sur Github. Je considère que vous avez déjà un compte Github et créé un dépôt. Vous pouvez le nommer **nixos-config** par exemple, c'est une sorte de convention, cela vous permet entre autre de trouver facilement [d'autre dépôt similaire pour vous inspirer de quelques pépites](https://github.com/search?q=nixos-config&type=repositories&s=stars&o=desc). 
+Pour commencer, nous allons initier un dépôt GIT (sur Github). Je considère que vous avez déjà un compte Github et créé un dépôt. Vous pouvez le nommer **nixos-config** par exemple, c'est une sorte de convention, cela vous permet entre autre de trouver facilement [d'autre dépôt similaire pour vous inspirer de quelques pépites](https://github.com/search?q=nixos-config&type=repositories&s=stars&o=desc). 
 
 Basculons dans le terminal, placez-vous dans le repertoire où vous souhaitez maintenir la configuration de votre système. N'ayant pas encore GIT déployé sur le système, nous utiliserons Nix-Shell pour l'instant, le temps de cloner notre dépôt.
 
 ```bash
 cd ~ # Utilisation du repertoire utilisateur, ici pour notre exemple
 nix-shell -p git --command "git clone git@github.com:<VOTRE-PSEUDO-GITHUB>/nixos-config.git"
-exit
-cd nixos-config
 ```
-Créons à présent dedans un fichier de configuration contenant le minimum : ``cp -v /etc/nixos/configuration.nix ~/nixos-config/``.
 
-En plus de la configuration minimal (vu plus tôt ci-dessus), déclarer également :
+Créons à présent un fichier de configuration contenant le minimum : ``cp -v /etc/nixos/configuration.nix ~/nixos-config/``.
+
+En plus de la configuration minimal (vu plus tôt ci-dessus), ajoutons dedans :
 
 ```nix
-  networking.hostName = "mon-pc"; # Le nom d'hôte de votre machine, c'est important
+  networking.hostName = "mon-pc"; # Le nom d'hôte de la machine, c'est important pour la suite
   
-  programs.firefox.enable = true; # Activer Firefox
-
-  # Activer et configuer Git :
+  # Activer et configuer GIT :
   programs.git = {
     enable = true;
     lfs.enable = true;
-    settings.user.name = "<VOTRE-PSEUDO-GITHUB>";
+    settings.user.name = "<VOTRE-PSEUDO>";
     settings.user.email = "<VOTRE-EMAIL>";
   };
 ```
 
-Finalement, vous pouvez déjà reconstruire votre système avec ce fichier de configuration : ``sudo nixos-rebuild switch --file ~/nixos-config/configuration.nix``
+Finalement, vous pouvez déjà reconstruire votre système avec ce fichier de configuration : 
 
-Si vous rencontrez une erreur, pas de panique, analyser-la, elle sont généralement plutôt claire et sont là pour vous aider à valider un fichier de configuration parfaitement propre.
-Si cela prend du temps aussi c'est normal, NixOS analyse les différences trouvés entre le système et votre déclaration. Si vous re-construiser à nouveau sans rien modifier dans la configuration, vous constaterez que le rebuild est quasiment instantané, car aucun changement n'est appliqué.
+```bash
+sudo nixos-rebuild switch --file ~/nixos-config/configuration.nix
+git config --list # Vérifier que GIT est déployé et configuré
+```
 
-Git est maintenant installé et configuré, créons notre premier commit :
+Si vous rencontrez une erreur, pas de panique, analyser-la, elle sont généralement plutôt claire et sont là pour nous aider à valider un fichier de configuration parfaitement propre.
+
+La construction peu prendre du temps, NixOS analyse les différences trouvés entre le système et votre déclaration. Vous constaterez que le rebuild est quasiment instantané si aucun changement n'est appliqué.
+
+Créons notre premier commit :
 
 ```bash
 git add --all
@@ -298,6 +298,7 @@ git push
 ```
 
 Et ba voilà 👌 Vous avez votre configuration verssionné sur GIT ! Vous avez compris le processus pour modifier votre configuration système :
+
 - Éditer les fichiers de configurations
 - Rebuild (en cas d'erreur, on corrige, on test, ...)
 - Si l'on est satisfait, on commit et push
