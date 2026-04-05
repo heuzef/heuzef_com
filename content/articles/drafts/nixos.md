@@ -1,14 +1,14 @@
 Title: À la découverte de NixOS une distribution Linux pas comme les autres
-Category: Parentalité
+Category: Informatique
 Tags: linux, astuce, opensource, chiffrement
-Date: 2026-04-01
+Date: 2026-04-06
 Status: draft
 
 ![nixos_001.png](../../assets/nixos_001.png)
 
 Si vous êtes un Linuxien vous avez sûrement déjà testé quelques distributions dans votre vie, je vous invite à partir à l'aventure avec moi pour découvrir **tranquillement** NixOS.
 
-"Encore une, j'ai déjà ma favorite et [NixOS stagne dans le top 20 en popularité](https://distrowatch.com) ..." me direz-vous. Et bien, si vous ne connaissez pas ce qui la rend spéciale, vous risquez d'être surpris.
+"Encore une, j'ai déjà ma favorite et [NixOS stagne dans le top 20 en popularité](https://distrowatch.com)" me direz-vous. Et bien, si vous ne connaissez pas ce qui la rend spéciale, vous risquez d'être surpris.
 
 ## Pourquoi NixOS est différent ? ❄️
 
