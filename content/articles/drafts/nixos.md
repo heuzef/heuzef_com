@@ -340,7 +340,7 @@ Voici un exemple de structure basique à avoir à ce stade, nous permettant de g
 
 Voyons à présent les fichiers de configuration de Home Manager et Flakes.
 
-### flake.nix
+### Flake
 
 Votre fichier **flake.nix** deviendra votre point d'entrée, c'est lui qui sera appelé à la reconstruction, afin de permettre une execution avec des arguments conditionnels. Dans notre cas, cela sera pour préciser la machine en cours d'utilisation, mais après, libre à vous d'être créatif.
 
@@ -396,16 +396,16 @@ Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ s
 
 ``sudo nixos-rebuild switch --flake "~/nixos-config#mon-pc-01"``
 
-### home.nix
+### Home Manager
 
 Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
 
 ```nix hl_lines="6 7 8 9 25 26 27 28 29 30 31"
 {
-  description = "My NixOS-Config"; # Description de votre Flake
+  description = "My NixOS-Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";  # Activation de tous les paquets
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
       inputs.nixpkgs.follows = "nixpkgs";
@@ -423,8 +423,8 @@ Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, 
         mon-pc-01 = lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix # Nous retrouvons ici notre fichier de configuration
-            ./hardware/mon-pc-01.nix # Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
+            ./configuration.nix
+            ./hardware/mon-pc-01.nix
             home-manager.nixosModules.home-manager
             {
               networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici
@@ -441,7 +441,7 @@ Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, 
           modules = [
             ./configuration.nix
             ./hardware/mon-pc-02.nix
-            ./software/steam.nix # Sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+            ./software/steam.nix
           ];
         };
         
@@ -559,7 +559,7 @@ Il y a tellement de possibilités que cela devient difficile de présenter un tu
 
 Pour la prise en mains de SOPS et SOPS-NIX, vous pouvez vous référez à l'exemple présenté par le mainteneur sur le dépôt Github. Mais avant, je vous recommande fortement la lecture de [l'excellent article d'Ephase à ce sujet](https://xieme-art.org/post/gerer-ses-secrets-avec-sops). C'est du pur jus de cervelle et c'est fameux.
 
-Pour la suite de cette article, je vais continuer de présenter ma logique de gestion sur la base de la configuration que nous avons mis en place depuis le début de cet article. L'objectif est simple : centraliser les données senssibles dans un dossier "secrets", ce dernier est ensuite entièrement géré via SOPS-NIX pour y stocker des fichiers chiffrés mais également y centraliser mes clés de chiffrements.
+Pour la suite de cette article, je vais continuer de présenter ma logique de gestion sur la base de la configuration que nous avons mis en place depuis le début de cet article. L'objectif est simple : centraliser les données senssibles dans un dossier "secrets", ce dernier est ensuite entièrement géré via SOPS-NIX pour y stocker des fichiers chiffrés mais également y centraliser mes clés SSH.
 
 Pour commencer, nous éditons notre configuration pour y déclarer tous les nouveaux outils nécéssaires (**configuration.nix**) :
 
@@ -575,12 +575,12 @@ Ajoutons notre nouveau module Flake (**flake.nix**) :
 
 ```nix hl_lines="10 11 12 13 35"
 {
-  description = "My NixOS-Config"; # Description de votre Flake
+  description = "My NixOS-Config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";  # Activation de tous les paquets
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
@@ -600,14 +600,14 @@ Ajoutons notre nouveau module Flake (**flake.nix**) :
         mon-pc-01 = lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix # Nous retrouvons ici notre fichier de configuration
-            ./hardware/mon-pc-01.nix # Astuce, pour afficher la configuration de votre machine : sudo nixos-generate-config --show-hardware-config
+            ./configuration.nix
+            ./hardware/mon-pc-01.nix
             home-manager.nixosModules.home-manager
             {
-              networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici
-              home-manager.useGlobalPkgs = true; # Activer les paquets système
-              home-manager.useUserPackages = true; # Activer les paquets utilisateur
-              home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
+              networking.hostName = "mon-pc-01";
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.heuzef = import ./home.nix;
               home-manager.sharedModules = [ inputs.sops-nix.homeManagerModules.sops ]; # Activer SOPS-NIX sur cette machine
             }
           ];
@@ -619,7 +619,7 @@ Ajoutons notre nouveau module Flake (**flake.nix**) :
           modules = [
             ./configuration.nix
             ./hardware/mon-pc-02.nix
-            ./software/steam.nix # Sur cette machine, je décide de déployer Steam pour jouer au jeux-vidéo
+            ./software/steam.nix
           ];
         };
         
@@ -646,9 +646,9 @@ age-keygen -o "~/sops/age/keys.txt" # Générer la clé
 cat "~/sops/age/keys.txt" # Notez votre Public Key, je la nommerais <AGE-PUBLIC-KEY> pour la suite
 ```
 
-> Je recommande de stocker cette dernière dans le répertoire prévu par SOPS (__~/.config/sops/age/__), en effet, changer l'emplacement par defaut prévu par SOPS est assez complexe en pratique, selon-moi, l'outil n'est pas assez mature pour gérer ceci intuitivement en pratique (__SOPS_AGE_KEY_FILE__).
+Je recommande de stocker cette dernière dans le répertoire prévu par SOPS (__~/.config/sops/age/__), en effet, changer l'emplacement par defaut prévu par SOPS est assez complexe en pratique, selon-moi, l'outil n'est pas assez mature pour gérer ceci intuitivement dans la pratique (__SOPS_AGE_KEY_FILE__).
 
-Charge à vous à présent, de sauvegarder votre **keys.txt** à l'abris, si vous la perdez, c'est la catastrophe.
+> Charge à vous à présent, de sauvegarder votre **keys.txt** à l'abris, si vous la perdez, c'est la catastrophe.
 
 Avant de poursuivre, jouons un peu avec le chiffrement.
 
