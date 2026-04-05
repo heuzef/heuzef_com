@@ -200,6 +200,14 @@ Sous condition bien sûr d'avoir activé la virtualisation sur votre système. C
 services.qemuGuest.enable = true;
 ```
 
+# Les AppImages 🖼️
+
+Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
+
+* Déclarer le package ``appimage-run``
+* Télécharger votre fichier **app.AppImage** et autoriser son exécution (``sudo chmod +x -R app.AppImage``)
+* Démarrer le programme : ``appimage-run app.AppImage``
+
 # Principe des modules 🧩
 
 L'avantage de travailler avec des fichiers de configuration modulaire, c'est que cela simplifie la maintenance et la gestion du déploiement.
@@ -234,14 +242,6 @@ Puis, sur chaque machine où vous souhaitez pouvoir jouer aux jeux-vidéo, il su
 ```
 
 Astuce, le site [mynixos.com](https://mynixos.com/nixpkgs/options/programs.steam) est très confortable pour trouver les options de configurations des programmes.
-
-# Les AppImages
-
-Si le programme que vous souhaitez n'existe pas dans le dépôt de NixOS, mais uniquement téléchargeable en tant que AppImage, voici une méthode très simple et efficace :
-
-* Déclarer le package ``appimage-run``
-* Télécharger votre fichier **app.AppImage** et autoriser son exécution (``sudo chmod +x -R app.AppImage``)
-* Démarrer le programme : ``appimage-run app.AppImage``
 
 # Passer au niveau supérieur ⭐
 
