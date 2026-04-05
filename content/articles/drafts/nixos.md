@@ -400,26 +400,6 @@ Avec cette configuration, la commande de rebuild pour la machine __mon-pc-01__ s
 
 Voyons à présent comment activer Home Manager, dans le fichier **flake.nix**, nous ajouterons les éléments suivants :
 
-Dans la partie __inputs__ :
-```nix
-    home-manager = {
-      url = "github:nix-community/home-manager"; # Les modules peuvent être appelées directement depuis un dépôt Github compatible, c'est beaucoup trop cool !
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-```
-
-Puis, dans la section __modules__ d'une machine :
-
-```nix
-home-manager.nixosModules.home-manager
-{
-  networking.hostName = "mon-pc-01"; # Possible de configurer votre nom d'hôte ici, à supprimer, bien sûr, de configuration.nix qui est communs à toutes les machines
-  home-manager.useGlobalPkgs = true; # Activer les paquets système
-  home-manager.useUserPackages = true; # Activer les paquets utilisateur
-  home-manager.users.heuzef = import ./home.nix; # Nous allons importer ainsi notre configuration Home Manager
-}
-```
-
 ```nix hl_lines="6-9,25-31"
 {
   description = "My NixOS-Config"; # Description de votre Flake
