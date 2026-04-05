@@ -6,7 +6,7 @@ Status: published
 
 Dans cet article, nous allons nous initier au DaC afin de réaliser de magnifiques schémas en Python.
 
-Aujourd'hui, il est assez tentant de s'orienter vers des solutions comme Draw.io pour réaliser des schémas visuellement agréable, mais l'outil en lui-même ne me convient pas, car je ne le trouve pas assez flexible. Je souhaite utiliser un outil libre sans restriction et qui permet de générer confortablement (voir automatiquement) des beaux schémas que je peux exporter en SVG et PDF à la demande.
+Aujourd'hui, il est assez tentant de s'orienter vers des solutions comme Draw.io pour réaliser des schémas visuellement agréables, mais l'outil en lui-même ne me convient pas, car je ne le trouve pas assez flexible. Je souhaite utiliser un outil libre sans restriction et qui permet de générer confortablement (voire automatiquement) des beaux schémas que je peux exporter en SVG et PDF à la demande.
 
 ![Diagrams](../../assets/diagrams.png)
 
@@ -19,9 +19,9 @@ Changer de logique pour le DaC permet donc de ne plus du tout sortir de logiciel
 
 # Recherche d'outil 🔍
 
-J'ai mis du temps à trouver mon bonheur, entre les vieux projets dépréciés de geek frustrés difficile à exploiter, puis je suis tombé sur la référence, à savoir [Kroki.io](https://kroki.io) qui convient à beaucoup, car bien maintenu et dispose de tout un tas de librairie populaire ... mais c'est tout ! Très efficace pour générer automatiquement des diagrammes, il n'offre cependant pas la flexibilité pour réaliser l'effet visuel "wahou" que je cherche ni la simplicité.
+J'ai mis du temps à trouver mon bonheur, entre les vieux projets dépréciés de geek frustrés difficiles à exploiter, puis je suis tombé sur la référence, à savoir [Kroki.io](https://kroki.io) qui convient à beaucoup, car bien maintenu et dispose de tout un tas de librairies populaires ... mais c'est tout ! Très efficace pour générer automatiquement des diagrammes, il n'offre cependant pas la flexibilité pour réaliser l'effet visuel "wahou" que je cherche ni la simplicité.
 
-J'ai bien évidement trouvé la pépite, c'est pour ça que je fait cette note 😜.
+J'ai bien évidemment trouvé la pépite, c'est pour ça que je fais cette note 😜.
 Voici donc comment prendre en main [DIAGRAMS](https://diagrams.mingrammer.com/) de Mingrammer.
 
 # Fonctionnement de Diagrams ⚙️
@@ -57,25 +57,25 @@ dnf install python3 python3-pip graphviz inkscape
 pip3 install diagrams
 ```
 
-Terminé, aller bisous à la famille, n'oublie pas de nourrir le chien, ciao. J'aime bien ça moi, quand ça ne réclame pas la mise en place d'une usine à gaz ✌️
+Terminé, allez, bisous à la famille, n'oublie pas de nourrir le chien, ciao. J'aime bien ça moi, quand ça ne réclame pas la mise en place d'une usine à gaz ✌️
 
 Il est possible de l'installer sur d'autres OS comme Windows et MacOS si besoin.
 
 Pour son utilisation avancée, l'outil est très bien documenté et vous fournit pas mal d'exemple et surtout un guide pour vous expliquer les 3 grands principes, qu'il faut interpréter sur votre schéma ainsi :
 
-- Nodes : Enssemble de ressources importés
+- Nodes : Ensemble de ressources importées
 - Clusters : Groupe d'éléments
 - Edges : Les liaisons entre les éléments
 
-Ce qui est pratique avec les Nodes, c'est qu'ils sont basé sur des technologies existantes populaires (AWS, Azure, etc ...) pour un joli rendu immédiat.
+Ce qui est pratique avec les Nodes, c'est qu'ils sont basés sur des technologies existantes populaires (AWS, Azure, etc ...) pour un joli rendu immédiat.
 
 <i class="fa fa-book"></i> [consulter la documentation](https://diagrams.mingrammer.com/docs/getting-started/installation).
 
-# Utilisation de ses propres icones 😍
+# Utilisation de ses propres icônes 😍
 
 Voici le point le plus intéressant, utiliser ses propres icônes pour un maximum de flexibilité avec le Node **Custom**.
 
-Si vous êtes à la recherche d'un pack d'icônes SVG pour réaliser un schéma réseau, vous pouvez tous simplement récupérer ceux de Microsoft Azure qui sont très cool en clonant simplement ce dépôt :
+Si vous êtes à la recherche d'un pack d'icônes SVG pour réaliser un schéma réseau, vous pouvez tout simplement récupérer ceux de Microsoft Azure qui sont très cool en clonant simplement ce dépôt :
 
 ```bash
 git clone https://github.com/benc-uk/icon-collection.git
@@ -87,7 +87,7 @@ Grâce à Inkscape, vous pouvez convertir les images directement dans une taille
 inkscape -w 1024 -h 1024 icon-collection/azure-patterns/server.svg -o icons/server.png
 ```
 
-Maintenant, que nos icônes sont prêtes et stockés dans un dossier ("icons" dans mon cas), il ne reste plus qu'à invoquer tout ça dans son script.
+Maintenant, que nos icônes sont prêtes et stockées dans un dossier ("icons" dans mon cas), il ne reste plus qu'à invoquer tout ça dans son script.
 
 # Mise en application 👷
 

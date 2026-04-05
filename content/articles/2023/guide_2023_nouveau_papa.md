@@ -93,7 +93,7 @@ Je vous partage cependant celle que j'ai faite pour ma fille. Cliquez sur l'imag
 
 Une autre astuce, évitez d'imprimer en recto-verso, car mon petit encart de notes en bas à droite est petit et avoir le dos de la page vierge peut être utile 😉
 
-## Les visites agaçante 🤡
+## Les visites agaçantes 🤡
 
 Sur ce point, je vais faire simple : **n'autorisez aucune visite à la maternité**, ou vous allez le regretter. Ceux qui ont déjà eu des enfants savent, mais la tentation est forte.
 
@@ -101,7 +101,7 @@ Gardez ce moment très intense émotionnellement pour vous trois uniquement. Vou
 
 Mais ce qu'on ne nous dit pas, par contre, ce sont les filous de commerciaux en blouse blanche ! Je balance ! C'est honteux de profiter de la situation, à peine 48 heures après la naissance, nous avions déjà un défilé de glandu pour nous vendre des gadgets et services qu'il est difficile de refuser avec l'euphorie du moment.
 
-En particulier, la photographe qui s'empresse de vous faire signer un contrat douteux (mais lisez-le sérieusement !). Vous n'oseriez tout de même pas vous priver de la fameuse séance photo, n'est-ce pas ? Et bien si ! Dégagez-moi tous ces ardélions de la chambre et prévoyez simplement un appareil photo dans votre sac si vous tenez à la photo souvenir.
+En particulier, la photographe qui s'empresse de vous faire signer un contrat douteux (mais lisez-le sérieusement !). Vous n'oseriez tout de même pas vous priver de la fameuse séance photo, n'est-ce pas ? Eh bien si ! Dégagez-moi tous ces ardélions de la chambre et prévoyez simplement un appareil photo dans votre sac si vous tenez à la photo souvenir.
 
 L'avantage, c'est qu'il leur est impossible d'insister après un simple _"Nous ne sommes pas intéressés et souhaitons rester tranquilles"_. Cela doit devenir un réflexe tant que vous êtes à la maternité.
 
@@ -113,7 +113,7 @@ L'avantage, c'est qu'il leur est impossible d'insister après un simple _"Nous n
 
 Les sorties à la pharmacie sont donc fréquentes et surtout plaisantes. Dans mon cas, cela me permettait de "fuir" la maternité pour me consacrer à quelque chose "d'utile", tandis que la maman pouvait alors gérer bébé à sa façon tranquillement.
 
-Assurez-vous de bien vous entendre avec votre pharmacien et de lui annoncer la DPA ! Dans mon cas, après m'être disputé avec une pharmacie médiocre, je n'ai pas hésité à me rendre dans une autre qui, elle, est excellente. Je peux d'ailleur leur envoyer la paperasse par email, c'est très pratique pour la suite.
+Assurez-vous de bien vous entendre avec votre pharmacien et de lui annoncer la DPA ! Dans mon cas, après m'être disputé avec une pharmacie médiocre, je n'ai pas hésité à me rendre dans une autre qui, elle, est excellente. Je peux d'ailleurs leur envoyer la paperasse par email, c'est très pratique pour la suite.
 
 ## Les cadeaux 🎁
 
@@ -123,7 +123,7 @@ Cependant, c'est peine perdue ! Les gens bug sur cette simple instruction 😖. 
 
 Cela vaut également si vous demandez des cadeaux faits-main, qui nécessitent beaucoup plus d'efforts et d'investissement que de sortir la carte bancaire. Les gens vont simplement avoir la flemme et vous acheter le premier truc sans intérêt qu'ils jugent utile pour vous.
 
-Quelle que soit votre politique, communiquez et imposez votre liste de naissance ! Sinon, ne faites rien et acceptez que vous allez recevoir tout un tas de machins inutiles avec seulement quelques rare cadeaux vraiment plaisants de la part de vos proches. Sinon, vous avez aussi l'option moins élégante de demander du pognon.
+Quelle que soit votre politique, communiquez et imposez votre liste de naissance ! Sinon, ne faites rien et acceptez que vous allez recevoir tout un tas de machins inutiles avec seulement quelques rares cadeaux vraiment plaisants de la part de vos proches. Sinon, vous avez aussi l'option moins élégante de demander du pognon.
 
 ## La garde de l'enfant 🍼
 

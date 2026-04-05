@@ -22,13 +22,13 @@ Je considère bien évidemment que les outils non open-source, tels qu'Acronis, 
 
 Bien que très fiable, bye-bye également le contre-intuitif BackupPC avec son interface à vomir. Il est de toute façon déjà mort, comme en témoigne mon [Pull Request](https://github.com/backuppc/backuppc/pull/419) resté sans réponse depuis la nuit des temps.
 
-Sebsauvage à écrit un [bon article sur Borg](https://sebsauvage.net/wiki/doku.php?id=borgbackup) si vous voulez vous faire un avis technique avant de l'adopter.
+Sebsauvage a écrit un [bon article sur Borg](https://sebsauvage.net/wiki/doku.php?id=borgbackup) si vous voulez vous faire un avis technique avant de l'adopter.
 
 ## Externaliser où ?
 
 Entrons donc dans le cœur du problème : [la thune](https://youtu.be/Eo9JmYYbACA?t=161) 💸
 
-Pour avoir une externalisation digne de ce nom sans se ruiner, il faut bien s'embêter, ou trouver des bons plans.
+Pour avoir une externalisation digne de ce nom sans se ruiner, il faut bien s'embêter, ou trouver de bons plans.
 
 J'ai déjà tenté de le faire à l'ancienne en déplaçant régulièrement des disques durs, mais perdre l'automatisation nocturne est vraiment trop pénible. J'ai également tenté de passer par des amis, ça fonctionne, mais n'espérez pas avoir une solution pérenne. Je me suis retrouvé à déménager ma solution chez un autre chaque année, pour X ou Y raisons ! 😫
 

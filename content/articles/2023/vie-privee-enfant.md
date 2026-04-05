@@ -14,35 +14,35 @@ Cela nous coûte encore des disputes et des malentendus, pour cette raison, je v
 
 ## Une décision absurde ?
 
-Le problème quand nous avons le savoir, c'est que nous n'avons plus la possibilité d'être naïf et irresponsable.
+Le problème quand nous avons le savoir, c'est que nous n'avons plus la possibilité d'être naïfs et irresponsables.
 
 Au même titre qu'un garagiste se sent obligé de faire la vidange de votre voiture avant de vous rendre les clés, je refuse de laisser ma fille à la merci des terribles dangers invisibles de notre époque numérique. Mon bébé a la rarissime chance d'être encore totalement épargnée et cela me serait absolument insupportable de la propulser dans une situation qui ne sera prise réellement au sérieux par tout le monde que dans 10 ans, quand cela sera trop tard pour elle.
 
 J'ai pu prendre le temps d'exposer tout cela à ma femme qui adhère complètement à ma vision, mais cela demande un important effort de réflexion qu'il est difficile d'expliquer à tout le monde.
 
-Mais je vais faire simple dans mon explication et ne pas m'arrêter sur les détails technique.
+Mais je vais faire simple dans mon explication et ne pas m'arrêter sur les détails techniques.
 
 ## Résumons le problème
 
 Il est impossible pour quiconque de nier l'évolution technologique incroyable de notre société depuis les années 2000. L'avènement d'internet et des smartphones change complètement les règles de notre société, il faut commencer par admettre cela.
 
-Tout le monde a donc un espion dans sa poche, très mal configuré, qui viole quotidiennement votre vie privée et celle de votre entourage. Seul quelques dingo comme moi prennent réellement le temps de reconfigurer leur smartphone pour le maîtriser complètement.
+Tout le monde a donc un espion dans sa poche, très mal configuré, qui viole quotidiennement votre vie privée et celle de votre entourage. Seuls quelques dingo comme moi prennent réellement le temps de reconfigurer leur smartphone pour le maîtriser complètement.
 
-Les appareils photos jetables (non-connectés) n'existent plus vraiment et peu de personnes disposent d'appareil photo numérique pro. Par contre, tout le monde est prêt à dégainer son smartphone pour agresser votre innocent bébé qui n'a rien demandé, sans se rendre compte du mal fait 🙁
+Les appareils photo jetables (non-connectés) n'existent plus vraiment et peu de personnes disposent d'appareil photo numérique pro. Par contre, tout le monde est prêt à dégainer son smartphone pour agresser votre innocent bébé qui n'a rien demandé, sans se rendre compte du mal fait 🙁
 
 Le cheminement technique est le suivant :
 
 **Capture de média avec un Smartphone** ➡️ **Fuite des médias sur le web pour l'éternité** ➡️ **Sur-exploitation des médias à très long terme**
 
-Je ne vais pas rentrer dans les détails, sachez juste que c'est une réalité et que tout est **automatisé**. Faites un tour dans les permissions de votre Android/Iphone, analysez vos spams, faites la liste ahurissante d'infos dont disposent les géants du Web à votre sujet et celle de votre entourage. Surtout si vous êtes un naïf "kinarienakaché" 😜, les exemples sont légions.
+Je ne vais pas rentrer dans les détails, sachez juste que c'est une réalité et que tout est **automatisé**. Faites un tour dans les permissions de votre Android/Iphone, analysez vos spams, faites la liste ahurissante d'infos dont disposent les géants du Web à votre sujet et celle de votre entourage. Surtout si vous êtes un naïf "kinarienakaché" 😜, les exemples sont légion.
 
 Heureusement, le sujet deviendra de plus en plus sérieux avec les mesures qui vont avec dans les années à venir. Merci à la [CNIL](https://cnil.fr) et à la [La Quadrature du Net](https://www.laquadrature.net) pour ça !
 
-> Vol; Harcèlement; Discrimination; Vengeance; Escroquerie; Risque lié à la santé; Mauvaise Réputation; Chantage; Diffamation; Espionnage; Usurpation; Désinformation; Conséquences juridique; Surveillance.
+> Vol; Harcèlement; Discrimination; Vengeance; Escroquerie; Risque lié à la santé; Mauvaise Réputation; Chantage; Diffamation; Espionnage; Usurpation; Désinformation; Conséquences juridiques; Surveillance.
 
 Voici la liste des potentiels problèmes que ma fille n'aura, je l'espère, pas à subir plus tard grâce à ma lucidité.
 
-Si vous êtes encore septique, voici une vidéo Allemande de 2023 plutôt persuasive :
+Si vous êtes encore sceptique, voici une vidéo allemande de 2023 plutôt persuasive :
 
 [![A Message from Ella VOSTFR](https://img.youtube.com/vi/F4WZ_k0vUDM/0.jpg)](http://www.culturepub.fr/videos/a-message-from-ella/)
 
@@ -69,7 +69,7 @@ Hélas, les parents vont forcément être la première source de fuite d'informa
 * Services de santé ("normalement" très réglementé)
 * Pas mal de chaînes de magasin, fabricants et grossistes (par confort)
 
-Après il faut vivre avec son temps, le but étant finalement d'ouvrir les yeux et de garder le contrôle, de faire le nécessaire pour nettoyer ses données dès que possible. De plus en plus de service payant anti data-brokers émergent pour vous protéger si vous êtes fénéant de faire le ménage vous même.
+Après il faut vivre avec son temps, le but étant finalement d'ouvrir les yeux et de garder le contrôle, de faire le nécessaire pour nettoyer ses données dès que possible. De plus en plus de services payants anti data-brokers émergent pour vous protéger si vous êtes fainéant de faire le ménage vous-même.
 
 ## Lettre ouverte pour mes proches
 

@@ -6,7 +6,7 @@ Status: published
 
 Voyons comment mettre en place un workflow de déploiement de site WordPress via Jenkins, Ansible et Docker.
 
-Cela permet de concevoir un pipeline CI/CD qui transforme un processus manuel lourd en un déploiement en un clic. Finalement à la manière des hébergeurs qui propose de l'installation automatique.
+Cela permet de concevoir un pipeline CI/CD qui transforme un processus manuel lourd en un déploiement en un clic. Finalement à la manière des hébergeurs qui proposent de l'installation automatique.
 
 ![wordpress_deploy_01](../../assets/wordpress_deploy_01.png)
 
@@ -18,19 +18,19 @@ Concernant le choix des outils :
 
 * Jenkins est utilisé pour le déclenchement automatisé.
 
-* Ansible pour la CaC, le playbooks executé par Jenkins exploite un rôle conçu pour l'occasion.
+* Ansible pour la CaC, le playbook exécuté par Jenkins exploite un rôle conçu pour l'occasion.
 
 * Docker fournira trois conteneurs nécessaires par instance : wordpress, phpmyadmin et sftp.
 
-Bien entendu, il est possible de remplacer Jenkins par n'importe quel outil d'orchestration capable d'éxecuter notre playbook Ansible 😉 Ici je pars du principe que vous avez déjà à disposition un nœud Jenkins prêt, pour commencer, il faut installer le [plugin Ansible](https://plugins.jenkins.io/ansible).
+Bien entendu, il est possible de remplacer Jenkins par n'importe quel outil d'orchestration capable d'exécuter notre playbook Ansible 😉 Ici je pars du principe que vous avez déjà à disposition un nœud Jenkins prêt, pour commencer, il faut installer le [plugin Ansible](https://plugins.jenkins.io/ansible).
 
 ![wordpress_deploy_02](../../assets/wordpress_deploy_02.png)
 
-Vous aurez ainsi la possibilité de créer un Job avec des paramètres personalisés.
+Vous aurez ainsi la possibilité de créer un Job avec des paramètres personnalisés.
 
 ![wordpress_deploy_03](../../assets/wordpress_deploy_03.png)
 
-Dans le cadre de ce projet, voici les variables d'environnement personnalisables via jenkins :
+Dans le cadre de ce projet, voici les variables d'environnement personnalisables via Jenkins :
 
 ```yaml
 * docker_name: name of your container
@@ -55,11 +55,11 @@ Dans le cadre de ce projet, voici les variables d'environnement personnalisables
 
 En effet, ce projet ne se contente pas de déployer un Wordpress "vanilla", il est configuré avec un nom de domaine, un serveur mail, une connexion à une base de données mysql ou mariadb, un SGBDR (phpMyAdmin) et finalement un service SFTP. Ainsi, le client bénéficie de tous ces outils isolés et dédiés pour son instance Wordpress lui permettant d'en avoir le contrôle complet.
 
-Enfin, le serveur hôte doit pouvoir faire tourner (en plus de Docker) : Tar, MysqlDump et Crontab pour assurer des sauvegardes hebdomadaires automatique qui seront accessibles par le client sous forme d'archive dans un dossier "backups".
+Enfin, le serveur hôte doit pouvoir faire tourner (en plus de Docker) : Tar, MysqlDump et Crontab pour assurer des sauvegardes hebdomadaires automatiques qui seront accessibles par le client sous forme d'archive dans un dossier "backups".
 
 # Variables d'environnement par défaut
 
-Dans votre rôle Ansible *docker_wordpress/defaults/main.yml*, initialiser les variables d'environnement par defaut :
+Dans votre rôle Ansible *docker_wordpress/defaults/main.yml*, initialiser les variables d'environnement par défaut :
 
 ```yaml
 ---
@@ -144,7 +144,7 @@ Tous les accès se font avec le protocole sécurisé HTTPS.
 Nous restons à votre disposition pour tout complément d'information,
 ```
 
-> Notez ici que l'url pour l'accès au SGBDR est systèmatiquement fixé avec un sous-domaine https://db.domain.tld
+> Notez ici que l'url pour l'accès au SGBDR est systématiquement fixé avec un sous-domaine https://db.domain.tld
 
 Un template pour Docker-Compose (*docker-compose.yml.j2*) :
 
@@ -190,9 +190,9 @@ services:
 
 > L'accès au fichier *custom.ini* est judicieux pour permettre au client d'avoir un maximum de latitude sur la configuration de son instance Wordpress, mais cela reste facultatif.
 
-> Ici, le service SFTP utilise un volume limité au repertoire "data" exclusivement.
+> Ici, le service SFTP utilise un volume limité au répertoire "data" exclusivement.
 
-Finalement, un template pour les sauvegardes quotidienne (*backups.sh.j2*) :
+Finalement, un template pour les sauvegardes quotidiennes (*backups.sh.j2*) :
 
 ```bash
 #!/bin/sh
@@ -211,13 +211,13 @@ tar -czf /opt/{{ item.docker_name }}/data/backups/www-{{ item.db_user }}-$(date 
 chown -R 33:33 /opt/{{ item.docker_name }}/data/backups/
 ```
 
-> Ici, les sauvegardes de plus de 3 mois sont prunés avec un méthode très brutale avant de déclencher les backups. Ainsi, assurez-vous que le fuseau horraire de votre serveur est correctement configuré ! ⏱️
+> Ici, les sauvegardes de plus de 3 mois sont prunées avec une méthode très brutale avant de déclencher les backups. Ainsi, assurez-vous que le fuseau horaire de votre serveur est correctement configuré ! ⏱️
 
-> L'application des permissions est a adapter en fonction de votre serveur, dans mon cas ici, c'est L'UID 33.
+> L'application des permissions est à adapter en fonction de votre serveur, dans mon cas ici, c'est l'UID 33.
 
-# Tâches du rôle ansible
+# Tâches du rôle Ansible
 
-Dans votre rôle Ansible *docker_wordpress/tasks/tree.yml*, initialiser l'arboressence des fichier nécessaire de l'instance :
+Dans votre rôle Ansible *docker_wordpress/tasks/tree.yml*, initialiser l'arborescence des fichiers nécessaires de l'instance :
 
 ```yaml
 - name: Create BIN directory for customers
@@ -260,7 +260,7 @@ Dans votre rôle Ansible *docker_wordpress/tasks/tree.yml*, initialiser l'arbore
 
 > Séparer la création de l'arborescence de la tâche principale permet de rendre plus clairs le code et la maintenance de notre rôle.
 
-Dans votre rôle ansible *docker_wordpress/tasks/main.yml*, initialiser la tâche principale :
+Dans votre rôle Ansible *docker_wordpress/tasks/main.yml*, initialiser la tâche principale :
 
 ```yaml
 ---
@@ -449,7 +449,7 @@ iptables_custom_rules:
 ```
 
 # Configuration DNS :
-Pour terminer, il faut bien sûr enregistrer les entrées DNS des noms de domaine utilisés par les instances déployés.
+Pour terminer, il faut bien sûr enregistrer les entrées DNS des noms de domaine utilisés par les instances déployées.
 
 ``@ 10800 IN A <your-reverse-proxy-ip>``
 

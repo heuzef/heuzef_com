@@ -13,7 +13,7 @@ Transformer mon site, qui, jusqu'à présent, assurait la simple fonction de "po
 
 Écrire mes expériences de vie, apportera, je l'espère, plusieurs avantages. Les passionnés comme moi ont tous secrètement cette envie de partage, mais c'est autre chose de se lancer.
 
-Sur ce blog, pas de thème précis, j'aborderais tout sujet et thématique selon mon humeur délirante du moment, sous la seule condition que le contenu sera en mesure de créer une frénésie de passion sans précédent auprès d'une foule en délire qui ne manquera pas de s'abonner au [Flux RSS <i class="fa fa-rss"></i>](https://heuzef.com/feeds/all.atom.xml).
+Sur ce blog, pas de thème précis, j'aborderai tout sujet et thématique selon mon humeur délirante du moment, sous la seule condition que le contenu sera en mesure de créer une frénésie de passion sans précédent auprès d'une foule en délire qui ne manquera pas de s'abonner au [Flux RSS <i class="fa fa-rss"></i>](https://heuzef.com/feeds/all.atom.xml).
 
 ## Salut Pelican
 
@@ -25,9 +25,9 @@ Cet outil est absolument parfait pour les dingos exigeants comme moi, ce moteur 
 
 Aucune base de données ni moteur web requis, il suffit de lancer la moulinette et Pelican va vous recracher fissa un site web statique complet (HTML, CSS, JS).
 
-Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonction (Gestion de thème, extenssion, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plât et versionné sur mon [git](https://github.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
+Cette note est la première que je fais suite à une installation et configuration de mon instance Pelican et c'est clairement très efficace, car l'outil n'en reste pas moins puissant et offre un large choix de fonctions (Gestion de thème, extension, Flux RSS, publications multi-langue, etc ... ), et surtout tout est à plat et versionné sur mon [git](https://github.com/heuzef/heuzef_com), et la personnalisation est possible sans contrainte.
 
-C'est auto-hébergeable, libre et documenté, bref rien à redire, c'est le pied, fait tourner c'est de la bonne.
+C'est auto-hébergeable, libre et documenté, bref rien à redire, c'est le pied, fais tourner c'est de la bonne.
 
 Merci à mon tout-puissant Sensei [Ephase](https://xieme-art.org) pour m'avoir inspiré et aidé à découvrir cet outil 😎
 

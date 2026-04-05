@@ -6,13 +6,13 @@ Status: published
 
 La visio est pour beaucoup de monde aujourd'hui un acte quotidien, que vous soyez un professionnel de la tech ou non.
 
-Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autre termes à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio](https://obsproject.com/fr/).
+Si vous faites partie de ces gens qui visiote, qui teams, qui zoom, qui meets et autres termes à la mode pour ne simplement pas dire participer à une vidéo-conférence, je vous recommande de vous intéresser à l'utilisation d'un outil aussi simple qu'efficace, j'ai nommé [OBS Studio](https://obsproject.com/fr/).
 
 ![obs_studio](../../assets/obs-overlay.webp)
 
 # Qu'est-ce que OBS Studio (est-ce utile ?) 🎥
 
-OBS Studio est un outil très utilisé par les vidéastes, en particulier sur Twitch ou Youtube dans le domaine du Jeux-Vidéo (Let's play).
+OBS Studio est un outil très utilisé par les vidéastes, en particulier sur Twitch ou Youtube dans le domaine du jeu vidéo (Let's play).
 
 Ce dernier vous permet d'avoir un contrôle complet de ce que vous diffusez avec votre webcam, plus que simplement votre tête avec un filtre automatique en tout cas.
 
@@ -30,9 +30,9 @@ Il est très intéressant pour les raisons suivantes :
 
 * Il est multi-OS
 
-Difficile d'en demander plus ! Dédiez votre prochain dimanche pluvieux pour découvrir tranquillement ce logiciel, croyez-moi vous aller vous amuser et cela sera très utile pour vous pour la suite.
+Difficile d'en demander plus ! Dédiez votre prochain dimanche pluvieux pour découvrir tranquillement ce logiciel, croyez-moi vous allez vous amuser et cela sera très utile pour vous pour la suite.
 
-Dans cet article, je ne vais pas faire un tuto, car pour ça, je vous invite à chercher sur Youtube, les vidéos très complètes des dernières versions ne manques pas, ici le but est seulement de vous convaincre de franchir le pas.
+Dans cet article, je ne vais pas faire un tuto, car pour ça, je vous invite à chercher sur Youtube, les vidéos très complètes des dernières versions ne manquent pas, ici le but est seulement de vous convaincre de franchir le pas.
 
 # Le fonctionnement (dans les grandes lignes) ⚙️
 
@@ -48,7 +48,7 @@ La zone de contrôle vous permet de lancer un enregistrement, démarrer votre ca
 
 C'est une fonction très pratique de OBS Studio qui vous permet de créer plusieurs "environnements" de diffusion selon la situation.
 
-Votre scène par défaut peut simplement afficher votre tête, mais vous pourriez créer une scène dédiée à votre partage d'écran par exemple. La bascule entre les scènes se fait un clic.
+Votre scène par défaut peut simplement afficher votre tête, mais vous pourriez créer une scène dédiée à votre partage d'écran par exemple. La bascule entre les scènes se fait en un clic.
 
 Dans mon cas pratique, j'ai créé une scène "attente" qui affiche une vidéo Youtube lorsque je dois m'absenter durant la visio, une autre qui affiche ma tête en plus de mon partage d'écran. Une autre encore qui me permet de partager 4 fenêtres en même temps ou même 4 webcams à la fois ... Pas de limite de scène, c'est selon votre imagination.
 

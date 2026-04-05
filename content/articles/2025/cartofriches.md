@@ -14,7 +14,7 @@ En nous immergeant dans les complexités opérationnelles de [Cartofriches](http
 
 # Conception du produit 🦾
 
-La conception de notre produit, baptisé [PROFIL](https://github.com/heuzef/cartofriches/tree/PROFIL/profil), a été guidée par une approche structurée et itérative, visant à répondre efficacement aux besoins identifiés dans le cadre du projet. Notre objectif était de créer un service d'accompagnement au lancement de projets de réhabilitation de friches fonctionnalité actuellement limitée à un simple lien vers le site [UrbanVitaliz](https://urbanvitaliz.fr).
+La conception de notre produit, baptisé [PROFIL](https://github.com/heuzef/cartofriches/tree/PROFIL/profil), a été guidée par une approche structurée et itérative, visant à répondre efficacement aux besoins identifiés dans le cadre du projet. Notre objectif était de créer un service d'accompagnement au lancement de projets de réhabilitation de friches, fonctionnalité actuellement limitée à un simple lien vers le site [UrbanVitaliz](https://urbanvitaliz.fr).
 
 ## Vision
 
@@ -47,9 +47,9 @@ Pour illustrer, voici une démo vidéo de notre PoC[^2].
 
 _Montre l’état d’une “Fiche Friche” actuellement sur [Cartofriches](https://cartofriches.cerema.fr), puis notre PoC[^2] équivalent revisité (Avant / Après)._
 
-C’est souvent durant cette partie d’un projet Data que la dure réalitée nous rattrape : _“Qu’avons-nous comme données ? Que souhaitons-nous vraiment obtenir et pour quoi ?”_
+C'est souvent durant cette partie d'un projet Data que la dure réalité nous rattrape : _"Qu'avons-nous comme données ? Que souhaitons-nous vraiment obtenir et pour quoi ?"_
 
-Cette étape est anxiogène car nous devons placer le curseur entre les fantasmes et la réalité. Se mettre au défi avec de grandes ambitions est très stimulant, mais cela à un coût et des enjeux ayant un impact immense, il faut faire preuve d’une grande communication avec son équipe afin de définir la bonne stratégie.
+Cette étape est anxiogène car nous devons placer le curseur entre les fantasmes et la réalité. Se mettre au défi avec de grandes ambitions est très stimulant, mais cela a un coût et des enjeux ayant un impact immense, il faut faire preuve d'une grande communication avec son équipe afin de définir la bonne stratégie.
 
 Dans cet article, afin d’éviter que ce dernier ne soit trop dense, nous aborderons uniquement la phase conception de la fonctionnalité liée à l’IA.
 
@@ -81,11 +81,11 @@ Cette avancée a été une véritable délivrance pour l'équipe. Nous étions e
 
 Remotivés et convaincus par cette nouvelle approche, nous avons décidé de nous lancer dans le développement d'un nouveau PoC[^2]. Pour nous assurer de la faisabilité de notre modèle, nous avions un objectif très humble : atteindre une exactitude de 60% sur nos prédictions. Cependant, nous avions un énorme obstacle à surmonter : **nous étions à 96 heures de la remise du projet**.
 
-Ce délai serré s'explique par le fait qu'il n'était pas attendu de notre part un PoC, mais nous y tenons fermement. Pour nous, c'était un moyen infaillible de démontrer nos propos en développant une IA qui fonctionne pour de vrai. Nous avons donc organisé un hackathon improvisé pour relever ce défi.  Épuisés par les longues heures de travail et sans attentes particulières, nous n'espérons pas accomplir de miracle en si peu de temps. Cependant, nous étions déterminés à donner le meilleur de nous-mêmes pour atteindre notre objectif.
+Ce délai serré s'explique par le fait qu'il n'était pas attendu de notre part un PoC, mais nous y tenons fermement. Pour nous, c'était un moyen infaillible de démontrer nos propos en développant une IA qui fonctionne pour de vrai. Nous avons donc organisé un hackathon improvisé pour relever ce défi.  Épuisés par les longues heures de travail et sans attentes particulières, nous n'espérions pas accomplir de miracle en si peu de temps. Cependant, nous étions déterminés à donner le meilleur de nous-mêmes pour atteindre notre objectif.
 
 ### Premiers jets
 
-Nos premiers essais furent très décourageants, avec des scores avoisinant les 43% d’exactitude. Ces résultats ont mis en lumière de nombreux problèmes dans les données disponibles que nous n'avions pas identifiées lors de notre première analyse sommaire. Nous avons rapidement réalisé que nous devions organiser notre travail de manière plus efficace pour maximiser nos chances de succès.
+Nos premiers essais furent très décourageants, avec des scores avoisinant les 43% d'exactitude. Ces résultats ont mis en lumière de nombreux problèmes dans les données disponibles que nous n'avions pas identifiés lors de notre première analyse sommaire. Nous avons rapidement réalisé que nous devions organiser notre travail de manière plus efficace pour maximiser nos chances de succès.
 
 ### Organisation du travail
 
@@ -100,7 +100,7 @@ Ce mode de fonctionnement s'est avéré diablement efficace, chacun ayant une pa
 
 ### Collaboration et progrès
 
-Frédéric et moi nous actualisons régulièrement le rapport d'analyse des données de Rova pour nous appuyer sur ses travaux. D'heure en heure, nous avions une vision de plus en plus claire des données de [Cartofriches](https://cartofriches.cerema.fr), des actions plus évidentes à mener et des solutions plus pertinentes pour franchir les obstacles.
+Frédéric et moi nous actualisions régulièrement le rapport d'analyse des données de Rova pour nous appuyer sur ses travaux. D'heure en heure, nous avions une vision de plus en plus claire des données de [Cartofriches](https://cartofriches.cerema.fr), des actions plus évidentes à mener et des solutions plus pertinentes pour franchir les obstacles.
 
 De mon côté, j'apportais des données Silver régulièrement via Git sur lesquelles Frédéric s'appuyait pour ses entraînements. À chaque commit, le jeu de données utilisé était théoriquement de meilleure qualité, et je pouvais relancer les scripts d'entraînement sans me poser de question pour obtenir les métriques et constater les gains obtenus. Chaque pourcentage gagné était une victoire.
 
@@ -110,7 +110,7 @@ Frédéric, de son côté, était focalisé sur l'amélioration continue de l'en
 
 Finalement, au petit matin de la veille de la réunion, nous avons obtenu un score très décevant avoisinant les 50%. C'était vraiment frustrant de ne pas avoir atteint l'objectif visé après autant d'efforts, mais c'est la réalité qui se cache derrière la conception des IA.
 
-Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC[^2] n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en ré-ajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
+Nous nous résignons alors à mettre à plat nos travaux incomplets, démontrant que notre PoC[^2] n'était clairement pas au point. C'était sans compter sur Frédéric, reposé, qui n'a pas voulu lâcher le morceau jusqu'au dernier moment. Il a tenté une manipulation assez osée pour pallier le plus gros problème de déséquilibre dans nos données, en réajustant nos objectifs initiaux (sans en changer le but) et en testant avec un algorithme tout à fait nouveau. Foutu pour foutu … 🙂
 
  **🤯 Et c'est à une heure de notre réunion pour rendre nos travaux que nous avons obtenu le score de 63%. Victoire ! 🤯**
 
@@ -128,7 +128,7 @@ Ce processus complet nous permettra de garantir la réussite de notre projet et 
 
 👉 [Accès au dépôt Git du projet PROFIL](https://github.com/heuzef/cartofriches)
 
-Je vous relais maintenant les notes de Rova, qui présente en détail la partie concernant le précieux audit de la qualité des données.
+Je vous relaie maintenant les notes de Rova, qui présente en détail la partie concernant le précieux audit de la qualité des données.
 
 ----
 

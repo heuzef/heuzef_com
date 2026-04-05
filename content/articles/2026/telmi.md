@@ -61,10 +61,10 @@ Le logiciel **Telmi-Sync** permet de :
 - Avoir accès sans limite aux créations des autres parents via les "Stores Telmi".
 
 ### 4️⃣ Communauté
-Très forte et soudée, jugez vous-même en rejoignant le [Canal de discution Discord](https://discord.gg/ZTA5FyERbg) ou en [rencontrant un membre près de chez vous](https://umap.openstreetmap.fr/fr/map/entraide-telmi_1342678).
+Très forte et soudée, jugez vous-même en rejoignant le [Canal de discussion Discord](https://discord.gg/ZTA5FyERbg) ou en [rencontrant un membre près de chez vous](https://umap.openstreetmap.fr/fr/map/entraide-telmi_1342678).
 
 ### 5️⃣ Prix
-L'application smartphone, permet déjà un usage complet et gratuit de **[Telmi](https://telmi.fr)**. Idéal si vous avez un vieux téléphone ou une tablette qui peut être dédiée à votre enfant ♻️
+L'application smartphone permet déjà un usage complet et gratuit de **[Telmi](https://telmi.fr)**. Idéal si vous avez un vieux téléphone ou une tablette qui peut être dédiée à votre enfant ♻️
 
 Mais d'ordinaire, **[Telmi](https://telmi.fr)** est conçue pour fonctionner sur une **Miyoo Mini Plus** avec une **carte SD**.
 Quelques précieux conseils de la communauté sont disponibles sur le **[WIKI de Telmi](https://wiki.telmi.fr)** dans la rubrique "Achats".
@@ -78,7 +78,7 @@ En cas de problème, il devient facile de récupérer des pièces de rechange et
 
 Venons-en au point qui fâche. Si certains boudent **[Telmi](https://telmi.fr)**, c'est simplement parce que pour en bénéficier, il va falloir vous remonter les manches et y consacrer un peu de temps et d'énergie (bouuuuh ! 🍅)
 
-Évidement, acheter un produit tout prêt, ça ne vous demandera qu'un simple achat en magasin puis une petite après-midi tranquille pour maîtriser le machin. Avec **[Telmi](https://telmi.fr)**, ça ne va clairement pas être la même sauce, car vous avez ici la mission de comprendre le processus. Mais après tout, qu'est-ce qu'on ne serait pas prêt à faire pour offrir le meilleur à nos enfants ?! Et franchement, rassurez-vous, c'est vraiment accessible :
+Évidemment, acheter un produit tout prêt, ça ne vous demandera qu'un simple achat en magasin puis une petite après-midi tranquille pour maîtriser le machin. Avec **[Telmi](https://telmi.fr)**, ça ne va clairement pas être la même sauce, car vous avez ici la mission de comprendre le processus. Mais après tout, qu'est-ce qu'on ne serait pas prêt à faire pour offrir le meilleur à nos enfants ?! Et franchement, rassurez-vous, c'est vraiment accessible :
 
 - Si vous savez utiliser un ordinateur, vous en êtes capable.
 - Si vous êtes plutôt à l'aise avec la technologie, ça sera tranquille et la création d'histoires ne vous fera pas peur.
@@ -102,7 +102,7 @@ Et du côté de l'enfant ? Ma fille de 3 ans a réussi à maîtriser la machine 
 
 Si Telmi est déjà la meilleure boîte à histoires du marché, la **[SUPER TELMI](https://github.com/heuzef/super-telmi)**, c’est la version boostée aux hormones. 
 
-Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif et de réunir les différentes améliorations de la communauté.
+Projet initié et maintenu par Heuzef (coucou, c'est moi), son objectif est de réunir les différentes améliorations de la communauté.
 
 ![telmi_004.png](../../assets/telmi_004.png)
 
