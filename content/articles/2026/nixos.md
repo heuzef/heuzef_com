@@ -1,8 +1,8 @@
 Title: À la découverte de NixOS une distribution Linux pas comme les autres
 Category: Informatique
 Tags: linux, astuce, opensource, chiffrement
-Date: 2026-04-06
-Status: draft
+Date: 2026-04-08
+Status: published
 
 ![nixos_001.png](../../assets/nixos_001.png)
 
